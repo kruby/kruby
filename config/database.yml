@@ -32,19 +32,11 @@ test:
   username: root
   password: kf1737
   socket: /tmp/mysql.sock
-
-
-# production:
-#     adapter: mysql
-#     encoding: utf8
-#     username: krsgrd
-#     password: Ee9Gohchai4i
-#     database: krsgrd_kruby_production
-#     host: sqlreadwrite.brightbox.net
     
 production:
     adapter: mysql
-    host: sqlreadwrite.brightbox.net
+    #host: sqlreadwrite.brightbox.net
+    host: db01.mysql.vm.brightbox.net
     username: krsgrd
     password: Ee9Gohchai4i
     database: krsgrd_kruby_production
