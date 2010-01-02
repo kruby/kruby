@@ -23,7 +23,7 @@ class ViewerController < ApplicationController
     @pagetitle = @page.title rescue 'Indhold følger snarest'
     @content = @page.body rescue 'Indhold følger snarest'
     @headline = @page.headline rescue 'Indhold følger snarest'
-    @posts = Post.forside_blogs_active.all(:limit => 3)
+    @posts = Post.forside_blogs_active.all(:limit => 10)
     
     # if test_web_browser == "Firefox3"
     #       render :action => "show_bad_browsers"
