@@ -15,12 +15,12 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
-# Nedenstående er nødvendigt for at for named_scope til at virke
+# Nedenstående er nødvendigt for at for has_finder til at virke
 
 Rails::Initializer.run do |config|
   
@@ -73,16 +73,19 @@ Rails::Initializer.run do |config|
 
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
+  
+  config.gem "searchlogic"
+  config.gem "RedCloth"
 
 end
 
 # gem 'mislav-will_paginate', '~> 2.2'
 #   require 'will_paginate'
-# gem 'named_scope'
+# gem 'has_finder'
 #   require 'has_finder'
 #   
-  gem 'RedCloth'
-       require 'RedCloth'
+  # gem 'RedCloth'
+  #      require 'RedCloth'
   
   WillPaginate::ViewHelpers.pagination_options[:prev_label] = '<<'
   WillPaginate::ViewHelpers.pagination_options[:next_label] = '>>'
