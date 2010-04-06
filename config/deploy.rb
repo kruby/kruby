@@ -136,7 +136,8 @@ set :mongrel_port, 9600
 
 ## Dependencies
 # Set the commands and gems that your application requires. e.g.
-# depend :remote, :gem, "will_paginate", ">=2.2.2"
+depend :remote, :gem, "will_paginate", ">=2.3.12"
+depend :remote, :gem, "RedCloth", ">=4.2.3"
 # depend :remote, :command, "brightbox"## Passenger Configuration
 # Set the method of restarting passenger
 # Defaults to :hard which is used to instantly free up database connections
