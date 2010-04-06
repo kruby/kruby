@@ -76,6 +76,7 @@ Rails::Initializer.run do |config|
   
   config.gem "searchlogic"
   config.gem "RedCloth"
+  config.gem "will_paginate"
 
 end
 
