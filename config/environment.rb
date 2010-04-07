@@ -74,7 +74,7 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
   
-  config.gem "searchlogic"
+  #config.gem "searchlogic"
   config.gem "RedCloth"
   config.gem "will_paginate"
 
