@@ -21,7 +21,8 @@
   </tr>
 
 <% for asset in @assets %>
-<% @image =  asset.photo.url(:thumb) %> 
+<% @image =  asset.photo.url(:thumb) %>
+<% @image_show = asset.photo.url(:original)%>
   <tr>
 	<td><%=h asset.id %></td>
 	<td><%=h User.find(asset.user_id).blogname %></td>
@@ -32,7 +33,7 @@
 	<td><%=h nice_date(asset.updated_at) rescue nil %></td>
 	<td><%=h nice_date(asset.photo_updated_at) rescue nil %></td>
 	<!-- <td><%#= link_to image_tag(@image), asset, :class => 'thumb'%></td> -->
-	<td class='thumb'><%= link_to image_tag(@image), asset, :toptions => "shaded = 0, overlayClose = 0,  resizable = 0" %></td>
+	<td class='thumb'><%= link_to image_tag(@image), @image_show, :toptions => "shaded = 0, overlayClose = 0,  resizable = 0" %></td>
     <td><%#= link_to 'Show', asset %><%= link_to '[Ret]', edit_asset_path(asset) %><%= link_to '[Slet]', asset, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
