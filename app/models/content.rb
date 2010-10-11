@@ -1,11 +1,6 @@
 class Content < ActiveRecord::Base
-  
-
-  
+   
   acts_as_tree :order => "position"
-  
-
-
   
   #named_scope :parent_pages, :conditions => ["parent_id IS NULL and active", true], :order => 'position'
   

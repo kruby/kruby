@@ -39,18 +39,11 @@
 #admin_liste {
 z-index:10000;
 position:absolute;
-top: 200px;
+top: 170px;
 left: 150px;
 color:#000000;
 }
 
-#admin_liste {
-z-index:0;
-position:relative;
-top: 10px;
-left: 40px;
-color:#000000;
-}
 
 #admin_formular #admin_liste {
 z-index:0;

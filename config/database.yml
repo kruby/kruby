@@ -20,7 +20,7 @@ development:
   database: kruby_development
   username: root
   password: kf1737
-  socket: /tmp/mysql.sock
+  socket: /opt/local/var/run/mysql5/mysqld.sock
 
 # Warning: The database defined as 'test' will be erased and
 # re-generated from your development database when you run 'rake'.
@@ -31,7 +31,7 @@ test:
   database: kruby_test
   username: root
   password: kf1737
-  socket: /tmp/mysql.sock
+  socket: /opt/local/var/run/mysql5/mysqld.sock
     
 production:
     adapter: mysql
