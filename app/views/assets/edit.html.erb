@@ -17,6 +17,7 @@
 
   <p>
 	<b>Aktuelt foto</b> -> <%= @asset.photo_file_name %><br />
+	<b>Adresse</b> -> <%= @asset.photo.url(:original) %><br />
 	<%= image_tag(@image, :class => 'edit_photo') %>
 	
   </p>

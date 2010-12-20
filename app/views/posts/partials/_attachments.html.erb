@@ -27,7 +27,7 @@
     <td><%#= link_to '[Vis]', attachment %>
 		<%#= link_to '[Ret]', edit_attachment_path(attachment) %>
 		<%#= link_to '[Slet]', destroy_from_post_attachments_path(:post_id => params[:id], :id => attachment.id), :confirm => 'Er du sikker?', :method => :delete %>
-		<%= link_to '[Slet]', destroy_from_post_attachments_path(:post_id => params[:id], :id => attachment.id), :method => :delete %></td>
+		<%= link_to '[Fjern]', destroy_from_post_attachments_path(:post_id => params[:id], :id => attachment.id), :method => :delete %></td>
   </tr>
 
 <% end %>

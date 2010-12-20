@@ -85,6 +85,36 @@ table {
 	font-weight:bold;	
 }
 
+#forside_blog_wrapper #tilbage {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin: 10px 0px 10px 0px;
+	
+}
+
+#forside_blog_wrapper a.links {
+	color: #333333;
+	font-size: 11px;
+	font-weight: normal;
+	margin: 5px;
+	text-align: left;
+	text-decoration: none;
+}
+
+#forside_blog_wrapper .thumb a {
+	color: #333333;
+	font-size: 11px;
+	font-weight: normal;
+	text-align: left;
+	text-decoration: none;
+}
+
+#forside_blog_wrapper .thumb img {
+	border: 1px solid #999;
+	margin-left: 3px;
+}
+
 #forside_wrapper_streg {
 	position: relative;  
 	width: 600px;

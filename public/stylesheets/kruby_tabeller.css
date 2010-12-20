@@ -37,7 +37,7 @@
 
 
 #admin_liste {
-z-index:10000;
+z-index:100;
 position:absolute;
 top: 170px;
 left: 150px;

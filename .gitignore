@@ -1,5 +1,6 @@
 tmp/**/* 
-log/*.log 
+log/*.log
+log/access_log 
 config/database.yml 
 db/schema.* 
 db/data_backup/* 

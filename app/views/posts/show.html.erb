@@ -1,12 +1,87 @@
-<div id='wrapper_top_text'></div>
+<div id='wrapper_background'>
+	<div id='wrapper_main'>
+		<div id="top_foto"><%= image_tag "top_text.jpg" %></div>
 
-<div id="menu"><%= render :partial => "layouts/menu_forside" %></div>
 
-<div id='forside_wrapper'>
-		<div id="admin_blog">
+		<!-- <div id="menu"><%#= render :partial => "layouts/menu_forside" %></div> -->
+
+
+		<div id="forside_blog_wrapper">
+			<div id="tilbage"><%= link_to '[Tilbage]', root_url, :class => 'links' %></div>
 			
-			<%= render :partial => "posts/partials/show" %>
-		
+
+			<div id="forside_blog_border">
+				<div class="forside_blog_wrapper">
+					<div class="blogpost">
+
+						<div class="topline">
+							<span class="title"><%#=h post.id %><%= @post.title %><%#=h truncate(post.title, :length => 35) %></span><br>
+
+
+							<% for attachment in @post.attachments %>
+							<% @alt = Asset.find(attachment.asset_id).description rescue nil %>
+							<%# @alt = Asset.find(attachment.asset_id).description + ' (' + attachment.asset_id.to_s + ')' rescue nil %>
+							<% @image = Asset.find(attachment.asset_id).photo.url(:thumb) %>
+							<% @image_show = Asset.find(attachment.asset_id).photo.url(:original)%> 
+
+							<span class='thumb' id='images_<%=@post.id%>'><%= link_to image_tag(@image, :alt => @alt), @image_show %></span>
+							<!-- HER HAR VI BRUGT POST.ID TIL AT GØRE GRUPPEN AF FOTOS UNIK, SOM DET OGSÅ SES NEDERST I JAVASCRIPT I GROUP -->
+
+							<% end %>
+
+							<% if @post.attachments.count > 0 %>
+							<span class="foto"></span>
+							<% end %>
+						</div>
+						<div class="date_time">
+							Oprettet: <%=h @post.created_at.strftime("%d.%m.%y - %H:%M") %> af 
+							<span class="author"><%=h User.find(@post.user_id).blogname rescue nil %></span>
+							<% if @post.updated_at > @post.created_at + 10.days %>
+							- Opdateret: <%=h @post.updated_at.strftime("%d.%m.%y - %H:%M") %>
+							<% end %>
+						</div>
+						<div class="body">
+							<p><%= textilize(@post.body) %></p>
+						</div>
+					</div><br>
+				</div>
+
+			</div>
 		</div>
 
+		<% content_for :javascript do %>
+
+		<% javascript_tag do %>
+
+		TopUp.addPresets({
+			"#images_<%= @post.id %> a": {
+				group: "images_<%= @post.id %>",
+				title: "{alt} - {current} af {total}",
+				layout: "dashboard",
+				modal: 1,
+				resizable: 0,
+				readAltText: 1,
+				shaded: 0,
+				effect: 'switch'
+			},
+			".shaded": {
+				shaded: 1
+			}
+		});
+
+		<% end %>
+
+		<% end %>
+
+		<!-- <div id="kontakt_tekst"> Kruby ApS - Bredhøjsvinget 9 - 8600 Silkeborg - Tlf. +45 40 19 68 81 </div>  -->
+
+	</div>
+
+	<div id="bund_baggrund"><%= image_tag "baggrundsbund.jpg" %></div>
+
 </div>
+
+
+
+
+

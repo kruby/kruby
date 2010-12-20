@@ -77,6 +77,7 @@ Rails::Initializer.run do |config|
   #config.gem "searchlogic"
   config.gem "RedCloth"
   config.gem "will_paginate"
+  config.gem "newrelic_rpm"
   
   ### Hvis du kører script/server skal du istedet skrive gem "RedCloth" f.eks for at det virker
 

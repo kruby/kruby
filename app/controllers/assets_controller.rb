@@ -15,6 +15,9 @@ class AssetsController < ApplicationController
   
   def add_to_post
     @assets = Asset.find(:all, :order => 'photo_updated_at DESC')
+    @attachable = Post.find(params[:id])
+    @array_of_ids = find_attachment_ids(@attachable)
+      
 
     respond_to do |format|
       format.html # index.html.erb
@@ -120,6 +123,17 @@ class AssetsController < ApplicationController
     end
     flash[:notice] = "Updated products!"
     redirect_to products_path
+  end
+  
+  def find_attachment_ids(attachable)
+    @attachment_ids = Attachment.find_all_by_attachable_id(attachable.id, :select => :asset_id)
+    @array_of_ids = []
+    @c = 0
+    @attachment_ids.each do
+      @array_of_ids << @attachment_ids[@c][:asset_id]
+      @c += 1
+    end
+    return @array_of_ids
   end
 
 end

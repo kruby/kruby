@@ -8,7 +8,71 @@
 	padding: 10px;
 	border: 1px solid #999;
 	margin-bottom: 5px;
+	overflow: auto;
 }
+
+#forside_blog_wrapper .body p.right img {
+	float: right;
+}
+
+#forside_blog_wrapper .body p.left img {
+	float: left;
+}
+
+#forside_blog_wrapper .body p.size175 img {
+	width: 175%;
+}
+
+
+#forside_blog_wrapper .body p.size150 img {
+	width: 150%;
+}
+
+#forside_blog_wrapper .body p.size125 img {
+	width: 125%;
+}
+
+#forside_blog_wrapper .body p.size75 img {
+	width: 75%;
+}
+
+
+#forside_blog_wrapper .body p.size50 img {
+	width: 50%;
+}
+
+#forside_blog_wrapper .body p.size25 img {
+	width: 25%;
+}
+
+#forside_blog_wrapper .body p.margin3 img {
+	margin: 3px;
+}
+
+#forside_blog_wrapper .body p.margin5 img {
+	margin: 5px;
+}
+
+#forside_blog_wrapper .body p.margin8 img {
+	margin: 8px;
+}
+
+#forside_blog_wrapper .body p.margin10 img {
+	margin: 10px;
+}
+
+#forside_blog_wrapper .body p.margin15 img {
+	margin: 15px;
+}
+
+#forside_blog_wrapper .body p.margin-5 img {
+	margin: -5px;
+}
+
+#forside_blog_wrapper .body p.border img {
+	border: 1px solid #E4E4E4;
+}
+
 
 
 #forside_blog_wrapper .topline {

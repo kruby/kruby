@@ -20,15 +20,27 @@
 	<th class='pos'>Foto</th>
 	
   </tr>
-
+<%#= @array_of_ids %>
 <% for asset in @assets %>
 <% @image =  asset.photo.url(:thumb) %>
-<% @topoptions = "shaded = 0, overlayClose = 0, resizable = 0, title = " + asset.description %>
+<% @image_original = asset.photo.url(:original) %>
+<% @description = Asset.find(asset.id).description %>
+
 
   <tr>
-	<td><%= check_box_tag "asset_ids[]", asset.id %></td>
-	<td class='thumb'>
-	<%= link_to image_tag(@image), asset, :toptions => @topoptions %>
+	<td class="pos">
+		
+		<% if @array_of_ids.include?(asset.id) %>
+			√<%#= check_box_tag "asset_ids[]", asset.id, "yes" %>
+		<% else %>
+			<%= check_box_tag "asset_ids[]", asset.id %>
+		<% end %>
+	</td>
+	
+	<td class='thumb' id='images'>
+	<%= link_to image_tag(@image, :alt => @description), Asset.find(asset.id) %>
+		
+	<%#= link_to image_tag(@thumb), asset, :toptions => @topoptions %>
 	</td>	
 	<td><%=h asset.description %></td>
 	<!-- <td><%#=h User.find(asset.user_id).blogname %></td>
