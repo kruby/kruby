@@ -14,6 +14,7 @@
 <%= javascript_include_tag 'drop_down' %>
 <%= javascript_include_tag "flashobject" %>
 <%= javascript_include_tag 'swfobject' %>
+<%= google_analytics_js %>
 
 </head>
 
@@ -23,7 +24,7 @@
 	
 <%= yield%>
 
-
+<%= yield :javascript %>
 
 </body>
 </html>

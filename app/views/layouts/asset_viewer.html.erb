@@ -12,6 +12,8 @@
 <%#= javascript_include_tag :defaults %>
 <%#= javascript_include_tag 'drop_down' %>
 <%#= javascript_include_tag 'swfobject' %>
+<%= google_analytics_js %>
+
 </head>
 
 <a href="javascript:window.close()">Close</a> this popup. 
@@ -19,6 +21,8 @@
 <body>
 	
 <%= yield%>
+
+<%= yield :javascript %>
 
 </body>
 </html>

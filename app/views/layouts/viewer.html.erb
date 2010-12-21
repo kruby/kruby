@@ -10,6 +10,8 @@
 <%= stylesheet_link_tag 'kruby_viewer', 'kruby_forside_blog', 'kruby_blog' %>
 <%= javascript_include_tag :defaults %>
 <%= javascript_include_tag 'drop_down' %>
+<%= google_analytics_js %>
+
 </head>
 
 <body>
@@ -21,7 +23,6 @@
 <%= yield%>
 
 <%= yield :javascript %>
-
 
 </body>
 </html>
