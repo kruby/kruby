@@ -1,0 +1,25 @@
+<% unless @level_3_main.nil? %>
+
+	<% @level_3_main.each do |level_3| -%>
+		<ul>
+			<li class="user_navlabel">
+				<% if level_3.redirect? %>
+						<%= link_to level_3.navlabel, {:controller => level_3.controller_redirect, :action => level_3.action_redirect, :id => level_3.resource_id } %>
+				<% else %>
+				
+					<!-- Her tages specielt hensyn til forsiden, der ikke skal vises som -->
+					<% if level_3.controller_name == 'forside'%>
+						<li><%= link_to level_3.controller_name.mb_chars.capitalize, root_url %>
+					<% else %>
+						<%= link_to level_3.navlabel, {:controller => level_3.controller_name} %>
+						<!-- Alle admin sider ledes videre til deres index i views -->
+			    	
+					<% end %>
+			
+				<% end %>
+		
+		</ul>				
+	<% end %>
+
+<% end %>	
+</li>

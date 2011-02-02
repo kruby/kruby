@@ -1,0 +1,11 @@
+<% unless @level_3.nil? %>
+
+	<% @level_3.each do |level_3| -%>
+		<ul>
+			<li class="admin_navlabel"><%= link_to level_3.navlabel, {:controller => level_3.controller_name} %>
+			
+		</ul>
+	<% end %>
+
+<% end %>	
+</li>

@@ -16,29 +16,55 @@ class ApplicationController < ActionController::Base
   
   def get_content_for_menu
     #Menupunkter i forhold til user.category skal hentes. Er man editor, får man kun aktuelle menupunkter at se.
+    #get_subdomain_pages
+    
+    @main_menu ||= Content.main_menu # main_menu kommer fra content.rb
+    
     if logged_in?
       if current_user.category == 'Admin' 
-        @tabs ||= Content.admin_pages # parent_pages kommer fra content.rb (modellen) derfor starter den også med Content. det har ikke noget med tabellen contents at gøre.
+        @tabs ||= Content.admin_pages + Content.editor_pages + Content.user_pages
+        # parent_pages kommer fra content.rb (modellen) derfor starter den også med Content. det har ikke noget med tabellen contents at gøre.
+        @tabs_main ||= @main_menu
       elsif current_user.category == 'Editor'
-        @tabs ||= Content.editor_pages
+        @tabs ||= Content.editor_pages + Content.user_pages
+        @tabs_main ||= @main_menu
       elsif current_user.category == 'User'
         @tabs ||= Content.user_pages
+        @tabs_main ||= @main_menu
       end
-      
     else
-      @tabs ||= Content.public_pages # public_pages kommer fra content.rb (modellen)
+      @tabs_main ||= Content.public_pages
+      
     end
-    
-    @main_menu ||= Content.pages.active.not_admin # main_menu kommer fra content.rb
-    
-    
-    @mangler = 'Indhold følger snarest'
-    
-    #Newsarchive.active kommer fra models > newsarchive.rb via named_scope
-    @archives = Newsarchive.active
-    @products = Product.active
-    
+
   end
+  
+  
+  # def get_content_for_menu
+  #   #Menupunkter i forhold til user.category skal hentes. Er man editor, får man kun aktuelle menupunkter at se.
+  #   if logged_in?
+  #     if current_user.category == 'Admin' 
+  #       @tabs ||= Content.admin_pages # parent_pages kommer fra content.rb (modellen) derfor starter den også med Content. det har ikke noget med tabellen contents at gøre.
+  #     elsif current_user.category == 'Editor'
+  #       @tabs ||= Content.editor_pages
+  #     elsif current_user.category == 'User'
+  #       @tabs ||= Content.user_pages
+  #     end
+  #     
+  #   else
+  #     @tabs ||= Content.public_pages # public_pages kommer fra content.rb (modellen)
+  #   end
+  #   
+  #   @main_menu ||= Content.pages.active.not_admin # main_menu kommer fra content.rb
+  #   
+  #   
+  #   @mangler = 'Indhold følger snarest'
+  #   
+  #   #Newsarchive.active kommer fra models > newsarchive.rb via named_scope
+  #   @archives = Newsarchive.active
+  #   @products = Product.active
+  #   
+  # end
 
 
   def active
