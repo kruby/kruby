@@ -1,20 +1,27 @@
-<% @tabs_main.each do |page| -%> <!-- @tabs kommer fra application.rb -->
+<% @tabs_main.each do |level_1| -%> <!-- @tabs kommer fra application.rb -->
 
 		<li class="user_navlabel">
-			<% if page.redirect? %>
-					<%= link_to page.navlabel, {:controller => page.controller_redirect, :action => page.action_redirect, :id => page.resource_id} %>
+			
+			<% if level_1.redirect? %>
+			
+					<%= link_to level_1.navlabel, {:controller => level_1.controller_redirect, :action => level_1.action_redirect, :id => level_1.resource_id} %>
+			
 			<% else %>
 				
 				<!-- Her tages specielt hensyn til forsiden, der ikke skal vises som -->
-				<% if page.controller_name == 'forside'%>
-					<li><%= link_to page.controller_name.mb_chars.capitalize, root_url %>
+				<% if level_1.controller_name == 'forside'%>
+			
+					<li><%= link_to level_1.controller_name.mb_chars.capitalize, root_url %>
+			
 				<% else %>
-					<%= link_to page.navlabel, {:controller => page.controller_name} %> <!-- Alle admin sider ledes videre til deres index i views -->
-		    	<% end %>
+			
+					<%= link_to level_1.navlabel, {:controller => level_1.controller_name} %> <!-- Alle admin sider ledes videre til deres index i views -->
+		    
+				<% end %>
 			
 			<% end %>
 		
-		<% @level_2_main = page.children %>
+		<% @level_2_main = level_1.children %>
 		
 		<%= render :partial => "menusystem/menu_main_level_2" %>
 		

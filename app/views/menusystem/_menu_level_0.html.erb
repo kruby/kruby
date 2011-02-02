@@ -1,15 +1,27 @@
 <div id="menu_left">
-<ul id='nav'> <!-- Denne id er vigtig, da den ligger i javascriptet og muliggør dropdowns specielt i IE6 -->
+	
+	<ul id='nav'> <!-- Denne id er vigtig, da den ligger i javascriptet og muliggør dropdowns specielt i IE6 -->
 
-<%= render :partial => "menusystem/menu_main_level_1" %>
-<% if logged_in? %>
-	<%= render :partial => "menusystem/menu_level_1" %>
-<% end %>
+		<%= render :partial => "menusystem/menu_main_level_1" %>
 
-<li class="admin_navlabel">
-	<% if logged_in? %>
-	<%= link_to 'Log off', logout_path %>
-	<% end %>
-</li>
-<li id="box_left"></li>
-</ul></div>
+		<% if logged_in? %>
+
+			<%= render :partial => "menusystem/menu_level_1" %>
+
+		<% end %>
+
+		<li class="admin_navlabel">
+
+			<% if logged_in? %>
+
+				<%= link_to 'Log off', logout_path %>
+
+			<% end %>
+
+		</li>
+
+		<li id="box_left"></li>
+
+	</ul>
+
+</div>

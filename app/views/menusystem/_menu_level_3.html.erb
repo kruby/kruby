@@ -1,11 +1,27 @@
 <% unless @level_3.nil? %>
 
+	<ul>
+
 	<% @level_3.each do |level_3| -%>
-		<ul>
-			<li class="admin_navlabel"><%= link_to level_3.navlabel, {:controller => level_3.controller_name} %>
+	
+			<li class="admin_navlabel">
 			
-		</ul>
+				<% if level_3.redirect? %>
+				
+					<%= link_to level_3.navlabel, {:controller => level_3.controller_redirect, :action => level_3.action_redirect, :id => level_3.resource_id} %>
+				
+				<% else %>
+			
+					<%= link_to level_3.navlabel, {:controller => level_3.controller_name} %>
+
+				<% end %>
+				
+			</li>
+
 	<% end %>
 
+	</ul>
+
 <% end %>	
+
 </li>
