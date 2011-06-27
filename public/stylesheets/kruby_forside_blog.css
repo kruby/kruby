@@ -194,3 +194,13 @@
 #forside_blog_wrapper h5 br{
 	margin-bottom: 0px;
 }
+
+#forside_blog_wrapper .body .swanky { font-family: 'Fontdiner Swanky', arial, serif; }
+
+#forside_blog_wrapper .body .justme { font-family: 'Just Me Again Down Here', arial, serif; }
+
+#forside_blog_wrapper .body .size30 {
+	font-size: 30px;
+	color: #000;
+	line-height: 36px;
+}
