@@ -183,8 +183,22 @@ z-index:210;
 #wrapper_main #top_foto{
 	position: relative;
 	text-align: left;
-	left: 0px;
-	
+	left: 0px;	
+}
+
+#wrapper_main #top_foto #fb_linkedin a {
+	text-decoration: none;
+	border: none;
+	position: relative;
+	float: right;
+	top: -31px;
+	right: 8px;
+	margin-left: 6px;
+}
+
+#wrapper_main #top_foto #fb_linkedin a img {
+	text-decoration: none;
+	border: none;
 }
 
 #forside_foto {
