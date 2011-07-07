@@ -180,10 +180,18 @@ z-index:210;
 	background-color:#fff;
 }
 
+#wrapper_main br {
+	margin: 0px;
+	height: 0px;
+	padding: 0px;
+}
+
 #wrapper_main #top_foto{
+	float: right;
 	position: relative;
 	text-align: left;
-	left: 0px;	
+	left: 0px;
+	height: 130px;
 }
 
 #wrapper_main #top_foto div#fb_linkedin {
