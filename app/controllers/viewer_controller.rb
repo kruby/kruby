@@ -2,9 +2,13 @@ class ViewerController < ApplicationController
   
   
   def show
-
-    @page = Page.find(params[:id])
-
+    
+    if params[:name]
+      @page = Page.find_by_name(params[:name])
+    else
+      @page = Page.find(params[:id])
+    end
+    
     @pagetitle = @page.title rescue 'Indhold følger snarest'
     @content = @page.body rescue 'Indhold følger snarest'
     @headline = @page.headline rescue 'Indhold følger snarest'
@@ -13,13 +17,10 @@ class ViewerController < ApplicationController
 
   end
 
-
   def forside
 
     @page = Page.find_by_name(params[:name])
-    
-    
-
+  
     @pagetitle = @page.title rescue 'Indhold følger snarest'
     @content = @page.body rescue 'Indhold følger snarest'
     @headline = @page.headline rescue 'Indhold følger snarest'
