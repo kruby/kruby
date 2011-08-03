@@ -13,10 +13,10 @@
 
 <% for hour in @hours %>
   <tr>
-    <td class='pos'><%=h User.find(hour.user_id).blogname rescue nil %></td>
-    <td><%=h hour.description %></td>
-    <td class='pos'><%=h hour.number %></td>
-    <td><%=h hour.date %></td>
+    <td class='pos'><%= User.find(hour.user_id).blogname rescue nil %></td>
+    <td><%= hour.description %></td>
+    <td class='pos'><%= hour.number %></td>
+    <td><%= hour.date %></td>
     <td><%= link_to '[Vis]', hour %><%= link_to '[Ret]', edit_hour_path(hour) %><%= link_to '[Slet]', hour, :confirm => 'Er du sikker?', :method => :delete %></td>
   </tr>
 <% end %>

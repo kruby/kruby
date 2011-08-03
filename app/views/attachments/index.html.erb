@@ -16,12 +16,12 @@
 
 <% for attachment in @attachments %>
   <tr>
-    <td><%=h attachment.attachable_type %></td>
-    <td><%=h attachment.attachable_id %></td>
-    <td><%=h attachment.description %></td>
-    <td><%=h attachment.image_size %></td>
-    <td><%=h attachment.priority %></td>
-    <td><%=h attachment.asset_id %></td>
+    <td><%= attachment.attachable_type %></td>
+    <td><%= attachment.attachable_id %></td>
+    <td><%= attachment.description %></td>
+    <td><%= attachment.image_size %></td>
+    <td><%= attachment.priority %></td>
+    <td><%= attachment.asset_id %></td>
     <td><%= link_to '[Vis]', attachment %>
 		<%= link_to '[Ret]', edit_attachment_path(attachment) %>
 		<%= link_to '[Slet]', attachment, :confirm => 'Er du sikker?', :method => :delete %></td>

@@ -7,7 +7,7 @@
 	
 	<div class="topline">
 	<span class="title">
-	<%#=h post.id %><%= post.title %><%#=h truncate(post.title, :length => 35) %></span> - <span class="author"><%=h User.find(post.user_id).blogname %></span> - <span class="date_time"><%=h post.created_at.strftime("%d.%m.%y - (%H:%M)") %></span>
+	<%#= post.id %><%= post.title %><%#= truncate(post.title, :length => 35) %></span> - <span class="author"><%= User.find(post.user_id).blogname %></span> - <span class="date_time"><%= post.created_at.strftime("%d.%m.%y - (%H:%M)") %></span>
 
 	<span class="link">
 	<% if current_user.id == post.user_id %>
@@ -19,7 +19,7 @@
 	</div>
 	
 	
-	<div class="body"><%= textilize(post.body) %><%#= truncate(textilize(post.body), :length => 90) %></div>
+	<div class="body"><%= textilize(post.body).html_safe %><%#= truncate(textilize(post.body), :length => 90) %></div>
 	<div class="bottomline">
 	<% @comments = Post.find(post.id).children.count %>	
 	<% if @comments > 0 %>
@@ -60,9 +60,9 @@
 			
 						<div class="topline">
 					
-						<span class="title"><%#=h comment.id %><%= comment.title %><%#=h truncate(comment.title, length = 35) %></span>
-						 - <span class="author"><%=h User.find(comment.user_id).blogname %></span>
-						 - <span class="date_time"><%=h comment.created_at.strftime("%d.%m.%y - (%H:%M)") %></span>
+						<span class="title"><%#= comment.id %><%= comment.title %><%#= truncate(comment.title, length = 35) %></span>
+						 - <span class="author"><%= User.find(comment.user_id).blogname %></span>
+						 - <span class="date_time"><%= comment.created_at.strftime("%d.%m.%y - (%H:%M)") %></span>
 						<span class="link">  
 						<% if current_user.id == comment.user_id %>
 						<%= link_to '[Ret]', edit_post_path(comment) %>
@@ -71,7 +71,7 @@
 						</span>
 						</div>
 
-						<div class="body"><%= textilize(comment.body) %></div>
+						<div class="body"><%= textilize(comment.body).html_safe %></div>
 			
 						<% if @counter < @comments %><div class="backline"></div><% end %>
 			

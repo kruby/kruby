@@ -14,13 +14,13 @@
 <% for page in @pages %>
 <tr><td>
 		Page.create(
-		:name => '<%=h page.name%>',
-		:title => '<%=h page.title%>', 
-		:body => '<%=h page.body%>',
-		:headline => '<%=h page.headline%>',
-		:active => '<%=h page.active%>',
-		:image => '<%=h page.image%>',
-		:image_class => '<%=h page.image_class%>'
+		:name => '<%= page.name%>',
+		:title => '<%= page.title%>', 
+		:body => '<%= page.body%>',
+		:headline => '<%= page.headline%>',
+		:active => '<%= page.active%>',
+		:image => '<%= page.image%>',
+		:image_class => '<%= page.image_class%>'
 		
 		)
 		

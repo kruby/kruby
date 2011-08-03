@@ -20,16 +20,16 @@
 
 <% for post in @posts %>
   <tr>
-	<td class='pos'><%=h post.id %></td>
-	<!-- <td class='pos'><%#=h post.parent_id rescue nil %></td>
-	<td class="pos"><%#=h post.user_id rescue nil%></td> -->
-	<td class='pos'><%=link_to active_test(post.active), :action => 'active', :id => post.id%></td>
-    <td><%=h post.title %></td>
-    <td><%=h truncate(post.body, :length => 60) %></td>
-    <td class="pos"><%=h User.find(post.user_id).blogname %></td>
-	<td class="pos"><%=h nice_date(post.created_at) %></td>
+	<td class='pos'><%= post.id %></td>
+	<!-- <td class='pos'><%#= post.parent_id rescue nil %></td>
+	<td class="pos"><%#= post.user_id rescue nil%></td> -->
+	<td class='pos'><%#=link_to active_test(post.active), :action => 'active', :id => post.id%></td>
+    <td><%= post.title %></td>
+    <td><%= truncate(post.body, :length => 60) %></td>
+    <td class="pos"><%= User.find(post.user_id).blogname %></td>
+	<td class="pos"><%= nice_date(post.created_at) %></td>
 	<!-- <td class='pos'><%#= image_tag post.photo.url(:thumb) rescue nil %></td> -->
-    <!-- <td class="pos"><%=h post.priority %></td> -->
+    <!-- <td class="pos"><%= post.priority %></td> -->
     <!-- <td><%#= link_to 'Vis', post %></td> -->
     <td><%= link_to '[Ret]', edit_post_path(post) %><%= link_to '[Slet]', post, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

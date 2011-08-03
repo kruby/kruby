@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   
-  before_filter :login_required, :user_required, :except => ['show']
+  # before_filter :login_required, :user_required, :except => ['show']
+  
+  before_filter :logged_in?
   
   layout 'viewer'
   

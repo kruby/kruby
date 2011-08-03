@@ -15,11 +15,11 @@
 
 <% for menu in @menus %>
   <tr>
-	<td><%=h menu.id %></td>
-    <td><%=h menu.name %></td>
-    <td><%=h menu.title %></td>
-    <td><%=h menu.body %></td>
-    <td><%=h menu.active %></td>
+	<td><%= menu.id %></td>
+    <td><%= menu.name %></td>
+    <td><%= menu.title %></td>
+    <td><%= menu.body %></td>
+    <td><%= menu.active %></td>
     <td><%= link_to '[Vis]', menu %>
     <%= link_to '[Rediger]', edit_menu_path(menu) %>
    <%= link_to '[Slet]', menu, :confirm => 'Er du sikker?', :method => :delete %></td>

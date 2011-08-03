@@ -1,6 +1,7 @@
-tmp/**/* 
+.bundle
+db/*.sqlite3
 log/*.log
-log/access_log 
+tmp/
 config/database.yml 
 db/schema.* 
 db/data_backup/* 

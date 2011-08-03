@@ -2,15 +2,15 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  
+  
   helper :all # include all helpers, all the time
   
   # See ActionController::RequestForgeryProtection for details vi ændrer lidt
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '9cae1eb8594a7b89643fabe15981bf87'
   
-  include AuthenticatedSystem
-  
-  
+  #include AuthenticatedSystem
   
   before_filter :get_content_for_menu
   
@@ -20,22 +20,28 @@ class ApplicationController < ActionController::Base
     
     @main_menu ||= Content.main_menu # main_menu kommer fra content.rb
     
-    if logged_in?
-      if current_user.category == 'Admin' 
-        @tabs ||= Content.admin_pages + Content.editor_pages + Content.user_pages
-        # parent_pages kommer fra content.rb (modellen) derfor starter den også med Content. det har ikke noget med tabellen contents at gøre.
-        @tabs_main ||= @main_menu
-      elsif current_user.category == 'Editor'
-        @tabs ||= Content.editor_pages + Content.user_pages
-        @tabs_main ||= @main_menu
-      elsif current_user.category == 'User'
-        @tabs ||= Content.user_pages
-        @tabs_main ||= @main_menu
-      end
-    else
-      @tabs_main ||= Content.public_pages
-      
-    end
+    # if logged_in?
+    #   if current_user.category == 'Admin' 
+    #     @tabs ||= Content.admin_pages + Content.editor_pages + Content.user_pages
+    #     # parent_pages kommer fra content.rb (modellen) derfor starter den også med Content. det har ikke noget med tabellen contents at gøre.
+    #     @tabs_main ||= @main_menu
+    #   elsif current_user.category == 'Editor'
+    #     @tabs ||= Content.editor_pages + Content.user_pages
+    #     @tabs_main ||= @main_menu
+    #   elsif current_user.category == 'User'
+    #     @tabs ||= Content.user_pages
+    #     @tabs_main ||= @main_menu
+    #   end
+    # else
+    #   @tabs_main ||= Content.public_pages
+    #   
+    # end
+    
+    @tabs ||= Content.admin_pages + Content.editor_pages + Content.user_pages
+    #@tabs_main ||= @main_menu
+    @tabs_main ||= Content.public_pages
+    
+    
 
   end
   
@@ -60,7 +66,7 @@ class ApplicationController < ActionController::Base
   #   
   #   @mangler = 'Indhold følger snarest'
   #   
-  #   #Newsarchive.active kommer fra models > newsarchive.rb via named_scope
+  #   #Newsarchive.active kommer fra models > newsarchive.rb via scope
   #   @archives = Newsarchive.active
   #   @products = Product.active
   #   
@@ -176,7 +182,29 @@ class ApplicationController < ActionController::Base
     #    @content_product = Content.find(:conditions => ["controller_name = 'Product'", true], :order => "resource_id")
    
   end
+  
+  #NY AUTHENTICATION FOR RAILS3
+  
+  helper_method :current_user
 
+  private
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+
+  protected
+
+    def logged_in?
+      unless session[:user_id]
+        flash[:notice] = "Du skal først logge ind."
+        redirect_to log_in_path
+        return false
+      else
+        return true
+      end
+    end
 end
 #GAMMELT
 #@subpages = Page.subpages

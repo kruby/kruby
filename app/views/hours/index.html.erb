@@ -21,11 +21,11 @@
 
 	<% else %>
 	  <tr>
-		<!-- <td class='pos'><%#=h hour.id %></td> -->
-	    <td class='pos'><%=h User.find(hour.user_id).blogname rescue nil %></td>
-	    <td><%=h hour.description %></td>
-	    <td class='pos'><%=h hour.number %></td>
-	    <td class='dato'><%=h nice_date(hour.date) %></td>
+		<!-- <td class='pos'><%#= hour.id %></td> -->
+	    <td class='pos'><%= User.find(hour.user_id).blogname rescue nil %></td>
+	    <td><%= hour.description %></td>
+	    <td class='pos'><%= hour.number %></td>
+	    <td class='dato'><%= nice_date(hour.date) %></td>
 	    <td>
 		<% if current_user.id == hour.user_id %>
 		<%= link_to '[Ret]', edit_hour_path(hour) %>

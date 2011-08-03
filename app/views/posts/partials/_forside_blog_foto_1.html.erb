@@ -8,9 +8,9 @@
 	
 	<div class="topline">
 	<span class="title">
-	<%#=h post.id %><%= post.title %><%#=h truncate(post.title, :length => 35) %></span>
+	<%#= post.id %><%= post.title %><%#= truncate(post.title, :length => 35) %></span>
 	</div> <!-- topline -->
-	<div class="date_time"><%=h post.created_at.strftime("%d.%m.%y - %H:%M") %> - <span class="author"><%=h User.find(post.user_id).blogname %></span></div>
+	<div class="date_time"><%= post.created_at.strftime("%d.%m.%y - %H:%M") %> - <span class="author"><%= User.find(post.user_id).blogname %></span></div>
 	
 	
 	
@@ -22,7 +22,7 @@
 		
 		<div class="body">
 			<% @length = 350 %>
-			<td class='tekst_foto_1'><%= truncate(textilize(post.body), :length => @length, :separator => ' ' )%></td>
+			<td class='tekst_foto_1'><%= truncate(textilize(post.body), :length => @length, :separator => ' ' ).html_safe %></td>
 			<% if @length <= post.body.length %><br>
 			<%= link_to '(læs mere)', post_path(post.id), :class => 'links' %>
 			<% end %>

@@ -15,10 +15,10 @@
 <% @counter = @counter+1 %>
 <tr><td>
 		Menu.create(
-		:name => '<%=h menu.name%>',
-		:title => '<%=h menu.title%>', 
+		:name => '<%= menu.name%>',
+		:title => '<%= menu.title%>', 
 		:body => '<%=simple_format(menu.body)%>',
-		:active => '<%=h menu.active%>'
+		:active => '<%= menu.active%>'
 		)
 		<tr><td>
 		<% c = Content.find_by_resource_id_and_resource_type(menu.id, 'Menu') %>
@@ -33,13 +33,13 @@
 <% @counter = @counter+1 %>
 <tr><td>
 		Page.create(
-		:name => '<%=h page.name%>',
-		:title => '<%=h page.title%>', 
+		:name => '<%= page.name%>',
+		:title => '<%= page.title%>', 
 		:body => '<%=simple_format(page.body)%>',
-		:headline => '<%=h page.headline%>',
-		:active => '<%=h page.active%>',
-		:image => '<%=h page.image%>',
-		:image_class => '<%=h page.image_class%>'
+		:headline => '<%= page.headline%>',
+		:active => '<%= page.active%>',
+		:image => '<%= page.image%>',
+		:image_class => '<%= page.image_class%>'
 		)
 		<tr><td>
 		<% c = Content.find_by_resource_id_and_resource_type(page.id, 'Page') %>
@@ -58,22 +58,22 @@
 <% @counter = @counter+1 %>
 <tr><td>
 		Product.create(
-		:name => '<%=h product.name%>',
-		:headline => '<%=h product.headline%>',
+		:name => '<%= product.name%>',
+		:headline => '<%= product.headline%>',
 		:description => '<%= simple_format(product.description)%>',
-		:kind => '<%=h product.kind%>',
-		:cost_price => '<%=h product.cost_price%>',
-		:sales_price => '<%=h product.sales_price%>',
-		:purchase_quantity => '<%=h product.purchase_quantity%>',
-		:stock_in => '<%=h product.stock_in%>',
-		:stock_out => '<%=h product.stock_out%>',
-		:stock => '<%=h product.stock%>',
-		:created_at => '<%=h product.created_at%>',
-		:updated_at => '<%=h product.updated_at%>',
-		:active => '<%=h product.active%>',
-		:image => '<%=h product.image%>',
-		:title => '<%=h product.title%>',
-		:image_class => '<%=h product.image_class%>'
+		:kind => '<%= product.kind%>',
+		:cost_price => '<%= product.cost_price%>',
+		:sales_price => '<%= product.sales_price%>',
+		:purchase_quantity => '<%= product.purchase_quantity%>',
+		:stock_in => '<%= product.stock_in%>',
+		:stock_out => '<%= product.stock_out%>',
+		:stock => '<%= product.stock%>',
+		:created_at => '<%= product.created_at%>',
+		:updated_at => '<%= product.updated_at%>',
+		:active => '<%= product.active%>',
+		:image => '<%= product.image%>',
+		:title => '<%= product.title%>',
+		:image_class => '<%= product.image_class%>'
 		)
 		<tr><td>
 		<% c = Content.find_by_resource_id_and_resource_type(product.id, 'Product') %>
@@ -89,15 +89,15 @@
 <% for newsarchive in @newsarchives %>
 <tr><td>
 		Newsarchive.create(
-		:title => '<%=h newsarchive.title%>',
+		:title => '<%= newsarchive.title%>',
 		:text => '<%=simple_format(newsarchive.text)%>', 
-		:author => '<%=h newsarchive.author%>',
-		:link => '<%=h newsarchive.link%>',
-		:created_at => '<%=h newsarchive.created_at%>',
-		:updated_at => '<%=h newsarchive.updated_at%>',
-		:active => '<%=h newsarchive.active%>',
-		:name => '<%=h newsarchive.name%>',
-		:image => '<%=h newsarchive.image%>'
+		:author => '<%= newsarchive.author%>',
+		:link => '<%= newsarchive.link%>',
+		:created_at => '<%= newsarchive.created_at%>',
+		:updated_at => '<%= newsarchive.updated_at%>',
+		:active => '<%= newsarchive.active%>',
+		:name => '<%= newsarchive.name%>',
+		:image => '<%= newsarchive.image%>'
 		)
 		
 </td></tr>
@@ -107,14 +107,14 @@
 <% for post in @posts %>
 <tr><td>
 		Post.create(
-		:title => '<%=h post.title%>',
+		:title => '<%= post.title%>',
 		:body => '<%= simple_format(post.body)%>', 
-		:author => '<%=h post.author%>',
-		:priority => '<%=h post.priority%>',
-		:created_at => '<%=h post.created_at%>',
-		:updated_at => '<%=h post.updated_at%>',
-		:parent_id => '<%=h post.parent_id%>',
-		:user_id => '<%=h post.user_id%>'
+		:author => '<%= post.author%>',
+		:priority => '<%= post.priority%>',
+		:created_at => '<%= post.created_at%>',
+		:updated_at => '<%= post.updated_at%>',
+		:parent_id => '<%= post.parent_id%>',
+		:user_id => '<%= post.user_id%>'
 		)
 </td></tr>
 
@@ -123,12 +123,12 @@
 <% for recipe in @recipes %>
 <tr><td>
 		Recipe.create(
-		:name => '<%=h recipe.name%>',
+		:name => '<%= recipe.name%>',
 		:text => '<%= simple_format(recipe.text)%>',
-		:active => '<%=h recipe.active%>', 
-		:type => '<%=h recipe.type%>',
-		:image => '<%=h recipe.image%>',
-		:title => '<%=h recipe.title%>'
+		:active => '<%= recipe.active%>', 
+		:type => '<%= recipe.type%>',
+		:image => '<%= recipe.image%>',
+		:title => '<%= recipe.title%>'
 		
 		)
 </td></tr>
@@ -138,14 +138,14 @@
 <% for relation in @relations %>
 <tr><td>
 		Relation.create(
-		:company => '<%=h relation.company%>',
-		:address => '<%=h relation.address%>', 
-		:postno => '<%=h relation.postno%>',
-		:city => '<%=h relation.city%>',
-		:log => '<%=h relation.log%>',
-		:category => '<%=h relation.category%>',
-		:responsible => '<%=h relation.responsible%>',
-		:phone => '<%=h relation.phone%>'
+		:company => '<%= relation.company%>',
+		:address => '<%= relation.address%>', 
+		:postno => '<%= relation.postno%>',
+		:city => '<%= relation.city%>',
+		:log => '<%= relation.log%>',
+		:category => '<%= relation.category%>',
+		:responsible => '<%= relation.responsible%>',
+		:phone => '<%= relation.phone%>'
 		)
 </td></tr>
 
@@ -154,16 +154,16 @@
 <% for user in @users %>
 <tr><td>
 		User.create(
-		:login => '<%=h user.login%>',
-		:email => '<%=h user.email%>', 
-		:crypted_password => '<%=h user.crypted_password%>',
-		:salt => '<%=h user.salt%>',
-		:created_at => '<%=h user.created_at%>',
-		:updated_at => '<%=h user.updated_at%>',
-		:admin => '<%=h user.admin%>',
-		:active => '<%=h user.active%>',
-		:category => '<%=h user.category%>',
-		:blogname => '<%=h user.blogname%>'		
+		:login => '<%= user.login%>',
+		:email => '<%= user.email%>', 
+		:crypted_password => '<%= user.crypted_password%>',
+		:salt => '<%= user.salt%>',
+		:created_at => '<%= user.created_at%>',
+		:updated_at => '<%= user.updated_at%>',
+		:admin => '<%= user.admin%>',
+		:active => '<%= user.active%>',
+		:category => '<%= user.category%>',
+		:blogname => '<%= user.blogname%>'		
 		)
 </td></tr>
 

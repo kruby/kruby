@@ -21,9 +21,9 @@
 	<%#= link_to image_tag(@image), Asset.find(attachment.asset_id), :class => 'shaded' %>
 	<%= link_to image_tag(@image, :alt => @description), Asset.find(attachment.asset_id) %>
 	</td>
-	<td><%=h attachment.attachable_type %></td>
-    <td><%=h @description %></td>
-    <td class='pos'><%=h attachment.attachable_id %></td>
+	<td><%= attachment.attachable_type %></td>
+    <td><%= @description %></td>
+    <td class='pos'><%= attachment.attachable_id %></td>
     <td><%#= link_to '[Vis]', attachment %>
 		<%#= link_to '[Ret]', edit_attachment_path(attachment) %>
 		<%#= link_to '[Slet]', destroy_from_post_attachments_path(:post_id => params[:id], :id => attachment.id), :confirm => 'Er du sikker?', :method => :delete %>

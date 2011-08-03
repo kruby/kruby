@@ -1,53 +1,40 @@
 # MySQL.  Versions 4.1 and 5.0 are recommended.
 #
 # Install the MySQL driver:
-#   gem install mysql
-# On Mac OS X:
-#   sudo gem install mysql -- --with-mysql-dir=/usr/local/mysql
-# On Mac OS X Leopard:
-#   sudo env ARCHFLAGS="-arch i386" gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
-#       This sets the ARCHFLAGS environment variable to your native architecture
-# On Windows:
-#   gem install mysql
-#       Choose the win32 build.
-#       Install MySQL and put its /bin directory on your path.
+#   gem install mysql2
 #
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
+  reconnect: false
   database: kruby_development
+  pool: 5
   username: root
   password: kf1737
   socket: /opt/local/var/run/mysql5/mysqld.sock
 
-# Warning: The database defined as 'test' will be erased and
-# re-generated from your development database when you run 'rake'.
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
+  reconnect: false
   database: kruby_test
+  pool: 5
   username: root
-  password: kf1737
+  password:
   socket: /opt/local/var/run/mysql5/mysqld.sock
-    
-production:
-    adapter: mysql
-    #host: sqlreadwrite.brightbox.net
-    host: db01.mysql.vm.brightbox.net
-    username: krsgrd
-    password: Ee9Gohchai4i
-    database: krsgrd_kruby_production
-    
 
-# production:  
-#   adapter: mysql
-#   encoding: utf8
-#   database: krsgrd_kruby_production
-#   username: krsgrd
-#   password: kf1737
-#   socket: /tmp/mysql.sock
-  
-  #Navnet kruby i krsgrd_kruby_production stammer fra oprettelsen af deploy filen.
+production:
+  adapter: mysql2
+  host: db01.mysql.vm.brightbox.net
+  encoding: utf8
+  #reconnect: false
+  database: krsgrd_kruby_production
+  pool: 5
+  username: krsgrd
+  password: Ee9Gohchai4i
+  socket: /opt/local/var/run/mysql5/mysqld.sock

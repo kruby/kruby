@@ -19,9 +19,9 @@
 <% @comments = Post.find(post.id).children.count %>
   <tr class='<%= cycle("even", "odd") -%>'>
     <td id='r1'><%= link_to post.title, post, :id => post.id %></td>
-    <td id='r2'><%=h truncate(post.body, :length => 45) %></td>
-    <td class="pos" id='r3'><%=h User.find(post.user_id).blogname %></td>
-	<td id='r4'><%=h nice_date(post.created_at) %></td>
+    <td id='r2'><%= truncate(post.body, :length => 45) %></td>
+    <td class="pos" id='r3'><%= User.find(post.user_id).blogname %></td>
+	<td id='r4'><%= nice_date(post.created_at) %></td>
 	<td class="pos"><%=  @comments unless @comments < 1 %></td>
     
     <!-- <td class='pos'> --><%#= link_to '[Læs]', post, :id => post.id %><%#= link_to '[Slet]', post, :confirm => 'Are you sure?', :method => :delete %><!-- </td> -->
