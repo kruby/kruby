@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+  #include AuthenticatedSystem
   
-  before_filter :login_required, :admin_required, :except => ['no_access_admin']
+  #before_filter :login_required, :admin_required, :except => ['no_access_admin']
   #before_filter :admin_required, :except => ['no_access_admin']
   
   def active

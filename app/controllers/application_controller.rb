@@ -204,7 +204,44 @@ class ApplicationController < ActionController::Base
       else
         return true
       end
+    end  
+    
+    def logged_in_as_admin?
+      unless session[:user_id]
+        flash[:notice] = "Du skal først logge ind."
+        redirect_to log_in_path
+        return false
+      else
+        if current_user.category == 'Admin'
+          return true
+        else
+          if current_user.category == 'Editor' || current_user.category == 'User'
+            redirect_to access_denied_admin_path
+          end
+          return false
+        end
+        return true
+      end
     end
+    
+    def logged_in_as_editor?
+      unless session[:user_id]
+        flash[:notice] = "Du skal først logge ind."
+        redirect_to log_in_path
+        return false
+      else
+        if current_user.category == 'Editor' || current_user.category == 'Admin'
+          return true
+        else
+          if current_user.category == 'User'
+            redirect_to access_denied_admin_path
+          end
+          return false
+        end
+        return true
+      end
+    end
+  
 end
 #GAMMELT
 #@subpages = Page.subpages

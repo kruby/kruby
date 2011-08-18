@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   # before_filter :login_required, :user_required, :except => ['show']
   
   before_filter :logged_in?
+  #before_filter :logged_in_admin?
   
   layout 'viewer'
   
@@ -143,7 +144,7 @@ class PostsController < ApplicationController
     #     end
   end
   
-  def mini_blog
+  def miniblog
     if session[:sorter] == 10
       @posts = Post.find(:all, :conditions => ["parent_id IS NULL", true], :order => "created_at ASC")
     elsif session[:sorter] == 11

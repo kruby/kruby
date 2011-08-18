@@ -41,7 +41,8 @@ Kruby::Application.routes.draw do
   resource :sessions
   
   resources :pages
-  
+    #match '/active' => 'pages#active', :as => :active
+    
   resources :viewer
   
   resources :posts
@@ -118,7 +119,7 @@ Kruby::Application.routes.draw do
    #connect ':controller/:action/:id'
    
    #connect ':controller/:action/:id.:format'
-   ####match ':controller(/:action(/:id(.:format)))'
+   match ':controller(/:action(/:id(.:format)))'
    
   # The priority is based upon order of creation:
   # first created -> highest priority.

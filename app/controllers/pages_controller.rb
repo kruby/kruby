@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   
-  before_filter :login_required, :admin_required, :only => ['new', 'create', 'index']
+  #before_filter :login_required, :admin_required, :only => ['new', 'create', 'index']
   
   # GET /pages
   # GET /pages.xml

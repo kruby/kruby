@@ -1,7 +1,7 @@
 class MenusController < ApplicationController
   
-  before_filter :login_required, :admin_required
-  
+  #before_filter :login_required, :admin_required
+  before_filter :logged_in?
   
   # GET /menus
   # GET /menus.xml
