@@ -132,7 +132,7 @@ default_run_options[:pty] = true
 # 'try_sudo' command to run your commands.
 # set :use_sudo, false
 # set :runner, user
-set :mongrel_port, 9600
+set :mongrel_port, 9610
 
 ## Dependencies
 # Set the commands and gems that your application requires. e.g.
