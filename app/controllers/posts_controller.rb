@@ -7,9 +7,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.search(params[:search], params[:page])
+    #@posts = Post.search(params[:search], params[:page])
     
-    #@posts = Post.find(:all)
+    @posts = Post.find(:all)
 
     render :layout => 'application'
 
