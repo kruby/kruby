@@ -13,7 +13,7 @@ set :domain, "www.kruby.dk"
 set :domain_aliases, "kruby.dk,www.applemac.dk,applemac.dk"
 
 ## List of servers
-server "krsgrd-001.vm.brightbox.net", :app, :web, :db, :primary => true
+server "krsgrd-002.vm.brightbox.net", :app, :web, :db, :primary => true
 
 # Target directory for the application on the web and app servers.
 set(:deploy_to) { File.join("", "home", user, application) }
