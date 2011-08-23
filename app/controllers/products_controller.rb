@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   
-  before_filter :login_required, :editor_required, :only => ['new', 'create', 'index']
+  before_filter :logged_in?
+  #before_filter :login_required, :editor_required, :only => ['new', 'create', 'index']
   
   # GET /products
   # GET /products.xml

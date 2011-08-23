@@ -1,6 +1,7 @@
 class RelationsController < ApplicationController
   
-  before_filter :login_required, :editor_required
+  before_filter :logged_in?
+  #before_filter :login_required, :editor_required
   
   # GET /relations
   # GET /relations.xml
