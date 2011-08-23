@@ -49,10 +49,10 @@ class Page < ActiveRecord::Base
   
 end
 # ["active = '1' and position2 = ?", true],
-#named_scope :main_pages, :conditions => ["parent_id IS NULL and active", true], :order => 'position, position2'
-#named_scope :public_pages, :conditions => ["parent_id IS NULL and admin != ?", true], :order => 'position'
-#named_scope :subpages, :conditions => ["active and position2", true], :order => 'position, position2'
-# named_scope :submenu, :conditions => {:parent_id => '4'}, :order => 'position'
+#scope :main_pages, :conditions => ["parent_id IS NULL and active", true], :order => 'position, position2'
+#scope :public_pages, :conditions => ["parent_id IS NULL and admin != ?", true], :order => 'position'
+#scope :subpages, :conditions => ["active and position2", true], :order => 'position, position2'
+# scope :submenu, :conditions => {:parent_id => '4'}, :order => 'position'
 
-# named_scope :undermenu, :conditions => {:active => '1', :parent_id}, :order => 'position'
-# named_scope :active, :conditions => {:active => '1'}, :order => 'position DESC' (vil give omvendt rækkefølge)
+# scope :undermenu, :conditions => {:active => '1', :parent_id}, :order => 'position'
+# scope :active, :conditions => {:active => '1'}, :order => 'position DESC' (vil give omvendt rækkefølge)

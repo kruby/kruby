@@ -1,9 +1,9 @@
 class Newsarchive < ActiveRecord::Base
-  named_scope :author, :conditions => {:author => 'TKS'}
-  named_scope :active, :conditions => {:active => '1'}, :order => 'updated_at DESC'
+  scope :author, :conditions => {:author => 'TKS'}
+  scope :active, :conditions => {:active => '1'}, :order => 'updated_at DESC'
   has_one :content, :as => :resource, :dependent => :destroy
   #Den her sletter tilsvarende post i content når den slettes i newsarchives
-  # named_scope :latest, :condition => {:updated_at => ?}
+  # scope :latest, :condition => {:updated_at => ?}
   
   
   # after_create :make_content

@@ -1,10 +1,21 @@
 class UsersController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
   
-  before_filter :login_required, :admin_required, :except => ['no_access_admin']
-  #before_filter :admin_required, :except => ['no_access_admin']
-  
+  #before_filter :logged_in?
+  before_filter :logged_in_as_admin?, :except => ['no_access_admin']
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      redirect_to root_url, :notice => "Signed up!"
+    else
+      render "new"
+    end
+  end
+
   def active
    active_controller = params[:controller].classify.constantize
    @active_controller = active_controller.find(params[:id])
@@ -22,7 +33,7 @@ class UsersController < ApplicationController
   end
   
   def no_access_admin
-  
+    #Der er her blot for at kunne lede hen til det rigtige layout
   end
   
   def index
@@ -51,8 +62,6 @@ class UsersController < ApplicationController
      end
    
   end
-   
-
    
    def edit
     @user = User.find(params[:id])
@@ -90,27 +99,23 @@ class UsersController < ApplicationController
       end
    end
   
-  # render new.rhtml
-  def new
-  end
-
-  def create
-    cookies.delete :auth_token
-    # protects against session fixation attacks, wreaks havoc with 
-    # request forgery protection.
-    # uncomment at your own risk
-    # reset_session
-    @user = User.new(params[:user])
-    @user.save
-    if @user.errors.empty?
-      session[:fejl] = nil
-      self.current_user = @user
-      #redirect_back_or_default('/')
-      redirect_to(:action => 'index')
-      flash[:notice] = "Tak fordi du skrev dig ind!"
-    else
-      render :action => 'new'
-    end
-  end
+  # def create
+  #   cookies.delete :auth_token
+  #   # protects against session fixation attacks, wreaks havoc with 
+  #   # request forgery protection.
+  #   # uncomment at your own risk
+  #   # reset_session
+  #   @user = User.new(params[:user])
+  #   @user.save
+  #   if @user.errors.empty?
+  #     session[:fejl] = nil
+  #     self.current_user = @user
+  #     #redirect_back_or_default('/')
+  #     redirect_to(:action => 'index')
+  #     flash[:notice] = "Tak fordi du skrev dig ind!"
+  #   else
+  #     render :action => 'new'
+  #   end
+  # end
 
 end

@@ -1,0 +1,32 @@
+<%= render :partial => "layouts/menu" %>
+<div id="admin_formular">
+
+<% form_for :user, :url => users_path do |f| -%>
+
+<h1>Opret ny bruger</h1>
+
+<p><label for="category" class = 'ov'>Kategori</label><br/>
+<%= f.select(:category, ['User', 'Editor', 'Admin'], {}, :class => 'bruger_kategori') %>
+</p>
+
+<p><label for="login" class = 'ov'>Login</label><br/>
+<%= f.text_field :login %></p>
+
+<p><label for="email" class = 'ov'>Email</label><br/>
+<%= f.text_field :email %></p>
+
+<p><label for="password" class = 'ov'>Adgangskode</label><br/>
+<%= f.password_field :password %></p>
+
+<p><label for="password_confirmation" class = 'ov'>Bekræft adgangskode</label><br/>
+<%= f.password_field :password_confirmation %></p>
+
+<p><label for="blogname" class = 'ov'>Blog navn</label><br/>
+<%= f.text_field :blogname %></p>
+
+<p><%= submit_tag '[Opret]', :class => 'button' %></p>
+<% end -%>
+
+<div class='fejl_i_bunden'><%#= error_messages_for :user %>	<%= fejl_users.mb_chars.upcase rescue nil %></div>
+
+</div>

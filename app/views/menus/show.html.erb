@@ -2,22 +2,22 @@
 <div id="admin_formular">
 <p>
   <b>Name:</b>
-  <%=h @menu.name %>
+  <%= @menu.name %>
 </p>
 
 <p>
   <b>Title:</b>
-  <%=h @menu.title %>
+  <%= @menu.title %>
 </p>
 
 <p>
   <b>Body:</b>
-  <%=h @menu.body %>
+  <%= @menu.body %>
 </p>
 
 <p>
   <b>Active:</b>
-  <%=h @menu.active %>
+  <%= @menu.active %>
 </p>
 
 <%= link_to 'Edit', edit_menu_path(@menu) %> |

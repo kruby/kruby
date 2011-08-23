@@ -1,0 +1,19 @@
+<%= render :partial => "layouts/menu" %>
+<div id="admin_formular">
+<div class="rub2">
+<% form_tag session_path do -%>
+<p><label for="login" class='ov'>Log ind</label><br/>
+<%= text_field_tag 'login', nil, {:tabindex => autotab} %></p>
+
+<p><label for="password" class='ov'>Password</label><br/>
+<%= password_field_tag 'password',  nil, {:tabindex => autotab} %></p>
+
+<!-- Uncomment this if you want this functionality
+<p><label for="remember_me">Remember me:</label>
+<%= check_box_tag 'remember_me' %></p>
+-->
+
+<p><%= submit_tag '[Log ind]', :class => 'button' %></p>
+<% end -%>
+</div>
+</div> 

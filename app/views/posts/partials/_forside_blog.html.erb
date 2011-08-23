@@ -5,14 +5,14 @@
 	
 	<div class="topline">
 	<span class="title">
-	<%#=h post.id %><%= post.title %><%#=h truncate(post.title, :length => 35) %></span>
+	<%#= post.id %><%= post.title %><%#= truncate(post.title, :length => 35) %></span>
 	</div> <!-- topline -->
-	<div class="date_time"><%=h post.created_at.strftime("%d.%m.%y - %H:%M") %> - <span class="author"><%=h User.find(post.user_id).blogname %></span></div>
+	<div class="date_time"><%= post.created_at.strftime("%d.%m.%y - %H:%M") %> - <span class="author"><%= User.find(post.user_id).blogname %></span></div>
 	
 	
 	
 	
-	<div class="body"><%= textilize(post.body) %></div>
+	<div class="body"><%= textilize(post.body).html_safe %></div>
 	<%#= image_tag post.photo.url(:small), :class => 'foto_1' rescue nil %><%#= image_tag post.photo.url(:small), :class => 'foto_1' rescue nil %>
 	<div class="bottomline"></div>
 	

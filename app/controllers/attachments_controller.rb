@@ -2,6 +2,7 @@ class AttachmentsController < ApplicationController
   # GET /attachments
   # GET /attachments.xml
   
+  before_filter :logged_in?
   
   # def index
   #   @attachments = Attachment.find(:all)

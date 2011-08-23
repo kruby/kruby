@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   belongs_to :category
-  named_scope :active, :conditions => {:active => '1'}
+  scope :active, :conditions => {:active => '1'}
   has_one :content, :as => :resource, :dependent => :destroy
   
   

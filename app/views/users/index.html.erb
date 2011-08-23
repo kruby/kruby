@@ -17,13 +17,13 @@
 
 <% for user in @users %>
   <tr>
-	<td width=100px><%=h user.id %></td>
-	<td width=100px><%=h user.blogname %></td>
-    <td width=100px><%=h user.login %></td>
-    <td width=200px><%=h user.email %></td>
+	<td width=100px><%= user.id %></td>
+	<td width=100px><%= user.blogname %></td>
+    <td width=100px><%= user.login %></td>
+    <td width=200px><%= user.email %></td>
 	<td class="pos"><%=link_to user.category, :action => 'category', :id => user.id rescue nil%></td> <%# access findes i application.rb %>
-	<!-- <td width=40px><%#=h user.admin %></td>
-		<td width=40px><%#=h user.active %></td>
+	<!-- <td width=40px><%#= user.admin %></td>
+		<td width=40px><%#= user.active %></td>
 		<%# 	if user.admin 
 				@aktiv = '√' 
 			else 

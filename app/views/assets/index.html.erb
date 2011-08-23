@@ -24,14 +24,14 @@
 <% @image =  asset.photo.url(:thumb) %>
 <% @image_show = asset.photo.url(:original)%>
   <tr>
-	<td><%=h asset.id %></td>
-	<td><%=h User.find(asset.user_id).blogname %></td>
-    <td><%=h asset.description %></td>
-	<td><%=h asset.photo_file_name %></td>
-	<td><%=h asset.photo_content_type %></td>
-	<td><%=h number_with_precision(asset.photo_file_size / 1000000.0, 2) rescue nil %></td>
-	<td><%=h nice_date(asset.updated_at) rescue nil %></td>
-	<td><%=h nice_date(asset.photo_updated_at) rescue nil %></td>
+	<td><%= asset.id %></td>
+	<td><%= User.find(asset.user_id).blogname %></td>
+    <td><%= asset.description %></td>
+	<td><%= asset.photo_file_name %></td>
+	<td><%= asset.photo_content_type %></td>
+	<td><%= number_with_precision(asset.photo_file_size / 1000000.0, 2) rescue nil %></td>
+	<td><%= nice_date(asset.updated_at) rescue nil %></td>
+	<td><%= nice_date(asset.photo_updated_at) rescue nil %></td>
 	<!-- <td><%#= link_to image_tag(@image), asset, :class => 'thumb'%></td> -->
 	<td class='thumb'><%= link_to image_tag(@image), @image_show, :toptions => "shaded = 0, overlayClose = 0,  resizable = 0" %></td>
     <td><%#= link_to 'Show', asset %><%= link_to '[Ret]', edit_asset_path(asset) %><%= link_to '[Slet]', asset, :confirm => 'Are you sure?', :method => :delete %></td>

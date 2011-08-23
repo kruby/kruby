@@ -12,7 +12,7 @@
 					<div class="blogpost">
 
 						<div class="topline">
-							<span class="title"><%#=h post.id %><%= @post.title %><%#=h truncate(post.title, :length => 35) %></span><br>
+							<span class="title"><%#= post.id %><%= @post.title %><%#= truncate(post.title, :length => 35) %></span><br>
 
 
 							<% for attachment in @post.attachments %>
@@ -31,14 +31,14 @@
 							<% end %>
 						</div>
 						<div class="date_time">
-							Oprettet: <%=h @post.created_at.strftime("%d.%m.%y - %H:%M") %> af 
-							<span class="author"><%=h User.find(@post.user_id).blogname rescue nil %></span>
+							Oprettet: <%= @post.created_at.strftime("%d.%m.%y - %H:%M") %> af 
+							<span class="author"><%= User.find(@post.user_id).blogname rescue nil %></span>
 							<% if @post.updated_at > @post.created_at + 10.days %>
-							- Opdateret: <%=h @post.updated_at.strftime("%d.%m.%y - %H:%M") %>
+							- Opdateret: <%= @post.updated_at.strftime("%d.%m.%y - %H:%M") %>
 							<% end %>
 						</div>
 						<div class="body">
-							<p><%= textilize(@post.body) %></p>
+							<p><%= textilize(@post.body).html_safe %></p>
 						</div>
 					</div><br>
 				</div>

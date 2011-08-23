@@ -1,7 +1,7 @@
 class HoursController < ApplicationController
   
-  before_filter :login_required, :admin_required
-  
+  #before_filter :login_required, :admin_required
+  before_filter :logged_in?
   
   # GET /hours
   # GET /hours.xml

@@ -1,19 +1,32 @@
 <%= render :partial => "layouts/menu" %>
 <div id="admin_formular">
-<div class="rub2">
-<% form_tag session_path do -%>
-<p><label for="login" class='ov'>Log ind</label><br/>
-<%= text_field_tag 'login', nil, {:tabindex => autotab} %></p>
+	
+	<div id="user_nav">
+	  <% if current_user %>
+	    Logged in as <%= current_user.email %>.
+	    <%= link_to "Log out", log_out_path %>
+	  <% else %>
+	    <%= link_to "Sign up", sign_up_path %> or
+	    <%= link_to "log in", log_in_path %>
+	  <% end %>
+	</div>
 
-<p><label for="password" class='ov'>Password</label><br/>
-<%= password_field_tag 'password',  nil, {:tabindex => autotab} %></p>
+	<% flash.each do |name, msg| %>
+	  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	<% end %>
 
-<!-- Uncomment this if you want this functionality
-<p><label for="remember_me">Remember me:</label>
-<%= check_box_tag 'remember_me' %></p>
--->
+<h1>Log in</h1>
 
-<p><%= submit_tag '[Log ind]', :class => 'button' %></p>
-<% end -%>
+<%= form_tag sessions_path do %>
+  <p>
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email, params[:email] %>
+  </p>
+  <p>
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password %>
+  </p>
+  <p class="button"><%= submit_tag "Log in" %></p>
+<% end %>
+
 </div>
-</div> 

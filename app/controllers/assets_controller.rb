@@ -1,6 +1,7 @@
 class AssetsController < ApplicationController
   
-  before_filter :login_required, :user_required
+  #before_filter :login_required, :user_required
+  before_filter :logged_in?
   
   # GET /assets
   # GET /assets.xml

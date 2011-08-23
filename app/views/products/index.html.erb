@@ -24,26 +24,26 @@
 
 <% for product in @products %>
   <tr>
-	<td class='pos'><%=h product.id %></td>
+	<td class='pos'><%= product.id %></td>
 	<% 	if product.active 
 			@aktiv = '√' 
 		else 
 			@aktiv = '–' 
 		end %>
 	    <td class="pos"><%=link_to @aktiv, :action => 'active', :id => product.id%></td>
-	<td width=100px><%=h product.name %></td>
-	<td width=200px><%=h product.title %></td>
-    <td width=200px><%=h product.headline %></td>
-	<td width=100px><%=h product.image %></td>
-	<td width=100px><%=h product.image_class %></td>
-    <!-- <td><%=h product.description %></td>
-        <td><%=h product.kind %></td>
-        <td><%=h product.cost_price %></td>
-        <td><%=h product.sales_price %></td>
-        <td><%=h product.purchase_quantity %></td>
-        <td><%=h product.stock_in %></td>
-        <td><%=h product.stock_out %></td>
-        <td><%=h product.stock %></td> -->
+	<td width=100px><%= product.name %></td>
+	<td width=200px><%= product.title %></td>
+    <td width=200px><%= product.headline %></td>
+	<td width=100px><%= product.image %></td>
+	<td width=100px><%= product.image_class %></td>
+    <!-- <td><%= product.description %></td>
+        <td><%= product.kind %></td>
+        <td><%= product.cost_price %></td>
+        <td><%= product.sales_price %></td>
+        <td><%= product.purchase_quantity %></td>
+        <td><%= product.stock_in %></td>
+        <td><%= product.stock_out %></td>
+        <td><%= product.stock %></td> -->
     <td>
 	<%= link_to '[Vis]', product %>
     <%= link_to '[Ret]', edit_product_path(product) %>
