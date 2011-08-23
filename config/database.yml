@@ -31,10 +31,6 @@ test:
 production:
   adapter: mysql2
   host: db01.mysql.vm.brightbox.net
-  encoding: utf8
-  #reconnect: false
-  database: krsgrd_kruby_production
-  pool: 5
   username: krsgrd
   password: Ee9Gohchai4i
-  socket: /opt/local/var/run/mysql5/mysqld.sock
+  database: krsgrd_kruby_production
