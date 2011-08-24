@@ -3,19 +3,19 @@
 	
 	<div id="user_nav">
 	  <% if current_user %>
-	    Logged in as <%= current_user.email %>.
-	    <%= link_to "Log out", log_out_path %>
+	    Du er allerede logget ind som <%= current_user.email %>. <%= link_to "[Forside]", root_url %>
+	    <%#= link_to "Log out", log_out_path %>
 	  <% else %>
-	    <%= link_to "Sign up", sign_up_path %> or
-	    <%= link_to "log in", log_in_path %>
+	    <%#= link_to "Sign up", sign_up_path %>
+	    <%#= link_to "log in", log_in_path %>
 	  <% end %>
 	</div>
 
-	<% flash.each do |name, msg| %>
-	  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-	<% end %>
+	<%# flash.each do |name, msg| %>
+	  <%#= content_tag :div, msg, :id => "flash_#{name}" %>
+	<%# end %>
 
-<h1>Log in</h1>
+<h1>Log ind</h1>
 
 <%= form_tag sessions_path do %>
   <p>
@@ -26,7 +26,7 @@
     <%= label_tag :password %><br />
     <%= password_field_tag :password %>
   </p>
-  <p class="button"><%= submit_tag "Log in" %></p>
+  <p><%= submit_tag "[Log ind]", :class => 'button'%></p>
 <% end %>
 
 </div>

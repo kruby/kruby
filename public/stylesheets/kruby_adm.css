@@ -290,7 +290,13 @@ height:400px;*/
 
 #admin_formular .bruger_kategori{
 width: 240px;
+}
 
+#admin_formular #user_nav {
+	font-size: 12px;
+	font-weight: normal;
+	color: #991614;
+	margin-bottom: 10px;
 }
 
 

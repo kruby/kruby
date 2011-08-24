@@ -4,16 +4,16 @@ class ViewerController < ApplicationController
   def show
     
     if params[:name]
-      @page = Page.find_by_name(params[:name])
+      @page = Page.find_by_name(params[:name]) || Page.find_by_name('Forside')
     else
-      @page = Page.find(params[:id])
+      @page = Page.find(params[:id]) || Page.find_by_name('Forside')
     end
     
     @pagetitle = @page.title rescue 'Indhold følger snarest'
     @content = @page.body rescue 'Indhold følger snarest'
     @headline = @page.headline rescue 'Indhold følger snarest'
 
-    @posts = Post.forside_blogs_active.all(:limit => 3)
+    @posts = Post.forside_blogs_active.all(:limit => 6)
 
   end
 

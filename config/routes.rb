@@ -47,8 +47,11 @@ Kruby::Application.routes.draw do
   
   resources :posts
   
+  get "logoff" => "sessions#destroy", :as => "logoff"
   get "log_out" => "sessions#destroy", :as => "log_out"
+  get "logout" => "sessions#destroy", :as => "logout"
   get "log_in" => "sessions#new", :as => "log_in"
+  get "login" => "sessions#new", :as => "login"
   get "sign_up" => "users#new", :as => "sign_up"
   #root :to => "users#new"
   
@@ -84,10 +87,10 @@ Kruby::Application.routes.draw do
    #relations_data 'relations_data', :controller => 'relations', :action => 'relations_data'
    
    #logout '/logout', :controller => 'sessions', :action => 'destroy'
-   match '/logout' => 'sessions#destroy', :as => :logout
+   #match '/logout' => 'sessions#destroy', :as => :logout
    
    #login '/login', :controller => 'sessions', :action => 'new'
-   match '/login' => 'sessions#new', :as => :login
+   #match '/login' => 'sessions#new', :as => :login
    
    #login '/admin', :controller => 'sessions', :action => 'new'
    #match '/admin' => 'sessions#new', :as => :login
