@@ -42,13 +42,6 @@ class ViewerController < ApplicationController
     @pagetitle = 'Overskrifter fra Viewercontroller!'
   end
 
-  def welcome
-    @pagetitle="Jungle Juice. Brasiliens frugter!"
-    #@fruit = Fruit.find_by_name(params[:name])
-    #@fruit = Fruit.find(1)
-    #@fruit = Fruit.find(1) # Finder kort 1 i databasen som tilfældigvis er Acai
-
-  end
 
   def product
     @pagetitle="Her viser vi alle kort i databasen"

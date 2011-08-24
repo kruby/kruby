@@ -23,10 +23,10 @@
 	<td class='pos'><%= post.id %></td>
 	<!-- <td class='pos'><%#= post.parent_id rescue nil %></td>
 	<td class="pos"><%#= post.user_id rescue nil%></td> -->
-	<td class='pos'><%#=link_to active_test(post.active), :action => 'active', :id => post.id%></td>
+	<td class='pos'><%=link_to active_test(post.active), :action => 'active', :id => post.id%></td>
     <td><%= post.title %></td>
     <td><%= truncate(post.body, :length => 60) %></td>
-    <td class="pos"><%= User.find(post.user_id).blogname %></td>
+    <td class="pos"><%= User.find(post.user_id).blogname rescue nil %></td>
 	<td class="pos"><%= nice_date(post.created_at) %></td>
 	<!-- <td class='pos'><%#= image_tag post.photo.url(:thumb) rescue nil %></td> -->
     <!-- <td class="pos"><%= post.priority %></td> -->

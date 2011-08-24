@@ -6,10 +6,10 @@
 <table>
   <tr>
 	<th>ID</th>
-    <th>Name</th>
-    <th>Title</th>
-    <th>Body</th>
-    <th>Active</th>
+    <th>Navn</th>
+    <th>Titel</th>
+    <th>Indhold</th>
+    <th>Aktiv</th>
 	<th>Handling</th>
   </tr>
 
@@ -19,7 +19,7 @@
     <td><%= menu.name %></td>
     <td><%= menu.title %></td>
     <td><%= menu.body %></td>
-    <td><%= menu.active %></td>
+    <td class='pos'><%=link_to active_test(menu.active), :action => 'active', :id => menu.id%></td>
     <td><%= link_to '[Vis]', menu %>
     <%= link_to '[Rediger]', edit_menu_path(menu) %>
    <%= link_to '[Slet]', menu, :confirm => 'Er du sikker?', :method => :delete %></td>
