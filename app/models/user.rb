@@ -1,5 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation
+  
+  attr_accessible :email, :password, :password_confirmation, :blogname, :login, :category, :active
+    
+  scope :admin, where("category = ?", "Admin")
+  scope :editor, :conditions => {:category => 'Editor'}
+  scope :user, :conditions => {:category => 'User'}
+  
   
   attr_accessor :password
   before_save :encrypt_password

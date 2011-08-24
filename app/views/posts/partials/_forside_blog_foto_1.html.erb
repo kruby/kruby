@@ -10,7 +10,7 @@
 	<span class="title">
 	<%#= post.id %><%= post.title %><%#= truncate(post.title, :length => 35) %></span>
 	</div> <!-- topline -->
-	<div class="date_time"><%= post.created_at.strftime("%d.%m.%y - %H:%M") %> - <span class="author"><%= User.find(post.user_id).blogname %></span></div>
+	<div class="date_time"><%= post.created_at.strftime("%d.%m.%y - %H:%M") %> - <span class="author"><%= User.find(post.user_id).blogname rescue 'Kruby' %></span></div>
 	
 	
 	

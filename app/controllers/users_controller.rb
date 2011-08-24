@@ -70,7 +70,7 @@ class UsersController < ApplicationController
    def update
      @user = User.find(params[:id])
 
-     if @user.category == 'Admin'
+     if @user.category == 'Admin' and params[:user][:category] != 'Admin'
         
         if User.admin.count < 2
           flash[:notice] = 'Kan ikke ændres. Altid mindst én admin tilgængelig'
