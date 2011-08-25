@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-
+  
+  before_filter :current_controller
   before_filter :logged_in?
   #before_filter :login_required, :admin_required, :only => ['new', 'create', 'index']
   
@@ -7,7 +8,7 @@ class PagesController < ApplicationController
   # GET /pages.xml
   
   def index
-    
+    session[:current_controller] = params[:controller]
     @pages = Page.find(:all, :order => 'id')
     
     respond_to do |format|

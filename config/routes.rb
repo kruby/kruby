@@ -94,6 +94,11 @@ Kruby::Application.routes.draw do
    
    #login '/admin', :controller => 'sessions', :action => 'new'
    #match '/admin' => 'sessions#new', :as => :login
+
+   #match 'projekter' => 'viewer#show', :as => :projekter, :name => 'projekter'
+   #match 'produkter' => 'viewer#show', :as => :produkter, :name => 'produkter'
+   #match 'kontakt' => 'viewer#show', :as => :kontakt, :name => 'kontakt'
+   #De 3 ovenfor kan erstattes af linien nedenfor.
    
    #view_page ':name', :controller => 'viewer', :action => 'show'
    match ':name' => 'viewer#show', :as => :view_page

@@ -1,7 +1,8 @@
 class ContentsController < ApplicationController
   
   #before_filter :login_required, :admin_required
-  before_filter :logged_in?
+  before_filter :current_controller #Findes i application_controller.rb
+  before_filter :logged_in? #Findes i application_controller.rb
   
   def category_content
        @content = Content.find(params[:id])

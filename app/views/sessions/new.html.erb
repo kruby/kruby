@@ -15,7 +15,7 @@
 	  <%#= content_tag :div, msg, :id => "flash_#{name}" %>
 	<%# end %>
 
-<h1>Log ind</h1>
+<h1>Log ind</h1><%#= session[:current_controller] || params[:controller]%>
 
 <%= form_tag sessions_path do %>
   <p>

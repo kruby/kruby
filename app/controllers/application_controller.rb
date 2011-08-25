@@ -195,6 +195,10 @@ class ApplicationController < ActionController::Base
 
 
   protected
+  
+    def current_controller
+      session[:current_controller] = params[:controller]
+    end
 
     def logged_in?
       unless session[:user_id]
