@@ -1,0 +1,34 @@
+<%#Her skal jeg finde menupunkterne til hovedmenuen i Contents. Dvs. alle dem der tilhører Controlleren pages og som er aktive. Menuerne dannes herfra, men det efterfølgende indhold hentes i Pages eller anden tabel.%>
+<ul>
+	
+
+<% @last_one = @main_menu.last %>
+
+<% @main_menu.each do |menu| %>
+
+	<% if menu.redirect? %>
+		<% @controller_name = menu.controller_redirect %>
+		<% @action_name = menu.action_redirect %>
+	<% else %>Zzz
+		<% @controller_name = menu.controller_name %>
+		<% @action_name = 'show' %>
+	<% end %>	
+
+	<% if @action_name == 'forside'%>
+		<li class="streg"><%= link_to menu.navlabel.mb_chars.upcase, root_url %></li>
+	<% else %>
+
+		<% if @last_one.id == menu.id%>
+			<li class="uden_streg">
+				<%= link_to menu.navlabel.mb_chars.upcase, :controller => @controller_name, :action => @action_name, :id => menu.resource_id %>
+			</li>
+		<% else %>
+			<li class="streg">
+				<%= link_to menu.navlabel.mb_chars.upcase, :controller => @controller_name, :action => @action_name, :id => menu.resource_id %>
+			</li>
+		<% end %>
+	<% end %>
+	
+<% end %>
+
+</ul>
