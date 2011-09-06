@@ -4,13 +4,14 @@ gem 'rails', '3.0.9'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem 'mysql'
 #gem 'mysql2', '~> 0.2.6'
+gem 'mysql'
 gem "RedCloth"
-# gem "will_paginate"
 gem "will_paginate", "~> 3.0.pre4"
 gem "newrelic_rpm"
 gem "bcrypt-ruby", :require => "bcrypt"
+gem "paperclip"
+gem "i18n"
 
 # Use unicorn as the web server
 # gem 'unicorn'

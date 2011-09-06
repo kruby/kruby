@@ -25,7 +25,7 @@
 <% @image_show = asset.photo.url(:original)%>
   <tr>
 	<td><%= asset.id %></td>
-	<td><%= User.find(asset.user_id).blogname %></td>
+	<td><%= User.find(asset.user_id).blogname rescue nil %></td>
     <td><%= asset.description %></td>
 	<td><%= asset.photo_file_name %></td>
 	<td><%= asset.photo_content_type %></td>

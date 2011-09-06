@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110802130835) do
+ActiveRecord::Schema.define(:version => 20110906094204) do
 
   create_table "assets", :force => true do |t|
     t.string   "description"
@@ -53,12 +53,13 @@ ActiveRecord::Schema.define(:version => 20110802130835) do
   end
 
   create_table "hours", :force => true do |t|
-    t.string   "user"
     t.string   "description"
     t.integer  "number"
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "relation_id"
   end
 
   create_table "menus", :force => true do |t|
@@ -146,7 +147,7 @@ ActiveRecord::Schema.define(:version => 20110802130835) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login"
+    t.string   "name"
     t.string   "email"
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
@@ -160,6 +161,17 @@ ActiveRecord::Schema.define(:version => 20110802130835) do
     t.datetime "updated_at"
     t.string   "password_hash"
     t.string   "password_salt"
+    t.integer  "relation_id"
+  end
+
+  create_table "vouchers", :force => true do |t|
+    t.string   "description"
+    t.integer  "number"
+    t.integer  "relation_id"
+    t.date     "date"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

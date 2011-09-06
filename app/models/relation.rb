@@ -9,4 +9,6 @@ class Relation < ActiveRecord::Base
               :order => 'company'
   end
   
+  has_many :hours
+  
 end

@@ -12,7 +12,12 @@ class ApplicationController < ActionController::Base
   
   #include AuthenticatedSystem
   
+  before_filter :set_user_language
   before_filter :get_content_for_menu
+    
+  def set_user_language  
+    I18n.locale = 'da'  
+  end
   
   def get_content_for_menu
     #Menupunkter i forhold til user.category skal hentes. Er man editor, får man kun aktuelle menupunkter at se.

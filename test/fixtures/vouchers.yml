@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: MyString
+  number: 1
+  relation_id: 1
+  date: 2011-09-06
+  user_id: 1
+
+two:
+  description: MyString
+  number: 1
+  relation_id: 1
+  date: 2011-09-06
+  user_id: 1

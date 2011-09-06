@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   
-  attr_accessible :email, :password, :password_confirmation, :blogname, :login, :category, :active
+  has_one :relation
+  
+  attr_accessible :email, :password, :password_confirmation, :blogname, :name, :category, :active, :relation_id
     
   scope :admin, where("category = ?", "Admin")
   scope :editor, :conditions => {:category => 'Editor'}
@@ -14,6 +16,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
+  validates_uniqueness_of :blogname
   
   def self.authenticate(email, password)
     user = find_by_email(email)

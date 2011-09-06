@@ -1,0 +1,40 @@
+<%= render :partial => "layouts/menu" %>
+<div id="admin_liste">
+
+<h1>
+	Klippekort <%= link_to '[Nyt klippekort]', new_voucher_path %>
+</h1>
+
+<table>
+  <tr>
+    <th>Beskrivelse</th>
+    <th>Antal</th>
+    <th>Relation</th>
+    <th>Gyldig fra</th>
+	<th>Rest. dage</th>
+	<th>Rest. klip</th>
+    <th>Oprettet af</th>
+    <th>Handling</th>
+      </tr>
+
+<% @vouchers.each do |voucher| %>
+  <tr>
+    <td><%= voucher.description %></td>
+    <td><%= voucher.number %></td>
+    <td><%= Relation.find(voucher.relation_id).company %></td>
+    <td><%= voucher.date %></td>
+	<td class='pos'><%= voucher.date + 1.year - voucher.date %></td>
+	<td class='pos'><%= 'Rest klip' %></td>
+    <td><%= User.find(voucher.user_id).name %></td>
+    <td>
+		<%#= link_to 'Show', voucher %>
+		<%= link_to '[Ret]', edit_voucher_path(voucher) %>
+		<%= link_to '[Slet]', voucher, :confirm => 'Er du sikker?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+</div>

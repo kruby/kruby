@@ -7,9 +7,13 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:email], params[:password])
     if user
       session[:user_id] = user.id
-      redirect_to :controller => session[:current_controller]
-      session[:current_controller] = nil
-      flash[:notice] = "Du er nu logget ind!"
+      if user.relation_id
+        redirect_to :controller => 'hours', :action => 'index'
+      else
+        redirect_to :controller => session[:current_controller]
+      end
+        session[:current_controller] = nil
+        flash[:notice] = "Du er nu logget ind!"
        #:notice => "Logged in!"
     else
       flash.now.alert = "Invalid email or password"

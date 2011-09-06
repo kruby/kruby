@@ -1,0 +1,32 @@
+<%= form_for(@voucher) do |f| %>
+  <% if @voucher.errors.any? %>
+    <div id="error_explanation">
+	<h2><%#= @voucher.errors.count %>Følgende fejl skal rettes</h2>
+
+      <ul>
+      <% @voucher.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="label"><%= f.label :Beskrivelse %></div>
+  <div class="input"><%= f.text_field :description %></div>
+
+  <div class="label"><%= f.label :Antal %></div>
+  <div class="input"><%= f.text_field :number %></div>
+
+  <div class="label"><%= f.label :Relation %></div>
+  <div class='input'><%= f.collection_select(:relation_id, Relation.all, :id, :company, :prompt => 'Vælg en Relation', :include_blank => true ) %></div>  
+
+  <div class="label"><%= f.label :gælder_fra %></div>
+  <div class="input"><%= f.date_select :date %>
+  
+  <div class="label"><%= f.label :Oprettet_af %> <%= User.find(current_user.id).name %></div>
+
+	<%= f.hidden_field(:user_id, :value => current_user.id) %>
+	
+  <div class="button">[<%= f.submit :class => 'button '%>]</div>
+
+<% end %>

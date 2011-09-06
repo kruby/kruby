@@ -1,43 +1,13 @@
 <%= render :partial => "layouts/menu" %>
 <div id="admin_formular">
 	
+	<h1>Rediger brugeren
+		<%= link_to '[Tilbage]', users_path %>	
+	</h1>
+	
+	
 
+	<%= render 'form' %>
 
-
-<% form_for @user do |f| -%>
-
-<h1>Rediger bruger
-<%= submit_tag '[Opdater]', :class => 'button'%>
-<%= link_to '[Vis]', @user %>
-<%= link_to '[Liste]', users_path %>
-</h1>
-
-<p><label for="blogname" class = 'ov'>Blog navn</label><br/>
-<%= f.text_field :blogname %></p>
-
-<!-- <p><label for="active" class = 'ov'>Aktiv</label><br/>
-<%#= f.check_box :active %></p> -->
-
-<p><label for="category" class = 'ov'>Kategori</label><br/>
-<%= f.select(:category, ['User', 'Editor', 'Admin'], {}, :class => 'bruger_kategori') %>
-</p>
-
-<p><label for="login" class = 'ov'>Login</label><br/>
-<%= f.text_field :login %></p>
-
-<p><label for="email" class = 'ov'>Email</label><br/>
-<%= f.text_field :email %></p>
-
-<p><label for="password" class = 'ov'>Password</label><br/>
-<%= f.password_field :password %></p>
-
-<p><label for="password_confirmation" class = 'ov'>Confirm Password</label><br/>
-<%= f.password_field :password_confirmation %></p>
-
-
-
-<% end -%>
-
-<%= error_messages_for :user %>
 
 </div>

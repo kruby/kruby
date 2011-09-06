@@ -11,7 +11,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_url, :notice => "Signed up!"
+      #redirect_to root_url, :notice => "Brugeren blev oprettet!"
+      redirect_to :action => 'index'
+      flash[:notice] = "Brugeren " + @user.name + " blev oprettet!"
     else
       render "new"
     end
@@ -53,12 +55,12 @@ class UsersController < ApplicationController
          redirect_to(:action => 'index')
        else
           @user.destroy
-          flash[:notice] = 'Brugeren blev slettet!'
+          flash[:notice] = 'Brugeren ' + @user.name + ' blev slettet!'
           redirect_to(users_url)
        end
     else
       @user.destroy
-      flash[:notice] = 'Brugeren blev slettet!'
+      flash[:notice] = 'Brugeren ' + @user.name + ' blev slettet!'
       redirect_to(users_url) 
      end
    

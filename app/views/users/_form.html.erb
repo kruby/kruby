@@ -1,0 +1,40 @@
+<% form_for @user do |f| -%>
+
+	<% if @user.errors.any? %>
+	  <div class="error_messages">
+	    <h2>Følgende fejl skal rettes</h2>
+	    <ul>
+	      <% for message in @user.errors.full_messages %>
+	        <li><%= message %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+
+
+	<div class='label'><%= f.label :kategori %></div>
+	<div class='input'><%= f.select(:category, ['User', 'Editor', 'Admin'], {}, :class => 'bruger_kategori') %></div>
+
+	<div class='label'><%= f.label :kategori %></div>
+	<div class='input'><%= f.collection_select(:relation_id, Relation.all, :id, :company, :prompt => 'Vælg evt. Relation', :include_blank => true ) %></div>
+
+	<div class='label'><%= f.label :name %></div>
+	<div class='input'><%= f.text_field :name %></div>
+
+	<div class="field"><%= f.label :blogname %></div>
+	<div class='input'><%= f.text_field :blogname %></div>
+
+	<div class='label'><%= f.label :email %></div>
+	<div class='input'><%= f.text_field :email %></div>
+
+	<div class='label'><%= f.label :password %></div>
+	<div class='input'><%= f.password_field :password %></div>
+
+	<div class='label'><%= f.label :password_confirmation %></div>
+	<div class='input'><%= f.password_field :password_confirmation %></div>
+
+
+	<div class="button">[<%= f.submit :class => 'button '%>]</div>
+
+
+<% end -%>
