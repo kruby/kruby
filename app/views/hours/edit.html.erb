@@ -5,6 +5,7 @@
 <table>
   <tr>
     <th>Bruger</th>
+	<th>Relation</th>
     <th>Beskrivelse</th>
     <th>Ant.</th>
     <th>Dato</th>
@@ -14,10 +15,11 @@
 <% form_for(@hour) do |f| %>
   <tr>
     <td class='pos'><%= User.find(f.user_id).blogname rescue nil %><%= f.hidden_field(:user_id, :value => current_user.id) %></td>
+	<td><%= f.collection_select(:relation_id, Relation.all, :id, :company, :prompt => 'Vælg evt. Relation', :include_blank => true ) %></td>
     <td><%= f.text_field :description, :size => '60', :class => 'felter' %></td>
     <td><%= f.text_field :number, :size => '3', :class => 'center'%></td>
     <td><%= f.date_text_field :date, :order => [:day, :month, :year ]%></td>
-    <td><%= f.submit "[Opret]", :class => 'button' %><%= link_to '[Tilbage]', hours_path %></td>
+    <td><%= f.submit "[Opret]", :class => 'button_white' %><%= link_to '[Tilbage]', hours_path %></td>
   </tr>
 <% end %>
 </table>

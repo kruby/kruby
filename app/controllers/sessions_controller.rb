@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       if user.relation_id
-        redirect_to :controller => 'hours', :action => 'index'
+        redirect_to :controller => 'hours', :action => 'timeliste'
       else
         redirect_to :controller => session[:current_controller]
       end

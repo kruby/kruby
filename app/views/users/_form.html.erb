@@ -15,7 +15,7 @@
 	<div class='label'><%= f.label :kategori %></div>
 	<div class='input'><%= f.select(:category, ['User', 'Editor', 'Admin'], {}, :class => 'bruger_kategori') %></div>
 
-	<div class='label'><%= f.label :kategori %></div>
+	<div class='label'><%= f.label :relation %></div>
 	<div class='input'><%= f.collection_select(:relation_id, Relation.all, :id, :company, :prompt => 'Vælg evt. Relation', :include_blank => true ) %></div>
 
 	<div class='label'><%= f.label :name %></div>

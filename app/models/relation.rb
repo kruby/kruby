@@ -10,5 +10,5 @@ class Relation < ActiveRecord::Base
   end
   
   has_many :hours
-  
+  has_many :vouchers
 end

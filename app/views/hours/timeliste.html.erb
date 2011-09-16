@@ -1,0 +1,42 @@
+<%= render :partial => "layouts/menu" %>
+<div id="admin_liste">
+	
+<h1>Timeliste for <%= @relation.company %></h1>
+
+<div id="voucher_status">
+	<span id="voucher_headline">Klippekort status: </span>
+	<span id="voucher_text">
+		(<%= @relation.vouchers.sum(:number) rescue nil %> 
+		- <%= @relation.hours.sum(:number) rescue nil %>
+		= <%=@relation.vouchers.sum(:number) - @relation.hours.sum(:number) rescue nil %> klip resterende)
+	</span>
+</div>
+<table>
+  <tr>
+    <th class='pos'>Dato</th>
+    <th width='245'>Beskrivelse</th>
+    <th>Ant.</th>
+  </tr>
+
+<% for hour in @hours %>
+	<% if session[:hour_id] == hour.id.to_s %>
+	
+	<% @hour = hour %>
+	
+	<%= render :partial => "hours/index_edit" %>
+
+	<% else %>
+	  <tr>
+		<td class='dato'><%= nice_date(hour.date) %></td>
+		<td><%= hour.description %></td>
+		<td class='pos'><%= hour.number %></td>
+	    
+	    
+	    
+	  </tr>
+	<% end %>
+<% end %>
+
+</table>
+
+</div>

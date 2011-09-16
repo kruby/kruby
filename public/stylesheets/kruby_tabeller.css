@@ -37,20 +37,20 @@
 
 
 #admin_liste {
-z-index:100;
-position:absolute;
-top: 170px;
-left: 150px;
-color:#000000;
+	z-index:100;
+	position:absolute;
+	top: 170px;
+	left: 150px;
+	color:#000000;
 }
 
 
 #admin_formular #admin_liste {
-z-index:0;
-position:relative;
-top: 5px;
-left: 0px;
-color:#000000;
+	z-index:0;
+	position:relative;
+	top: 5px;
+	left: 0px;
+	color:#000000;
 }
 
 #admin_liste p{
@@ -136,13 +136,32 @@ color:#000000;
 	padding: 4px 10px 0px 10px;
 }
 #admin_liste .ov{
-	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:12px;
 	font-weight:bolder;
 	text-align:left;
 	color:#000000;
 	margin-top:10px;
 	margin-left:3px;
+}
+
+#admin_liste #voucher_status {
+	margin: 5px 0px 5px 3px;
+}
+
+#admin_liste #voucher_headline {
+	font-size:12px;
+	font-weight:bolder;
+	text-align:left;
+	color:#000000;
+	margin-bottom: 5px;
+}
+
+#admin_liste #voucher_status #voucher_text {
+	font-size:12px;
+	font-weight:normal;
+	text-align:left;
+	color:#000000;
+	margin-bottom: 5px;	
 }
 
 #admin_liste .button{
@@ -156,6 +175,19 @@ color:#000000;
 	background-color: #BAD6E9;
 	padding: 0px;
 }
+
+#admin_liste .button_white {
+	width: auto;
+	font-size:11px;
+	font-weight:normal;
+	text-align:center;
+	color:#333333;
+	border: none;
+	cursor: pointer;
+	background-color: #FFF;
+	padding: 0px;
+}
+
 #admin_liste input.felter{
 	font-size:12px;
 	padding: 1px;
@@ -195,63 +227,63 @@ color:#000000;
 
 
 #admin_liste .pagination_info, #admin_blog .pagination_info {
-font-size:10px;
-line-height:10px;
-font-weight:normal;
-text-align:center;
-margin-left:0px;
-margin-top:0px;
-color:#003300;
+	font-size:10px;
+	line-height:10px;
+	font-weight:normal;
+	text-align:center;
+	margin-left:0px;
+	margin-top:0px;
+	color:#003300;
 }
 
 #admin_liste .pagination, #admin_blog .pagination {
-font-size:10px;
-font-weight:bold;
-text-align:center;
-margin-left:0px;
-margin-top:15px;
-color:black;
+	font-size:10px;
+	font-weight:bold;
+	text-align:center;
+	margin-left:0px;
+	margin-top:15px;
+	color:black;
 }
 
 #admin_liste .pagination a:link, #admin_blog .pagination a:link {
-font-size:10px;
-font-weight:bold;
-text-align:center;
-margin-left:0px;
-margin-right: 0px;
-margin-top:0px;
-color:#CC0000;
+	font-size:10px;
+	font-weight:bold;
+	text-align:center;
+	margin-left:0px;
+	margin-right: 0px;
+	margin-top:0px;
+	color:#CC0000;
 }
 
 #admin_liste .pagination a:hover, #admin_blog .pagination a:hover {
-font-size:10px;
-font-weight:bold;
-text-align:center;
-margin-left:0px;
-margin-right: 0px;
-margin-top:0px;
-text-decoration: underline;
-color:#CC0000;
+	font-size:10px;
+	font-weight:bold;
+	text-align:center;
+	margin-left:0px;
+	margin-right: 0px;
+	margin-top:0px;
+	text-decoration: underline;
+	color:#CC0000;
 }
 
 #admin_liste .pagination a:visited, #admin_blog .pagination a:visited {
-font-size:10px;
-font-weight:bold;
-text-align:center;
-margin-left:0px;
-margin-right: 0px;
-margin-top:0px;
-color:#CC0000;
+	font-size:10px;
+	font-weight:bold;
+	text-align:center;
+	margin-left:0px;
+	margin-right: 0px;
+	margin-top:0px;
+	color:#CC0000;
 }
 
 #admin_liste .pagination a:active, #admin_blog .pagination a:active {
-font-size:10px;
-font-weight:bold;
-text-align:center;
-margin-left:0px;
-margin-right: 0px;
-margin-top:0px;
-color:#CC0000;
+	font-size:10px;
+	font-weight:bold;
+	text-align:center;
+	margin-left:0px;
+	margin-right: 0px;
+	margin-top:0px;
+	color:#CC0000;
 }
 
 /*HERTIL STYLES TIL ADMINISTRATIONS SIDERNE (LISTER)*/

@@ -14,6 +14,13 @@ class HoursController < ApplicationController
       format.xml  { render :xml => @hours }
     end
   end
+  
+  def timeliste
+    @hours = Hour.find_all_by_relation_id(current_user.relation_id)
+    #@hours = Hour.find(:all)
+    @relation = Relation.find(current_user.relation_id)
+    
+  end
 
   # GET /hours/1
   # GET /hours/1.xml
@@ -70,7 +77,7 @@ class HoursController < ApplicationController
 
     respond_to do |format|
       if @hour.update_attributes(params[:hour])
-        flash[:notice] = 'Hour was successfully updated.'
+        flash[:notice] = 'Timeregistreringen blev opdateret.'
         session[:hour_id] = nil
         format.html { redirect_to(:action => 'index') }
         format.xml  { head :ok }
