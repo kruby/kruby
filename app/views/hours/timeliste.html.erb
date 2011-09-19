@@ -8,12 +8,17 @@
 	<span id="voucher_text">
 		(<%= @relation.vouchers.sum(:number) rescue nil %> 
 		- <%= @relation.hours.sum(:number) rescue nil %>
-		= <%=@relation.vouchers.sum(:number) - @relation.hours.sum(:number) rescue nil %> klip resterende)
+		= <% @result = @relation.vouchers.sum(:number) - @relation.hours.sum(:number) rescue nil %>
+		<% if @result < 0 %>
+			<span id='voucher_red'> <%= @result %> klip mangler</span>) 
+		<% else %>
+			<span id='voucher_green'> <%= @result %> klip resterer)</span> 
+		<% end %>
 	</span>
 </div>
 <table>
   <tr>
-    <th class='pos'>Dato</th>
+    <th class='pos'><%= sort_link @search, :date, 'Dato' %></th>
     <th width='245'>Beskrivelse</th>
     <th>Ant.</th>
   </tr>

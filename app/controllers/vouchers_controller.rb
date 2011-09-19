@@ -1,4 +1,7 @@
 class VouchersController < ApplicationController
+  
+  before_filter :logged_in_as_admin?
+  
   # GET /vouchers
   # GET /vouchers.xml
   def index

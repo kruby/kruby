@@ -12,6 +12,8 @@ gem "newrelic_rpm"
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "paperclip"
 gem "i18n"
+gem "meta_where"
+gem "meta_search"
 
 # Use unicorn as the web server
 # gem 'unicorn'

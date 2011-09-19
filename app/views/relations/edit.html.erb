@@ -33,24 +33,22 @@
     <b>Ansvarlig</b><br />
     <%#= f.text_field :responsible %>
 <%= f.select (:responsible, [	['ALLE', 'ALLE'],
-								['JSH', 'JSH'], 
-								['MKS', 'MKS'],
 								['TKS', 'TKS']
 								], { :include_blank => true} ) %>
   </p>
 </div>
 <div class="date_and_time">
+
 <p class="date">
     <b>Næste kontakt</b><br />
-<%= f.date_text_field :next_action, :blank => true, :order => [:day, :month, :year ] %>
-  </p>
+	<%= f.date_select :next_action, :blank => true, :order => [:day, :month, :year ] %>
+</p>
 
-<br />
 <p class="time">
 	<b>Tid</b><br />
-<%= f.time_text_field :next_action, :blank => true %>
+	<%= f.time_select :next_action, :blank => true %>
+</p>
 
-  </p>
 </div>
 <div class="text_fields">
   <p>

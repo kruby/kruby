@@ -3,11 +3,18 @@ class HoursController < ApplicationController
   #before_filter :login_required, :admin_required
   before_filter :current_controller #Findes i application_controller.rb
   before_filter :logged_in? #Findes i application_controller.rb
+  before_filter :logged_in_as_admin?, :except => ['timeliste']
   
   # GET /hours
   # GET /hours.xml
   def index
-    @hours = Hour.find(:all)
+    #Product.order(:released_at.desc)
+    #@search = Hour.order(:relation_id.desc).search(params[:search])
+    @search = Hour.search(params[:search])
+    @hours = @search.order(:relation_id.desc).all
+    #DET ER VIGTIGT AT PLACERE ORDER HER, DA MAN SÅ OGSÅ HAR MULIGHED FOR AT SORTERE I SIT VIEW EFTERFØLGENDE
+    
+    #@hours = Hour.find(:all)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -16,8 +23,9 @@ class HoursController < ApplicationController
   end
   
   def timeliste
-    @hours = Hour.find_all_by_relation_id(current_user.relation_id)
-    #@hours = Hour.find(:all)
+    @search = Hour.search :relation_id_equals => [ current_user.relation_id ]
+    @hours = @search.all 
+    #@hours = Hour.timeliste(current_user.relation_id).order('date desc')
     @relation = Relation.find(current_user.relation_id)
     
   end

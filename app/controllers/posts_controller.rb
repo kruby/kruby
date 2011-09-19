@@ -3,8 +3,8 @@ class PostsController < ApplicationController
   # before_filter :login_required, :user_required, :except => ['show']
   
   before_filter :current_controller #Findes i application_controller.rb
-  before_filter :logged_in? #Findes i application_controller.rb
-  #before_filter :logged_in_admin?
+  #before_filter :logged_in? #Findes i application_controller.rb
+  before_filter :logged_in_as_admin?
   
   layout 'viewer'
   

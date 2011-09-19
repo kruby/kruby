@@ -274,7 +274,7 @@ height:400px;*/
 #admin_formular .date_and_time {
 	position: relative;
 	height: 50px;
-	width: 300px;
+	width: 450px;
 }
 #admin_formular .date_and_time .date{
 	position: absolute;
@@ -284,7 +284,7 @@ height:400px;*/
 
 #admin_formular .date_and_time .time{
 	position: absolute;
-	left: 175px;
+	left: 250px;
 	top: 0px;
 }
 

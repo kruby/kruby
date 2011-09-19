@@ -1,13 +1,22 @@
 <%= render :partial => "layouts/menu" %>
+
 <div id="admin_liste">
-<h1>Timeliste <%= link_to '[Ny registrering]', new_hour_path %></h1>
+<h1>Time registrering <%= link_to '[Ny registrering]', new_hour_path %><%= link_to '[Find alle]', hours_path %></h1>
+
+
+<%= form_for @search do |f| %>    
+    <p>
+		<%= f.label :firma %>  
+    	<%= f.text_field :relation_company_contains, :size => 16 %>   
+		<%= f.submit "[Søg]", :class => 'button' %>
+	</p>
+<% end %>
 
 <table>
   <tr>
 	<!-- <th>ID</th> -->
     <th>Bruger</th>
-	<th>Relation</th>
-	<th>Rest</th>
+	<th><%= sort_link @search, :relation_company, 'Relation', :default_order => :desc  %></th>
     <th width='245'>Beskrivelse</th>
     <th>Ant.</th>
     <th class='pos'>Dato</th>
@@ -17,16 +26,41 @@
 <% for hour in @hours %>
 	<% if session[:hour_id] == hour.id.to_s %>
 	
-	<% @hour = hour %>
+		<% @hour = hour %>
 	
-	<%= render :partial => "hours/index_edit" %>
+		<%= render :partial => "hours/index_edit" %>
 
 	<% else %>
+		<% @relation = Relation.find(hour.relation_id) %>
+		<% @relation_id = hour.relation_id %>
+		<% if @relation_id != @relation_id_previous %>
+
+			<% @relation_id_previous = @relation_id %>
+					<tr class='background-row'><td colspan=6></td></tr>
+					<tr><td colspan=6><b>
+						<div id="voucher_status">
+							<%= @relation.company rescue nil %> – 
+							<span id="voucher_headline">Klippekort status: </span>
+							<span id="voucher_text">
+								(<%= @relation.vouchers.sum(:number) rescue nil %> 
+								- <%= @relation.hours.sum(:number) rescue nil %>
+								= <% @result = @relation.vouchers.sum(:number) - @relation.hours.sum(:number) rescue nil %>
+								<% if @result < 0 %>
+									<span id='voucher_red'> <%= @result %> klip mangler</span>) 
+								<% else %>
+									<span id='voucher_green'> <%= @result %> klip resterer)</span> 
+								<% end %>
+							
+							</span>
+						</div>
+					</b></td></tr>
+		<% end %>
+
+
 	  <tr>
 		<!-- <td class='pos'><%#= hour.id %></td> -->
 	    <td class='pos'><%= User.find(hour.user_id).blogname rescue nil %></td>
 	    <td><%= Relation.find(hour.relation_id).company rescue nil %></td>
-		<td class='pos'><%= Relation.find(hour.relation_id).vouchers.sum(:number) - Relation.find(hour.relation_id).hours.sum(:number) rescue nil %></td>
 		<td><%= hour.description %></td>
 	    <td class='pos'><%= hour.number %></td>
 	    <td class='dato'><%= nice_date(hour.date) %></td>

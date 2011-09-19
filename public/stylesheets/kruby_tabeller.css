@@ -44,6 +44,15 @@
 	color:#000000;
 }
 
+#admin_liste tr.background-row td {
+	background-color: #BAD6E9;
+}
+
+#admin_liste a.sort_link {
+	font-weight: bolder;
+	color:#CC0920;
+}
+
 
 #admin_formular #admin_liste {
 	z-index:0;
@@ -57,7 +66,7 @@
 	font-size:12px;
 	font-weight:bolder;
 	text-align:left;
-	color:#CC0000;
+	color:#000;
 	margin-top:10px;
 }
 #admin_liste h1 {
@@ -143,6 +152,17 @@
 	margin-top:10px;
 	margin-left:3px;
 }
+
+#admin_liste #voucher_red {
+	font-weight: bolder;
+	color: #CC0920;
+}
+
+#admin_liste #voucher_green {
+	font-weight: bolder;
+	color: #000;
+}
+
 
 #admin_liste #voucher_status {
 	margin: 5px 0px 5px 3px;

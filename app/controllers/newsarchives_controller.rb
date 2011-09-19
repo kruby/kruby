@@ -1,7 +1,7 @@
 class NewsarchivesController < ApplicationController
   
   before_filter :current_controller #Findes i application_controller.rb
-  before_filter :logged_in? #Findes i application_controller.rb
+  before_filter :logged_in_as_admin? #Findes i application_controller.rb
   #before_filter :login_required, :editor_required, :only => ['new', 'create', 'index']
   
   # GET /newsarchives

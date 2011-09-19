@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   
   before_filter :current_controller
-  before_filter :logged_in?
+  before_filter :logged_in_as_admin?
   #before_filter :login_required, :admin_required, :only => ['new', 'create', 'index']
   
   # GET /pages
