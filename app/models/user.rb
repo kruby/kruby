@@ -2,11 +2,14 @@ class User < ActiveRecord::Base
   
   has_one :relation
   
+  #after_create :make_user_id_in_relation
+  
   attr_accessible :email, :password, :password_confirmation, :blogname, :name, :category, :active, :relation_id
     
   scope :admin, where("category = ?", "Admin")
-  scope :editor, :conditions => {:category => 'Editor'}
-  scope :user, :conditions => {:category => 'User'}
+  scope :editor, where("category = ?", 'Editor')
+  scope :user, where("category = ?", 'User')
+  scope :with_relation_id, where('relation_id IS NOT NULL')
   
   
   attr_accessor :password
@@ -33,5 +36,14 @@ class User < ActiveRecord::Base
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
   end
+  
+  def make_user_id_in_relation
+    if self.relation_id?
+      r = Relation.where(:id => self.relation_id)
+      r.user_id = self.id
+      r.save
+    end
+  end
+  
 end
 
