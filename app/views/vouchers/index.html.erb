@@ -2,7 +2,8 @@
 <div id="admin_liste">
 
 <h1>
-	Klippekort <%= link_to '[Nyt klippekort]', new_voucher_path %>
+	Klippekort 
+	<%= link_to '[Nyt klippekort]', new_voucher_path %>
 </h1>
 
 <table>
@@ -18,13 +19,23 @@
       </tr>
 
 <% @vouchers.each do |voucher| %>
+
+<% @relation = Relation.find(voucher.relation_id) %>
+<% @result = @relation.vouchers.sum(:number) - @relation.hours.sum(:number) rescue nil %>
+
   <tr>
     <td><%= voucher.description %></td>
     <td><%= voucher.number %></td>
     <td><%= Relation.find(voucher.relation_id).company %></td>
     <td><%= voucher.date %></td>
 	<td class='pos'><%= voucher.date + 1.year - voucher.date %></td>
-	<td class='pos'><%= 'Rest klip' %></td>
+	<td class='pos'>
+		<% if @result < 0 %>
+			<span id='voucher_red'> <%= @result %> klip mangler</span>) 
+		<% else %>
+			<span id='voucher_green'> <%= @result %> klip resterer</span> 
+		<% end %>
+	</td>
     <td><%= User.find(voucher.user_id).name %></td>
     <td>
 		<%#= link_to 'Show', voucher %>
@@ -38,3 +49,6 @@
 <br />
 
 </div>
+
+
+

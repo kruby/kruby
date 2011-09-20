@@ -6,7 +6,7 @@
 	<td><%= f.collection_select(:relation_id, Relation.all, :id, :company, :prompt => 'Vælg evt. Relation', :include_blank => true ) %></td>
 	<!-- <td class='pos'><%#= Relation.find(@hour.relation_id).vouchers.sum(:number) - Relation.find(@hour.relation_id).hours.sum(:number) rescue nil %></td> -->
     <td><%= f.text_field :description, :size => '30', :class => 'felter' %></td>
-    <td><%= f.text_field :number, :size => '3', :class => 'center'%></td>
+    <td><%= f.number_field :number, :size => '3', :class => 'center'%></td>
     <td><%= f.date_select :date, :order => [:day, :month, :year ], :include_blank => true %></td>
     <td><%= f.submit "[Opdater]", :class => 'button_white' %><%= link_to '[Tilbage]', hours_path, session[:hour_id] = nil %></td>
 	<% end %>  

@@ -64,7 +64,7 @@
 	    <td class='pos'><%= User.find(hour.user_id).blogname rescue nil %></td>
 	    <td><%= Relation.find(hour.relation_id).company rescue nil %></td>
 		<td><%= hour.description %></td>
-	    <td class='pos'><%= hour.number %></td>
+	    <td class='pos'><%= number_with_delimiter(hour.number, :locale => :da) %></td>
 	    <td class='dato'><%= nice_date(hour.date) %></td>
 	    <td>
 		<% if current_user.id == hour.user_id %>

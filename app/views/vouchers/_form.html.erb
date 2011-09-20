@@ -1,4 +1,7 @@
 <%= form_for(@voucher) do |f| %>
+
+<div class="button"><%= f.submit :class => 'button '%></div>
+
   <% if @voucher.errors.any? %>
     <div id="error_explanation">
 	<h2><%#= @voucher.errors.count %>Følgende fejl skal rettes</h2>
@@ -27,6 +30,5 @@
 
 	<%= f.hidden_field(:user_id, :value => current_user.id) %>
 	
-  <div class="button">[<%= f.submit :class => 'button '%>]</div>
 
 <% end %>
