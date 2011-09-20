@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
         flash[:notice] = "Du er nu logget ind!"
        #:notice => "Logged in!"
     else
-      flash.now.alert = "Forkert password eller email"
+      flash[:notice] = "Forkert password eller email"
       render "new"
     end
   end
