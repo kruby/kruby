@@ -11,7 +11,7 @@ class HoursController < ApplicationController
     #Product.order(:released_at.desc)
     #@search = Hour.order(:relation_id.desc).search(params[:search])
     @search = Hour.search(params[:search])
-    @hours = @search.order(:relation_id.desc).all
+    @hours = @search.order(:relation_id.desc, :date.desc).all
     #DET ER VIGTIGT AT PLACERE ORDER HER, DA MAN SÅ OGSÅ HAR MULIGHED FOR AT SORTERE I SIT VIEW EFTERFØLGENDE
     
     #@hours = Hour.find(:all)
@@ -23,11 +23,10 @@ class HoursController < ApplicationController
   end
   
   def timeliste
-    @search = Hour.search :relation_id_equals => session[:relation_id]
-    @hours = @search.all 
+    @search = Hour.timeliste(session[:relation_id]).search(params[:search])
+    @hours = @search.order(:date.desc).all 
     #@hours = Hour.timeliste(current_user.relation_id).order('date desc')
-    @relation = Relation.find(session[:relation_id])
-    
+    @relation = Relation.find(session[:relation_id])  
   end
 
   # GET /hours/1

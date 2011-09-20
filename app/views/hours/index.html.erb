@@ -19,7 +19,7 @@
 	<th><%= sort_link @search, :relation_company, 'Relation', :default_order => :desc  %></th>
     <th width='245'>Beskrivelse</th>
     <th>Ant.</th>
-    <th class='pos'>Dato</th>
+    <th class='pos'><%= sort_link @search, :relation_company_and_date, 'Dato', :default_order => :desc  %></th>
 	<th>Handling</th>
   </tr>
 
@@ -63,7 +63,7 @@
 		<!-- <td class='pos'><%#= hour.id %></td> -->
 	    <td class='pos'><%= User.find(hour.user_id).blogname rescue nil %></td>
 	    <td><%= Relation.find(hour.relation_id).company rescue nil %></td>
-		<td><%= hour.description %></td>
+		<td width=375px><%= hour.description %></td>
 	    <td class='pos'><%= number_with_delimiter(hour.number, :locale => :da) %></td>
 	    <td class='dato'><%= nice_date(hour.date) %></td>
 	    <td>
