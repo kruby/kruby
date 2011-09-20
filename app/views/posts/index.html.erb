@@ -31,7 +31,7 @@
 	<!-- <td class='pos'><%#= image_tag post.photo.url(:thumb) rescue nil %></td> -->
     <!-- <td class="pos"><%= post.priority %></td> -->
     <!-- <td><%#= link_to 'Vis', post %></td> -->
-    <td><%= link_to '[Ret]', edit_post_path(post) %><%= link_to '[Slet]', post, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to '[Ret]', edit_post_path(post) %><%= link_to '[Slet]', post, :confirm => 'Er du sikker?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

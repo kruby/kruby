@@ -150,9 +150,9 @@ da:
       prompt: "Vælg..."
 
     submit:
-      create: "Opret %{model}"
-      update: "Opdater %{model}"
-      submit: "Gem %{model}"
+      create: "[Opret %{model}]"
+      update: "[Opdater %{model}]"
+      submit: "[Gem %{model}]"
 
   errors:
     format: "%{attribute} %{message}"

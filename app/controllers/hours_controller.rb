@@ -23,10 +23,10 @@ class HoursController < ApplicationController
   end
   
   def timeliste
-    @search = Hour.search :relation_id_equals => [ current_user.relation_id ]
+    @search = Hour.search :relation_id_equals => session[:relation_id]
     @hours = @search.all 
     #@hours = Hour.timeliste(current_user.relation_id).order('date desc')
-    @relation = Relation.find(current_user.relation_id)
+    @relation = Relation.find(session[:relation_id])
     
   end
 

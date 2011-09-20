@@ -4,7 +4,7 @@
 <% form_for(@relation) do |f| %>
 
 <h1>Ny relation
-    <%= f.submit "[Opret]", :class => 'button'%>
+    <%= f.submit :class => 'button'%>
 	<%= link_to '[Tilbage]', relations_path %>
 	</h1>
 
@@ -31,15 +31,14 @@
 								], { :include_blank => true, :selected => 'Alle' } ) %>
   </p>
 </div>
+
+<div class='label'><%= f.label :Tilknyt_en_bruger %></div>
+<div class='input'><%= f.collection_select(:user_id, User.all, :id, :name, :prompt => 'Vælg en bruger', :include_blank => true ) %></div>
+
 <div class="date_and_time">
 	<p class="date">
 	    <b>Næste kontakt</b><br />
-		<%= f.date_select :next_action %>
-	</p>
-	<br />
-	<p class="time">
-		<b>Tid</b><br />
-		<%= f.time_select :next_action, :blank => true %>
+		<%= f.datetime_select :next_action, :include_blank => true, :default => nil, :start_year => 2011 %>
 	</p>
 </div>
 

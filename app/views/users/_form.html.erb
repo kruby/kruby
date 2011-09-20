@@ -1,5 +1,7 @@
 <% form_for @user do |f| -%>
 
+	<div class="button"><%= f.submit :class => 'button'%><%= link_to '[Tilbage]', users_path %></div>
+
 	<% if @user.errors.any? %>
 	  <div class="error_messages">
 	    <h2>Følgende fejl skal rettes</h2>
@@ -15,13 +17,10 @@
 	<div class='label'><%= f.label :kategori %></div>
 	<div class='input'><%= f.select(:category, ['User', 'Editor', 'Admin'], {}, :class => 'bruger_kategori') %></div>
 
-	<div class='label'><%= f.label :relation %></div>
-	<div class='input'><%= f.collection_select(:relation_id, Relation.all, :id, :company, :prompt => 'Vælg evt. Relation', :include_blank => true ) %></div>
-
 	<div class='label'><%= f.label :name %></div>
 	<div class='input'><%= f.text_field :name %></div>
 
-	<div class="field"><%= f.label :blogname %></div>
+	<div class="label"><%= f.label :blogname %></div>
 	<div class='input'><%= f.text_field :blogname %></div>
 
 	<div class='label'><%= f.label :email %></div>
@@ -34,7 +33,7 @@
 	<div class='input'><%= f.password_field :password_confirmation %></div>
 
 
-	<div class="button">[<%= f.submit :class => 'button '%>]</div>
+	
 
 
 <% end -%>

@@ -9,6 +9,7 @@
 	<th>Blognavn</th>
     <th>e-mail</th>
 	<th>Kategori</th>
+	<th>Relation</th>
 	<th>Handling</th>
   </tr>
 
@@ -19,8 +20,10 @@
 	<td width=60px><%= user.blogname %></td>
     <td width=200px><%= user.email %></td>
 	<td class="pos"><%=link_to user.category, :action => 'category', :id => user.id rescue nil%></td> <%# access findes i application.rb %>
-	<td width=150px>
-		<%= link_to '[Vis]', user %>
+	<td><%= Relation.find_by_user_id(user.id).company rescue nil %></td>	
+	<td>
+	
+		<%#= link_to '[Vis]', user %>
 		<%= link_to '[Ret]', edit_user_path(user) %>
     	<%= link_to '[Slet]', user, :confirm => "Er du sikker at du vil slette brugeren: '#{user.name}'?", :method => :delete %>
 	</td>

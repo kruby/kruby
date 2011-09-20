@@ -5,11 +5,9 @@
 <h1>Relationer i Kruby <%= link_to '[Ny relation]', new_relation_path %></h1>
 <p>
 	<%= text_field_tag :search, params[:search] %>
-	<%= submit_tag "Søg", :name => nil %>
+	<%= submit_tag "[Søg]", :name => nil, :class => 'button'%>
 	</p>
 <% end %>
-
-
 
 
 <table>
@@ -23,6 +21,7 @@
     <th>Kategori</th>
     <th>Ansvar</th>
 	<th>Næste kontakt</th>
+	<th>Brugernavn</th>
 	<th>Handling</th>
   </tr>
 
@@ -38,7 +37,8 @@
     <td><%= relation.responsible %></td>
 	<!-- <td><%#= nice_date(relation.action_date) + nice_time(relation.action_time) rescue nil %></td> -->
 	<td><%= nice_timestamp(relation.next_action)rescue nil %></td>
-	<td width=120px><%= link_to '[Adgang]', edit_relation_path(relation) %><%= link_to '[Slet]', relation, :confirm => 'Er du sikker?', :method => :delete %></td>
+	<td><%= User.find(relation.user_id).name rescue nil %></td>
+	<td><%= link_to '[Ret]', edit_relation_path(relation) %><%= link_to '[Slet]', relation, :confirm => 'Er du sikker?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

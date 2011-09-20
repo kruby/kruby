@@ -1,6 +1,7 @@
 class Relation < ActiveRecord::Base
   
-  belongs_to :user
+  #belongs_to :user
+  has_one :user
   
   def self.search(search, page)
     paginate  :per_page => 10, :page => page,
@@ -13,5 +14,7 @@ class Relation < ActiveRecord::Base
   
   has_many :hours
   has_many :vouchers
+  
+  scope :with_user_id, where('user_id IS NOT NULL')
   
 end

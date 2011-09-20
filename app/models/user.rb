@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   
-  has_one :relation
+  #has_one :relation
+  belongs_to :relation
   
-  #after_create :make_user_id_in_relation
+  #after_save :make_user_id_in_relation
   
   attr_accessible :email, :password, :password_confirmation, :blogname, :name, :category, :active, :relation_id
     
@@ -34,14 +35,6 @@ class User < ActiveRecord::Base
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-    end
-  end
-  
-  def make_user_id_in_relation
-    if self.relation_id?
-      r = Relation.where(:id => self.relation_id)
-      r.user_id = self.id
-      r.save
     end
   end
   

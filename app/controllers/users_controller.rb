@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      #redirect_to root_url, :notice => "Brugeren blev oprettet!"
       redirect_to :action => 'index'
       flash[:notice] = "Brugeren " + @user.name + " blev oprettet!"
     else

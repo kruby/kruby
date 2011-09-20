@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110906094204) do
+ActiveRecord::Schema.define(:version => 20110920064305) do
 
   create_table "assets", :force => true do |t|
     t.string   "description"
@@ -161,7 +161,6 @@ ActiveRecord::Schema.define(:version => 20110906094204) do
     t.datetime "updated_at"
     t.string   "password_hash"
     t.string   "password_salt"
-    t.integer  "relation_id"
   end
 
   create_table "vouchers", :force => true do |t|

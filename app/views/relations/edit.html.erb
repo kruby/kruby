@@ -8,8 +8,7 @@
 	<%# previous_next(@relation, 'company') %>
 	<%#= link_to '[<]', :action => 'edit', :id => @the_objects[@key-1].id unless @key == 0%>
 	<%#= link_to '[>]', :action => 'edit', :id => @the_objects[@key+1].id unless @key == @counter-1%>
-	<%= f.submit "[Opdatér]", :class => 'button'%>
-	<%= f.submit "[Opret]", :class => 'button'%>
+	<%= f.submit :class => 'button'%>
 	<%= link_to '[Tilbage]', relations_path %>
 	<%#= link_to '[Email info]', :action => 'email_relation_info', :id => @relation.id %>
 	</h1>
@@ -37,17 +36,16 @@
 								], { :include_blank => true} ) %>
   </p>
 </div>
-<div class="date_and_time">
 
+<div class='label'><%= f.label :Tilknyt_en_bruger %></div>
+<div class='input'><%= f.collection_select(:user_id, User.all, :id, :name, :prompt => 'Vælg en bruger', :include_blank => true ) %></div>
+
+<div class="date_and_time">
 <p class="date">
     <b>Næste kontakt</b><br />
-	<%= f.date_select :next_action, :blank => true, :order => [:day, :month, :year ] %>
+	<%= f.datetime_select :next_action, :include_blank => true, :order => [:day, :month, :year ], :start_year => 2011%>
 </p>
 
-<p class="time">
-	<b>Tid</b><br />
-	<%= f.time_select :next_action, :blank => true %>
-</p>
 
 </div>
 <div class="text_fields">
@@ -82,12 +80,7 @@
     <%= f.text_area :log, :size => ('60x8') %>
   </p>
 
-  <p>
-    <%= f.submit "Opdater" %>
-  </p>
+ 
 </div>
 <% end %>
-
-<%#= link_to 'Show', @relation %>
-<%#= link_to 'Back', relations_path %>
 </div>
