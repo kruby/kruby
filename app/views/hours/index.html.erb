@@ -24,15 +24,10 @@
   </tr>
 
 <% for hour in @hours %>
-	<% if session[:hour_id] == hour.id.to_s %>
-	
-		<% @hour = hour %>
-	
-		<%= render :partial => "hours/index_edit" %>
 
-	<% else %>
-		<% @relation = Relation.find(hour.relation_id) %>
-		<% @relation_id = hour.relation_id %>
+<% @relation = Relation.find(hour.relation_id) %>
+<% @relation_id = hour.relation_id %>
+		
 		<% if @relation_id != @relation_id_previous %>
 
 			<% @relation_id_previous = @relation_id %>
@@ -57,6 +52,13 @@
 		<% end %>
 
 
+	<% if session[:hour_id] == hour.id.to_s %>
+
+		<% @hour = hour %>
+
+		<%= render :partial => "hours/index_edit" %>
+
+	<% else %>
 	  <tr>
 		<!-- <td class='pos'><%#= hour.id %></td> -->
 	    <td class='pos'><%= User.find(hour.user_id).blogname rescue nil %></td>
