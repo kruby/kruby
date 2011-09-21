@@ -4,7 +4,7 @@ class AttachmentsController < ApplicationController
   
   before_filter :current_controller #Findes i application_controller.rb
   before_filter :logged_in_as_admin?
-  #before_filter :logged_in? #Findes i application_controller.rb
+  #before_filter :logged_in_as_user? #Findes i application_controller.rb
   
   # def index
   #   @attachments = Attachment.find(:all)

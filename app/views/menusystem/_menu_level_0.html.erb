@@ -4,7 +4,7 @@
 
 		<%= render :partial => "menusystem/menu_main_level_1" %>
 
-		<%# if logged_in? %>
+		<%# if logged_in_as_user? %>
 		<% if current_user %>
 
 			<%= render :partial => "menusystem/menu_level_1" %>
@@ -13,7 +13,7 @@
 
 		<li class="admin_navlabel">
 
-			<%# if logged_in? %>
+			<%# if logged_in_as_user? %>
 			<% if current_user %>
 
 				<%= link_to 'Log off', log_out_path %>

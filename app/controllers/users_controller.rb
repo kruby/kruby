@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  #before_filter :logged_in?
+  #before_filter :logged_in_as_user?
   before_filter :current_controller #Findes i application_controller.rb
   before_filter :logged_in_as_admin?, :except => ['no_access_admin']
 

@@ -3,7 +3,7 @@ class MenusController < ApplicationController
   #before_filter :login_required, :admin_required
   before_filter :current_controller #Findes i application_controller.rb
   before_filter :logged_in_as_admin?
-  #before_filter :logged_in? #Findes i application_controller.rb
+  #before_filter :logged_in_as_user? #Findes i application_controller.rb
   
   # GET /menus
   # GET /menus.xml

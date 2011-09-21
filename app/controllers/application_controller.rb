@@ -20,40 +20,27 @@ class ApplicationController < ActionController::Base
   end
   
   def get_content_for_menu
-    #Menupunkter i forhold til user.category skal hentes. Er man editor, får man kun aktuelle menupunkter at se.
-    #get_subdomain_pages
     
     @main_menu ||= Content.main_menu # main_menu kommer fra content.rb
-    
-    # if logged_in?
-    #   if current_user.category == 'Admin' 
-    #     @tabs ||= Content.admin_pages + Content.editor_pages + Content.user_pages
-    #     # parent_pages kommer fra content.rb (modellen) derfor starter den også med Content. det har ikke noget med tabellen contents at gøre.
-    #     @tabs_main ||= @main_menu
-    #   elsif current_user.category == 'Editor'
-    #     @tabs ||= Content.editor_pages + Content.user_pages
-    #     @tabs_main ||= @main_menu
-    #   elsif current_user.category == 'User'
-    #     @tabs ||= Content.user_pages
-    #     @tabs_main ||= @main_menu
-    #   end
-    # else
-    #   @tabs_main ||= Content.public_pages
-    #   
-    # end
-    
-    @tabs ||= Content.admin_pages + Content.editor_pages + Content.user_pages
-    #@tabs_main ||= @main_menu
     @tabs_main ||= Content.public_pages
-    
-    
 
+    if session[:user_id]
+      @user_category = User.find(session[:user_id]).category
+      if @user_category == 'Admin'
+        @tabs ||= Content.admin_pages + Content.editor_pages + Content.user_pages
+      elsif @user_category == 'Editor'
+        @tabs ||= Content.editor_pages + Content.user_pages
+      elsif @user_category == 'User'
+        @tabs ||= Content.user_pages
+      end
+    end
+  
   end
   
   
   # def get_content_for_menu
   #   #Menupunkter i forhold til user.category skal hentes. Er man editor, får man kun aktuelle menupunkter at se.
-  #   if logged_in?
+  #   if logged_in_as_user?
   #     if current_user.category == 'Admin' 
   #       @tabs ||= Content.admin_pages # parent_pages kommer fra content.rb (modellen) derfor starter den også med Content. det har ikke noget med tabellen contents at gøre.
   #     elsif current_user.category == 'Editor'
@@ -205,12 +192,13 @@ class ApplicationController < ActionController::Base
       session[:current_controller] = params[:controller]
     end
 
-    def logged_in?
+    def logged_in_as_user?
       unless session[:user_id]
         flash[:notice] = "Du skal først logge ind."
         redirect_to log_in_path
         return false
       else
+        @tabs ||= Content.user_pages
         return true
       end
     end  
@@ -240,6 +228,7 @@ class ApplicationController < ActionController::Base
         return false
       else
         if current_user.category == 'Editor' || current_user.category == 'Admin'
+          @tabs ||= Content.editor_pages + Content.user_pages
           return true
         else
           if current_user.category == 'User'
