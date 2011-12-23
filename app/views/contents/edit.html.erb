@@ -27,8 +27,10 @@
 
 <p>
     <b>Parent</b><br />
-    <%= f.text_field :parent_id %>
-  </p>
+    <%#= f.text_field :parent_id %>
+	<%= collection_select (:content, :parent_id, Content.content_menu_items, :id, :navlabel_and_id, :include_blank => true, :class => 'menuliste' ) %>
+</p>
+
 
 <p>
     <b>Controller</b><br />

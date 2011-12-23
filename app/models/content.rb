@@ -15,5 +15,11 @@ class Content < ActiveRecord::Base
   
   belongs_to :resource, :polymorphic => true
   
+  named_scope :content_menu_items, :conditions => ["resource_type = 'menu' OR resource_type = 'page'", true], :order => 'position'
+  
+  def navlabel_and_id
+    "ID:#{id} - #{navlabel}"
+  end
+  
   # resource ovenfor er bare et navn. Det kunne have været hvadsomhelst, men i tabellen contents hedder de 2 vigtigste feltnavne så: resource_id og resource_type
 end

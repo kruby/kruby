@@ -27,7 +27,7 @@
     <td><%= post.title %></td>
     <td><%= truncate(post.body, :length => 60) %></td>
     <td class="pos"><%= User.find(post.user_id).blogname rescue nil %></td>
-	<td class="pos"><%= nice_date(post.created_at) %></td>
+	<td class="pos"><%= nice_date(post.created_at) rescue nil %></td>
 	<!-- <td class='pos'><%#= image_tag post.photo.url(:thumb) rescue nil %></td> -->
     <!-- <td class="pos"><%= post.priority %></td> -->
     <!-- <td><%#= link_to 'Vis', post %></td> -->

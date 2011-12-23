@@ -84,5 +84,9 @@ module ApplicationHelper
     @current_tab += 1
   end
   
+  def week(convert_this_time_to_week)
+    Time.convert_this_time_to_week.strftime('%W')
+  end
+  
    
 end

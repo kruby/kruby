@@ -65,7 +65,7 @@
 	    <td><%= Relation.find(hour.relation_id).company rescue nil %></td>
 		<td width=375px><%= hour.description %></td>
 	    <td class='pos'><%= number_with_delimiter(hour.number, :locale => :da) %></td>
-	    <td class='dato'><%= nice_date(hour.date) %></td>
+	    <td class='dato'><%= nice_date(hour.date) rescue nil %></td>
 	    <td>
 		<% if current_user.id == hour.user_id %>
 			<%= link_to '[Ret]', edit_hour_path(hour) %>
