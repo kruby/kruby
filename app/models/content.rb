@@ -15,7 +15,7 @@ class Content < ActiveRecord::Base
   
   belongs_to :resource, :polymorphic => true
   
-  named_scope :content_menu_items, :conditions => ["resource_type = 'menu' OR resource_type = 'page'", true], :order => 'position'
+  scope :content_menu_items, :conditions => ["resource_type = 'menu' OR resource_type = 'page'", true], :order => 'position'
   
   def navlabel_and_id
     "ID:#{id} - #{navlabel}"

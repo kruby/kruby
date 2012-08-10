@@ -15,12 +15,8 @@
 <table>
   <tr>
 	<!-- <th>ID</th> -->
-    <th>Bruger</th>
-	<th><%= sort_link @search, :relation_company, 'Relation', :default_order => :desc  %></th>
-    <th width='245'>Beskrivelse</th>
-    <th>Ant.</th>
-    <th class='pos'><%= sort_link @search, :relation_company_and_date, 'Dato', :default_order => :desc  %></th>
-	<th>Handling</th>
+    <th colspan=5 class='hours_headline' >Kunde og status</th>
+	<th class='pos'>Handling</th>
   </tr>
 
 <% for hour in @hours %>
@@ -31,8 +27,8 @@
 		<% if @relation_id != @relation_id_previous %>
 
 			<% @relation_id_previous = @relation_id %>
-					<tr class='background-row'><td colspan=6></td></tr>
-					<tr><td colspan=6><b>
+					<!-- <tr class='background-row'><td colspan=6></td></tr> -->
+					<tr><td colspan=5><b>
 						<div id="voucher_status">
 							<%= @relation.company rescue nil %> – 
 							<span id="voucher_headline">Klippekort status: </span>
@@ -48,32 +44,38 @@
 							
 							</span>
 						</div>
-					</b></td></tr>
+					</b></td>
+					<% if session[:relation_id] == hour.relation_id.to_s %>
+						
+							<td class='pos'>
+								<div id="voucher_status">
+									<%= link_to '[Skjul]', hide_months_path(:relation_id => session[:relation_id]) %>
+								</div>
+							</td>
+								
+							</tr>
+
+
+					<% else %>
+					
+						<td class='pos'>
+							<div id="voucher_status">
+								<%= link_to '[Vis]', show_months_path(:relation_id => @relation_id) %>
+							</div>
+						</td>
+						</tr>
+					
+					<% end %>
 		<% end %>
-
-
-	<% if session[:hour_id] == hour.id.to_s %>
-
-		<% @hour = hour %>
-
-		<%= render :partial => "hours/index_edit" %>
-
-	<% else %>
-	  <tr>
-		<!-- <td class='pos'><%#= hour.id %></td> -->
-	    <td class='pos'><%= User.find(hour.user_id).blogname rescue nil %></td>
-	    <td><%= Relation.find(hour.relation_id).company rescue nil %></td>
-		<td width=375px><%= hour.description %></td>
-	    <td class='pos'><%= number_with_delimiter(hour.number, :locale => :da) %></td>
-	    <td class='dato'><%= nice_date(hour.date) rescue nil %></td>
-	    <td>
-		<% if current_user.id == hour.user_id %>
-			<%= link_to '[Ret]', edit_hour_path(hour) %>
-			<%= link_to '[Slet]', hour, :confirm => 'Er du sikker?', :method => :delete %>
+		
+		<%#= session[:relation_id] rescue nil %>
+		<% if session[:relation_id] == hour.relation_id.to_s %>
+		
+			<%= render :partial => "hours/partials/months_specified", :locals => {:hour => hour} %>
+		
 		<% end %>
-		<%= link_to '[Vis]', hour %></td>
-	  </tr>
-	<% end %>
+		
+
 <% end %>
 
 <!-- <tr>

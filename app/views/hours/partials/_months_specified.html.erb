@@ -1,0 +1,28 @@
+<% @month_name = l hour.date, :format => :month %>
+<% @month_number = hour.date.month %>
+<!-- l betyder at vi bruger I18 på hour.date og formatet :month under :date delen i da.yml filen -->
+		
+<% if @month_number != @month_previous %>
+
+	<% @month_previous = @month_number %>
+			
+	<% if session[:relation_id] == hour.relation_id.to_s and session[:month] == @month_number.to_s %>
+		<tr class='background-row'><td colspan=6></td></tr>
+		<tr>
+			<td colspan=5><span class='month'><%= @month_name.capitalize %></span></td>
+			<td class='pos'><%= link_to '[Skjul]', hide_days_path(:relation_id => session[:relation_id]) %></td>
+		</tr>
+
+		
+		<%= render :partial => "hours/partials/days_specified", :locals => {:hour => hour} %>
+		
+	<% else %>
+		<tr>
+			<td colspan=5><span class='month'><%= @month_name.capitalize %></span></td>
+			<td class='pos'><%= link_to '[Vis]', show_days_path(:relation_id => session[:relation_id], :month => @month_number) %></td>
+		</tr>
+	<% end %>
+
+<% end %>
+
+

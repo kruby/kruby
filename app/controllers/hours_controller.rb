@@ -22,6 +22,31 @@ class HoursController < ApplicationController
     end
   end
   
+  def show_months
+    if params[:relation_id]
+      session[:relation_id] = params[:relation_id]
+    end
+    redirect_to(:action => 'index')
+  end
+  
+  def hide_months
+    session[:relation_id] = nil
+    session[:month] = nil
+    redirect_to(:action => 'index')
+  end
+  
+  def show_days
+    if params[:month]
+      session[:month] = params[:month]
+    end
+    redirect_to(:action => 'index')
+  end
+  
+  def hide_days
+    session[:month] = nil
+    redirect_to(:action => 'index')
+  end
+  
   def timeliste
     @search = Hour.timeliste(session[:relation_id]).search(params[:search])
     @hours = @search.order(:date.desc).all 

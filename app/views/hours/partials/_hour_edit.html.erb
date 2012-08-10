@@ -1,9 +1,9 @@
 
   <tr>
 	<% form_for(@hour) do |f| %>
-    <td class='pos'><%= User.find(@hour.user_id).blogname rescue nil %><%= f.hidden_field(:user_id, :value => current_user.id) %>
-	</td>
-	<td><%= f.collection_select(:relation_id, Relation.all, :id, :company, :prompt => 'Vælg evt. Relation', :include_blank => true ) %></td>
+    <!-- <td class='pos'><%#= User.find(@hour.user_id).blogname rescue nil %><%= f.hidden_field(:user_id, :value => current_user.id) %>
+    	</td> -->
+	<td colspan=2><%= f.collection_select(:relation_id, Relation.all, :id, :company, :prompt => 'Vælg evt. Relation', :include_blank => true ) %></td>
 	<!-- <td class='pos'><%#= Relation.find(@hour.relation_id).vouchers.sum(:number) - Relation.find(@hour.relation_id).hours.sum(:number) rescue nil %></td> -->
     <td><%= f.text_field :description, :size => '30', :class => 'felter' %></td>
     <td><%= f.number_field :number, :size => '3', :class => 'center'%></td>
