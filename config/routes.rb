@@ -110,9 +110,11 @@ Kruby::Application.routes.draw do
    #view_product ':name', :controller => 'products', :action => 'show'
    match ':name' => 'products#show', :as => :view_product
    
-   match 'hours/months/:relation_id' => 'hours#show_months', :as => :show_months
-   match 'hours/months/days/:relation_id/:month' => 'hours#show_days', :as => :show_days
+   match 'hours/years_show/:relation_id' => 'hours#show_years', :as => :show_years
+   match 'hours/months_show/:relation_id/:year' => 'hours#show_months', :as => :show_months
+   match 'hours/months/days_show/:relation_id/:month' => 'hours#show_days', :as => :show_days
    
+   match 'hours/years_hide/:relation_id' => 'hours#hide_years', :as => :hide_years
    match 'hours/months_hide/:relation_id' => 'hours#hide_months', :as => :hide_months
    match 'hours/months/days_hide/:relation_id' => 'hours#hide_days', :as => :hide_days
    

@@ -36,7 +36,7 @@
 }
 
 #admin_liste th.hour_header{
-	padding-left: 12px;
+	padding-left: 28px;
 }
 
 #admin_liste th.hours_headline{
@@ -258,13 +258,20 @@
 }
 
 #admin_liste td.hour_description {
-	padding-left: 12px;
+	padding-left: 28px;
 }
 
 #admin_liste td span.month {
 	font-weight: bold;
-	padding-left: 4px;
+	padding-left: 16px;
 	color: #679FBA;
+}
+
+#admin_liste td span.year {
+	font-size: 12px;
+	font-weight: bold;
+	padding-left: 8px;
+	color: #000;
 }
 
 

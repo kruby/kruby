@@ -21,17 +21,34 @@ class HoursController < ApplicationController
       format.xml  { render :xml => @hours }
     end
   end
+
+  def show_years
+    if params[:relation_id]
+      session[:relation_id] = params[:relation_id]
+      session[:year] = nil
+      session[:month] = nil
+    end
+    redirect_to(:action => 'index')
+  end
+
+  def hide_years
+    session[:relation_id] = nil
+    session[:year] = nil
+    session[:month] = nil
+    redirect_to(:action => 'index')
+  end
   
   def show_months
     if params[:relation_id]
-      session[:relation_id] = params[:relation_id]
+      #session[:relation_id] = params[:relation_id]
+      session[:year] = params[:year]
     end
     redirect_to(:action => 'index')
   end
   
   def hide_months
-    session[:relation_id] = nil
-    session[:month] = nil
+    #session[:relation_id] = nil
+    session[:year] = nil
     redirect_to(:action => 'index')
   end
   

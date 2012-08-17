@@ -49,7 +49,7 @@
 						
 							<td class='pos'>
 								<div id="voucher_status">
-									<%= link_to '[Skjul]', hide_months_path(:relation_id => session[:relation_id]) %>
+									<%= link_to '[Skjul]', hide_years_path(:relation_id => session[:relation_id]) %>
 								</div>
 							</td>
 								
@@ -60,7 +60,7 @@
 					
 						<td class='pos'>
 							<div id="voucher_status">
-								<%= link_to '[Vis]', show_months_path(:relation_id => @relation_id) %>
+								<%= link_to '[Vis]', show_years_path(:relation_id => @relation_id) %>
 							</div>
 						</td>
 						</tr>
@@ -71,7 +71,7 @@
 		<%#= session[:relation_id] rescue nil %>
 		<% if session[:relation_id] == hour.relation_id.to_s %>
 		
-			<%= render :partial => "hours/partials/months_specified", :locals => {:hour => hour} %>
+			<%= render :partial => "hours/partials/years_specified", :locals => {:hour => hour} %>
 		
 		<% end %>
 		

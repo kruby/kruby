@@ -11,5 +11,7 @@ class Hour < ActiveRecord::Base
   
   scope :month_hours, lambda { |this_month| where("date BETWEEN '#{this_month.to_datetime.beginning_of_month}' AND '#{this_month.to_datetime.end_of_month}'") }
   
+  scope :year_hours, lambda { |this_year| where("date BETWEEN '#{this_year.to_datetime.beginning_of_year}' AND '#{this_year.to_datetime.end_of_year}'") }
+  
   #scope :customer_hours, lambda { |relation_id, this_month| where(:relation_id => relation_id) and where("date BETWEEN '#{this_month.to_datetime.beginning_of_month}' AND '#{this_month.to_datetime.end_of_month}'")  }
 end
