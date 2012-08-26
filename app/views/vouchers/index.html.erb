@@ -25,10 +25,10 @@
 
   <tr>
     <td><%= voucher.description %></td>
-    <td><%= voucher.number %></td>
+    <td class='pos'><%= voucher.number %></td>
     <td><%= Relation.find(voucher.relation_id).company %></td>
     <td><%= voucher.date %></td>
-	<td class='pos'><%= voucher.date + 1.year - voucher.date %></td>
+	<td class='pos'><%= voucher.date + 1.year - Time.now.to_date %></td>
 	<td class='pos'>
 		<% if @result < 0 %>
 			<span id='voucher_red'> <%= @result %> klip mangler</span>) 
