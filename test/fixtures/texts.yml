@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  body: MyText
+  product_id: 1
+  number: 9.99
+
+two:
+  title: MyString
+  body: MyText
+  product_id: 1
+  number: 9.99

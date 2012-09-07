@@ -1,5 +1,7 @@
 Kruby::Application.routes.draw do
   
+  resources :texts
+
   resources :vouchers
 
   #resources :attachments, :collection => { :destroy_from_post => :delete }

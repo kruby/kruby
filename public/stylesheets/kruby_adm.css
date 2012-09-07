@@ -159,7 +159,7 @@ margin: 0px;
 	line-height: 20px;
 }
 
-#admin_formular p b{
+#admin_formular p b, #admin_liste div.field label {
 	position: relative;
 	font-size:12px;
 	font-weight:bolder;
@@ -197,7 +197,7 @@ height:400px;*/
 	margin-left: 2px;
 	text-decoration:none;
 }
-#admin_formular .button {
+#admin_formular .button, #admin_liste div.actions.input {
 	border-collapse: collapse;
 	width: auto;
 	font-size:11px;
@@ -224,7 +224,7 @@ height:400px;*/
 	
 }
 
-#admin_formular textarea {
+#admin_formular textarea, #admin_liste textarea {
 	font-size:12px;
 	padding: 2px;
 	background-color: #FFFFFF;

@@ -1,0 +1,32 @@
+<%= render :partial => "layouts/menu" %>
+<div id="admin_liste">
+
+<h1>Listing texts</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Product</th>
+    <th>Number</th>
+    <th>Handling</th>
+  </tr>
+
+<% @texts.each do |text| %>
+  <tr>
+    <td><%= text.title %></td>
+    <td><%= text.body %></td>
+    <td class='pos'><%= text.product_id %></td>
+    <td class='pos'><%= text.number %></td>
+    <td>
+		<%= link_to '[Vis]', text %>
+		<%= link_to '[Rediger]', edit_text_path(text) %>
+		<%= link_to '[Slet]', text, :confirm => 'Er du sikker?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to '[Ny tekst]', new_text_path %>
+
+</div>

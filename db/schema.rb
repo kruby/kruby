@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110920115241) do
+ActiveRecord::Schema.define(:version => 20120907114200) do
 
   create_table "assets", :force => true do |t|
     t.string   "description"
@@ -144,6 +144,15 @@ ActiveRecord::Schema.define(:version => 20110920115241) do
     t.integer  "search_lock"
     t.string   "homepage"
     t.string   "email"
+  end
+
+  create_table "texts", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "product_id"
+    t.decimal  "number",     :precision => 10, :scale => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
