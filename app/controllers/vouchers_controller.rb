@@ -63,7 +63,7 @@ class VouchersController < ApplicationController
 
     respond_to do |format|
       if @voucher.update_attributes(params[:voucher])
-        format.html { redirect_to(@voucher, :notice => 'Klippekortet blev opdateret.') }
+        format.html { redirect_to(:action => 'index', :notice => 'Klippekortet blev opdateret.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

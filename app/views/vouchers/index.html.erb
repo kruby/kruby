@@ -26,7 +26,7 @@
   <tr>
     <td><%= voucher.description %></td>
     <td class='pos'><%= voucher.number %></td>
-    <td><%= Relation.find(voucher.relation_id).company %></td>
+    <td><%= Relation.find(voucher.relation_id).company rescue nil %></td>
     <td><%= voucher.date %></td>
 	<td class='pos'><%= voucher.date + 1.year - Time.now.to_date %></td>
 	<td class='pos'>
