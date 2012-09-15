@@ -1,6 +1,6 @@
 
 
-<% form_for(@post) do |f| %>
+<%= form_for(@post) do |f| %>
 <%= f.hidden_field(:user_id, :value => current_user.id) %>
 <h1>Nyt indlæg til bloggen
 	<%= f.submit "[Opret]", :class => 'button' %><%= link_to '[Vis]', @post %> <%= link_to '[Tilbage]', bloggen_path %>

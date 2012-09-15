@@ -1,6 +1,6 @@
 
   <tr>
-	<% form_for(@assetables) do |f| %>
+	<%= form_for(@assetables) do |f| %>
     <td class='pos'><%= User.find(asset_line.user_id).blogname rescue nil %><%= f.hidden_field(:user_id, :value => current_user.id) %>
 	</td>
     <td><%= f.text_field :description, :size => '30', :class => 'felter' %></td>

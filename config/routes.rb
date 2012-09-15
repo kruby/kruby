@@ -71,7 +71,7 @@ Kruby::Application.routes.draw do
   
   #add_to_post '/assets/add_to_post/:id', :controller => 'assets', :action => 'add_to_post'
   match '/assets/add_to_post/:id' => 'assets#add_to_post', :as => :add_to_post
-  
+    
   #bloggen '/bloggen', :controller => 'posts', :action => 'blog'
   match '/bloggen' => 'posts#blog', :as => :bloggen
   

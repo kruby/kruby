@@ -4,7 +4,7 @@
 
 <%= error_messages_for :page %>
 
-<% form_for(@page) do |f| %>
+<%= form_for(@page) do |f| %>
 <h1>Redigering af indholdssider
 	<%= f.submit "[Opdater]", :class => 'button'%>
 	<%= link_to '[Vis]', @page %>

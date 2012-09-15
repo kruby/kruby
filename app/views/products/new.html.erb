@@ -4,7 +4,7 @@
 
 <%= error_messages_for :product %>
 
-<% form_for(@product) do |f| %>
+<%= form_for(@product) do |f| %>
   <p>
     <label for="name" class = 'ov'>Navn</label><br />
     <%= f.text_field :name %>

@@ -12,7 +12,7 @@
 	<th>Handling</th>
   </tr>
 
-<% form_for(@hour) do |f| %>
+<%= form_for(@hour) do |f| %>
   <tr>
     <td class='pos'><%= current_user.blogname %><%= f.hidden_field(:user_id, :value => current_user.id) %></td>
     <td><%= f.collection_select(:relation_id, Relation.with_user_id, :id, :company, :prompt => 'Vælg evt. Relation', :include_blank => true ) %></td>

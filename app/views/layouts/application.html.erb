@@ -3,17 +3,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-<script type="text/javascript" src="http://gettopup.com/releases/latest/top_up-min.js"></script>
-<!-- <script type="text/javascript" src="/javascripts/top_up-min.js"></script> -->
+<!-- <script type="text/javascript" src="http://gettopup.com/releases/latest/top_up-min.js"></script> -->
+<!-- <script type="text/javascript" src="/javascripts/topup/top_up-min.js"></script> -->
+
+<!-- FANCYBOX -->
+<!-- Add jQuery library -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+<!-- Add mousewheel plugin (this is optional) -->
+<script type="text/javascript" src="/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.0" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.0"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.3" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.3"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.3"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.6" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.6"></script>
+
+<!-- SLUT FANCYBOX -->
+
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <link href="/images/mini.gif" rel="shortcut icon"/>
+
 <title><%= @pagetitle rescue nil %></title>
 <%= stylesheet_link_tag 'kruby_adm' %>
 <%= stylesheet_link_tag 'kruby_tabeller' %>
 <%= javascript_include_tag :defaults %>
 <%= javascript_include_tag 'drop_down' %>
-<%= javascript_include_tag "flashobject" %>
-<%= javascript_include_tag 'swfobject' %>
+<%#= javascript_include_tag "flashobject" %>
+<%#= javascript_include_tag 'swfobject' %>
 <%= google_analytics_js.html_safe %>
 <%= csrf_meta_tag %>
 

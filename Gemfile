@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.10'
+gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -10,10 +10,21 @@ gem "RedCloth"
 gem "will_paginate", "~> 3.0.pre4"
 gem "newrelic_rpm"
 gem "bcrypt-ruby", :require => "bcrypt"
-gem "paperclip"
+gem "paperclip", "~> 2.7.0"
 gem "i18n"
-gem "meta_where"
-gem "meta_search"
+#gem "meta_where"
+gem "ransack"
+#gem "meta_search"
+gem "acts_as_tree", "~> 0.2.0"
+
+group :assets do
+  gem 'sass-rails', "~> 3.2.3"
+  gem 'coffee-rails', "~> 3.2.1"
+  gem 'uglifier', ">= 1.0.3"
+end
+
+gem 'jquery-rails'
+# gem 'fancybox-rails', :git => 'https://github.com/sverigemeny/fancybox-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -6,31 +6,56 @@
 	<th>Type</th>
     <th>Description</th>
     <th>Post ID</th>
+	<th>Attach. ID</th>
 	<th></th>
   </tr>
 
 <% for attachment in @attachments %>
 
 <% @image = Asset.find(attachment.asset_id).photo.url(:thumb) rescue nil%>
-<% @image_original = Asset.find(attachment.asset_id).photo.url(:original) rescue nil%>
+<% @image_show = Asset.find(attachment.asset_id).photo.url(:original) rescue nil%>
 <% @description = Asset.find(attachment.asset_id).description %>
 
   <tr>
     <td class='thumb' id='images'>
 	<%#= link_to image_tag(@image), Asset.find(attachment.asset_id), :toptions => "shaded = 0, overlayClose = 0,  resizable = 0, group = 'images'" %>
 	<%#= link_to image_tag(@image), Asset.find(attachment.asset_id), :class => 'shaded' %>
-	<%= link_to image_tag(@image, :alt => @description), Asset.find(attachment.asset_id) %>
+	<%= link_to image_tag(@image, :alt => @description), @image_show, {:class => "fancybox-button", :rel => "fancybox-button", :title => Asset.find(attachment.asset_id).description} %>
 	</td>
 	<td><%= attachment.attachable_type %></td>
     <td><%= @description %></td>
     <td class='pos'><%= attachment.attachable_id %></td>
+	<td class='pos'><%= attachment.id %></td>
     <td><%#= link_to '[Vis]', attachment %>
 		<%#= link_to '[Ret]', edit_attachment_path(attachment) %>
 		<%#= link_to '[Slet]', destroy_from_post_attachments_path(:post_id => params[:id], :id => attachment.id), :confirm => 'Er du sikker?', :method => :delete %>
-		<%= link_to '[Fjern]', destroy_from_post_attachments_path(:post_id => params[:id], :id => attachment.id), :method => :delete %></td>
+		<%#= link_to '[Fjern]', :controller => 'attachments', :action => 'destroy_from_post', :post_id => attachment.attachable_id, :id => attachment.id %>
+		<%= link_to '[Slet]', destroy_from_post_path(:post_id => params[:id], :id => attachment.id) %>
+		</td>
+		
   </tr>
 
+
+<% content_for :javascript do %>
+
+	<script>
+        $(document).ready(function() {
+			$(".fancybox-button").fancybox({
+				prevEffect		: 'none',
+				nextEffect		: 'none',
+				closeBtn		: false,
+				helpers		: {
+					title	: { type : 'inside' },
+					buttons	: {}
+				}
+			});
+		});
+    </script>
+
 <% end %>
+
+<% end %>
+
 
 </table>
 

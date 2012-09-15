@@ -4,11 +4,15 @@
 <h1>Time registrering <%= link_to '[Ny registrering]', new_hour_path %><%= link_to '[Find alle]', hours_path %></h1>
 
 
-<%= form_for @search do |f| %>    
+<%= search_form_for @q do |f| %>    
     <p>
-		<%= f.label :firma %>  
-    	<%= f.text_field :relation_company_contains, :size => 16 %>   
+		<%= f.label :company, 'Firma' %>  
+    	<%= f.text_field :relation_company_cont, :size => 16 %>   
 		<%= f.submit "[Søg]", :class => 'button' %>
+		
+		<%#= f.label :firma %>  
+    	<%#= f.text_field :relation_company_contains, :size => 16 %>   
+		<%#= f.submit "[Søg]", :class => 'button' %>
 	</p>
 <% end %>
 
@@ -62,7 +66,7 @@ Brugte timer:<br>
 						
 							<td class='pos'>
 								<div id="voucher_status">
-									<%= link_to '[Skjul]', hide_years_path(:relation_id => session[:relation_id]) %>
+									<%= link_to '[Skjul]', hide_years_path(:relation_id => session[:relation_id], :q => params[:q]) %>
 								</div>
 							</td>
 								
@@ -73,7 +77,7 @@ Brugte timer:<br>
 					
 						<td class='pos'>
 							<div id="voucher_status">
-								<%= link_to '[Vis]', show_years_path(:relation_id => @relation_id) %>
+								<%= link_to '[Vis]', show_years_path(:relation_id => @relation_id, :q => params[:q]) %>
 							</div>
 						</td>
 						</tr>

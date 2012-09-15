@@ -8,11 +8,11 @@ class HoursController < ApplicationController
   # GET /hours
   # GET /hours.xml
   def index
-    #Product.order(:released_at.desc)
-    #@search = Hour.order(:relation_id.desc).search(params[:search])
-    @search = Hour.search(params[:search])
-    @hours = @search.order(:relation_id.desc, :date.desc).all
-    #DET ER VIGTIGT AT PLACERE ORDER HER, DA MAN SÅ OGSÅ HAR MULIGHED FOR AT SORTERE I SIT VIEW EFTERFØLGENDE
+    @q = Hour.search(params[:q])
+    @hours = @q.result.order('relation_id DESC, date DESC').all
+    #@search = Hour.search(params[:search])
+    #@hours = @search.order('relation_id DESC, date DESC').all
+      #DET ER VIGTIGT AT PLACERE ORDER HER, DA MAN SÅ OGSÅ HAR MULIGHED FOR AT SORTERE I SIT VIEW EFTERFØLGENDE
     
     #@hours = Hour.find(:all)
     
@@ -28,14 +28,18 @@ class HoursController < ApplicationController
       session[:year] = nil
       session[:month] = nil
     end
-    redirect_to(:action => 'index')
+    @q = Hour.search(params[:q])
+    @hours = @q.result.order('relation_id DESC, date DESC').all
+    render(:action => 'index')
   end
 
   def hide_years
     session[:relation_id] = nil
     session[:year] = nil
     session[:month] = nil
-    redirect_to(:action => 'index')
+    @q = Hour.search(params[:q])
+    @hours = @q.result.order('relation_id DESC, date DESC').all
+    render(:action => 'index')
   end
   
   def show_months
@@ -43,30 +47,38 @@ class HoursController < ApplicationController
       #session[:relation_id] = params[:relation_id]
       session[:year] = params[:year]
     end
-    redirect_to(:action => 'index')
+    @q = Hour.search(params[:q])
+    @hours = @q.result.order('relation_id DESC, date DESC').all
+    render(:action => 'index')
   end
   
   def hide_months
     #session[:relation_id] = nil
     session[:year] = nil
-    redirect_to(:action => 'index')
+    @q = Hour.search(params[:q])
+    @hours = @q.result.order('relation_id DESC, date DESC').all
+    render(:action => 'index')
   end
   
   def show_days
     if params[:month]
       session[:month] = params[:month]
     end
-    redirect_to(:action => 'index')
+    @q = Hour.search(params[:q])
+    @hours = @q.result.order('relation_id DESC, date DESC').all
+    render(:action => 'index')
   end
   
   def hide_days
     session[:month] = nil
-    redirect_to(:action => 'index')
+    @q = Hour.search(params[:q])
+    @hours = @q.result.order('relation_id DESC, date DESC').all
+    render(:action => 'index')
   end
   
   def timeliste
-    @search = Hour.timeliste(session[:relation_id]).search(params[:search])
-    @hours = @search.order(:date.desc).all 
+    @q = Hour.search(params[:q])
+    @hours = @q.result.order('relation_id DESC, date DESC').all 
     #@hours = Hour.timeliste(current_user.relation_id).order('date desc')
     @relation = Relation.find(session[:relation_id])  
   end
@@ -98,7 +110,9 @@ class HoursController < ApplicationController
   def edit
     #@hour = Hour.find(params[:id])
     session[:hour_id] = params[:id]
-    redirect_to(:action => 'index')
+    @q = Hour.search(params[:q])
+    @hours = @q.result.order('relation_id DESC, date DESC').all
+    render(:action => 'index')
   end
 
   # POST /hours

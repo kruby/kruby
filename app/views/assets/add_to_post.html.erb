@@ -1,7 +1,7 @@
 <%= render :partial => "layouts/menu" %>
 <div id="admin_liste">
 
-<% form_tag edit_multiple_assets_path do %>
+<%= form_tag edit_multiple_assets_path do %>
 <h1>Tilføj fotos til artikel nr. <%= params[:id] %> <%= '"' + Post.find(params[:id]).title + '"' %> <%= submit_tag "[Tilføj fotos]", :class => 'button' %> <%= link_to '[Tilbage]', edit_post_path(params[:id]) %></h1>
 
 

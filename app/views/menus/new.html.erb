@@ -5,7 +5,7 @@
 
 <%= error_messages_for :menu %>
 
-<% form_for(@menu) do |f| %>
+<%= form_for(@menu) do |f| %>
 
   <p>
     <b>Name</b><br />
@@ -30,7 +30,7 @@
 
 
   <p>
-    <%= f.submit "[Opret]" %>
+    <%= f.submit "[Opret]", :class => 'button' %>
   </p>
 <% end %>
 

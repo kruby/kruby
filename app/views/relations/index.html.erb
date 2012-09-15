@@ -1,7 +1,7 @@
 <%= render :partial => "layouts/menu" %>
 
 <div id="admin_liste">
-<% form_tag relations_path, :method => 'get' do %>
+<%= form_tag relations_path, :method => 'get' do %>
 <h1>Relationer i Kruby <%= link_to '[Ny relation]', new_relation_path %></h1>
 <p>
 	<%= text_field_tag :search, params[:search] %>

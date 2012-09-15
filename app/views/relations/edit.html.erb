@@ -1,7 +1,7 @@
 <%= render :partial => "layouts/menu" %>
 <div id="admin_formular">
 	
-<% form_for(@relation) do |f| %>
+<%= form_for(@relation) do |f| %>
 <%= f.hidden_field :lock_version %>
 	
 <h1>Redigering af relation

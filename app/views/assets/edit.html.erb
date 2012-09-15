@@ -1,9 +1,19 @@
 <%= render :partial => "layouts/menu" %>
 <div id="admin_formular">	
 <h1>Ny upload</h1>
-<% form_for @asset, :html => { :multipart => true } do |f| %>
+<%= form_for @asset, :html => { :multipart => true } do |f| %>
 <% @image =  @asset.photo.url(:medium) %> 
-  <%= f.error_messages %>
+  <% if @asset.errors.any? %>
+    <div id="error_explanation">
+	<h2><%= @asset.errors.count %>Følgende fejl skal rettes</h2>
+
+      <ul>
+      <% @asset.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <p>
     <%= f.label :description %><br />

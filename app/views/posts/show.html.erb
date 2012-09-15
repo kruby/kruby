@@ -21,7 +21,7 @@
 							<% @image = Asset.find(attachment.asset_id).photo.url(:thumb) %>
 							<% @image_show = Asset.find(attachment.asset_id).photo.url(:original)%> 
 
-							<span class='thumb' id='images_<%=@post.id%>'><%= link_to image_tag(@image, :alt => @alt), @image_show %></span>
+							<span class='thumb' id='images'><%= link_to image_tag(@image, :alt => @alt), @image_show, {:class => "fancybox-button", :rel => "fancybox-button", :title => Asset.find(attachment.asset_id).description} %></span>
 							<!-- HER HAR VI BRUGT POST.ID TIL AT GØRE GRUPPEN AF FOTOS UNIK, SOM DET OGSÅ SES NEDERST I JAVASCRIPT I GROUP -->
 
 							<% end %>
@@ -48,29 +48,22 @@
 
 		<% content_for :javascript do %>
 
-		<% javascript_tag do %>
-
-		TopUp.addPresets({
-			"#images_<%= @post.id %> a": {
-				group: "images_<%= @post.id %>",
-				title: "{alt} - {current} af {total}",
-				layout: "dashboard",
-				modal: 1,
-				resizable: 0,
-				readAltText: 1,
-				shaded: 0,
-				effect: 'switch'
-			},
-			".shaded": {
-				shaded: 1
-			}
-		});
-
+			<script>
+		        $(document).ready(function() {
+					$(".fancybox-button").fancybox({
+						prevEffect		: 'none',
+						nextEffect		: 'none',
+						closeBtn		: false,
+						helpers		: {
+							title	: { type : 'inside' },
+							buttons	: {}
+						}
+					});
+				});
+		    </script>
+	
 		<% end %>
-
-		<% end %>
-
-		<!-- <div id="kontakt_tekst"> Kruby ApS - Bredhøjsvinget 9 - 8600 Silkeborg - Tlf. +45 40 19 68 81 </div>  -->
+	
 
 	</div>
 

@@ -5,7 +5,7 @@
 
 <%= error_messages_for :menu %>
 
-<% form_for(@menu) do |f| %>
+<%= form_for(@menu) do |f| %>
 
 <%= f.submit "[Opdater]", :class => 'button'%>
 	<%= link_to '[Vis]', @menu %>

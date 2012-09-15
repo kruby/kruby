@@ -7,7 +7,7 @@
 	
 	<div class="topline">
 	<span class="title">
-	<%#= post.id %><%= post.title %><%#= truncate(post.title, :length => 35) %></span> - <span class="author"><%= User.find(post.user_id).blogname %></span> - <span class="date_time"><%= post.created_at.strftime("%d.%m.%y - (%H:%M)") %></span>
+	<%#= post.id %><%= post.title %><%#= truncate(post.title, :length => 35) %></span> - <span class="author"><%= User.find(post.user_id).blogname rescue nil %></span> - <span class="date_time"><%= post.created_at.strftime("%d.%m.%y - (%H:%M)") %></span>
 
 	<span class="link">
 	<% if current_user.id == post.user_id %>
@@ -61,7 +61,7 @@
 						<div class="topline">
 					
 						<span class="title"><%#= comment.id %><%= comment.title %><%#= truncate(comment.title, length = 35) %></span>
-						 - <span class="author"><%= User.find(comment.user_id).blogname %></span>
+						 - <span class="author"><%= User.find(comment.user_id).blogname rescue nil %></span>
 						 - <span class="date_time"><%= comment.created_at.strftime("%d.%m.%y - (%H:%M)") %></span>
 						<span class="link">  
 						<% if current_user.id == comment.user_id %>

@@ -4,7 +4,7 @@
 
   <% if @voucher.errors.any? %>
     <div id="error_explanation">
-	<h2><%#= @voucher.errors.count %>Følgende fejl skal rettes</h2>
+	<h2><%= @voucher.errors.count %>Følgende fejl skal rettes</h2>
 
       <ul>
       <% @voucher.errors.full_messages.each do |msg| %>

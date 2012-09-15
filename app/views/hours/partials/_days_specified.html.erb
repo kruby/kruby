@@ -31,7 +31,7 @@
 				<td class='dato'><%= nice_date(hour.date) rescue nil %></td>
 				<td>
 					<% if current_user.id == hour.user_id %>
-						<%= link_to '[Ret]', edit_hour_path(hour) %>
+						<%= link_to '[Ret]', edit_hour_path(hour, :q => params[:q]) %>
 						<%= link_to '[Slet]', hour, :confirm => 'Er du sikker?', :method => :delete %>
 					<% end %>
 					<%#= link_to '[Vis]', hour %>
