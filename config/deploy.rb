@@ -74,6 +74,8 @@ set :branch, "master"
 set :global_shared_dirs, %w(public/uploads public/assets)
 # set :global_shared_files, %w(config/database.yml)
 
+load 'deploy/assets'
+
 # SSL Certificates. If you specify an SSL certificate name then
 # the gem will create an 'https' configuration for this application
 # TODO: Upload and install the keys on the server
