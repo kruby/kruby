@@ -225,7 +225,7 @@ class PostsController < ApplicationController
      
       respond_to do |format|
         #format.html { redirect_to(posts_url) }
-        format.html { redirect_to(:action => 'list', :page => session[:page]) }
+        format.html { redirect_to(:action => 'index', :page => session[:page]) }
         format.xml  { head :ok }
       end
   end

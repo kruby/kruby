@@ -96,7 +96,7 @@ class AssetsController < ApplicationController
     @asset.destroy
 
     respond_to do |format|
-      format.html { redirect_to(assets_url) }
+      format.html { redirect_to(:layout => 'index') }
       format.xml  { head :ok }
     end
   end

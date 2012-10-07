@@ -61,6 +61,8 @@ Kruby::Application.routes.draw do
   
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   
+  match '/attachments/destroy_from_post/:id/:post_id' => 'attachments#destroy_from_post', :as => :destroy_from_post
+  
   match '/timeliste' => 'hours#timeliste', :as => :timeliste
   
   #access_denied_admin '/ingen_adgang', :controller => 'users', :action => 'no_access_admin'
