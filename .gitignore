@@ -9,3 +9,5 @@ db/data_backup/*
 doc/api 
 doc/app
 *.log
+public/uploads
+public/.DS_Store
