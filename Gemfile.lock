@@ -32,6 +32,8 @@ GEM
     acts_as_tree (0.2.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    brightbox (2.3.9)
+      capistrano (>= 2.5)
     builder (3.0.3)
     capistrano (2.13.4)
       highline
@@ -137,6 +139,7 @@ DEPENDENCIES
   RedCloth
   acts_as_tree (~> 0.2.0)
   bcrypt-ruby
+  brightbox
   capistrano
   coffee-rails (~> 3.2.1)
   i18n
