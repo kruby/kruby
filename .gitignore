@@ -11,3 +11,4 @@ doc/app
 *.log
 public/uploads
 public/.DS_Store
+config/deploy.local.rb
