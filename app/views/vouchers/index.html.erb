@@ -10,10 +10,12 @@
   <tr>
     <th>Beskrivelse</th>
     <th>Antal</th>
-    <th>Relation</th>
+    <!-- <th>Relation</th> -->
+	<th><%= sort_link @q, :relation_id, 'Kunde', :default_order => :desc  %></th>
     <th>Gyldig fra</th>
 	<th>Rest. dage</th>
 	<th>Rest. klip</th>
+	<!-- <th><%#= sort_link @q, @result, 'Rest. klip', :default_order => :desc  %></th> -->
     <th>Oprettet af</th>
     <th>Handling</th>
       </tr>

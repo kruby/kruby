@@ -5,7 +5,10 @@ class VouchersController < ApplicationController
   # GET /vouchers
   # GET /vouchers.xml
   def index
-    @vouchers = Voucher.all
+    @q = Voucher.search(params[:q])
+    @vouchers = @q.result.order('relation_id DESC, date DESC').all
+    
+    # @vouchers = Voucher.all
 
     respond_to do |format|
       format.html # index.html.erb
