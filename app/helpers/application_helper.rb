@@ -15,6 +15,12 @@ module ApplicationHelper
   #    end
   #  end
   
+
+  def qr_code(size, url)
+    "https://chart.googleapis.com/chart?cht=qr&chs=#{size}x#{size}&chl=#{CGI.escape(url)}"
+  end
+
+
   def google_font_link_tag(family)
     tag('link', {:rel => :stylesheet, :type => Mime::CSS, :href => "http://fonts.googleapis.com/css?family=#{family}"}, false, false)
   end

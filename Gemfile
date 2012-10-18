@@ -17,6 +17,8 @@ gem "ransack"
 #gem "meta_search"
 gem "acts_as_tree", "~> 0.2.0"
 gem "brightbox"
+gem 'rqrcode-rails3'
+gem 'mini_magick'
 
 group :assets do
   gem 'sass-rails', "~> 3.2.3"
