@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class NewsarchivesController < ApplicationController
   
   before_filter :current_controller #Findes i application_controller.rb

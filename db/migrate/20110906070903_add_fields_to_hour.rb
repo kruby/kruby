@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddFieldsToHour < ActiveRecord::Migration
   def self.up
     add_column :hours, :user_id, :integer

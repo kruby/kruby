@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ## Generated with 'brightbox' on Wed Jan 21 17:43:54 +0100 2009
 gem 'brightbox', '>=2.2.2'
 require 'brightbox/recipes'

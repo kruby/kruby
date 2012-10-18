@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class MenusController < ApplicationController
   
   #before_filter :login_required, :admin_required

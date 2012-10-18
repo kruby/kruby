@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Content < ActiveRecord::Base
    
   acts_as_tree :order => "position"

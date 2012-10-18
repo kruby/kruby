@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class VouchersController < ApplicationController
   
   before_filter :logged_in_as_admin?

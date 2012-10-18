@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddFieldsToRelation < ActiveRecord::Migration
   def self.up
     add_column :relations, :phone, :text

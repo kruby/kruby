@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddFieldsToContent < ActiveRecord::Migration
   def self.up
     add_column :contents, :controller_redirect, :string

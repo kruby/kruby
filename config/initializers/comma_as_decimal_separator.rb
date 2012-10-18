@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ActiveRecord::Base.class_eval do
 
   def convert_number_column_value_with_comma_separator(value)

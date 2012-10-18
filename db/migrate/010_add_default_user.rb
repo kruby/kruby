@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddDefaultUser < ActiveRecord::Migration
   def self.up
     if !User.find_by_login('thomas')

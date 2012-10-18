@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddFieldToUser < ActiveRecord::Migration
   def self.up
     add_column :users, :relation_id, :integer

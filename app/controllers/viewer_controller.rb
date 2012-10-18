@@ -1,5 +1,6 @@
-class ViewerController < ApplicationController
-  
+# -*- encoding : utf-8 -*-
+
+class ViewerController < ApplicationController  
   
   def show
     
@@ -9,9 +10,9 @@ class ViewerController < ApplicationController
       @page = Page.find(params[:id]) || Page.find_by_name('Forside')
     end
     
-    @pagetitle = @page.title rescue 'Indhold følger snarest'
-    @content = @page.body rescue 'Indhold følger snarest'
-    @headline = @page.headline rescue 'Indhold følger snarest'
+    @pagetitle = @page.title rescue 'Indhold kommer snarest'
+    @content = @page.body rescue 'Indhold kommer snarest'
+    @headline = @page.headline rescue 'Indhold kommer snarest'
 
     @posts = Post.forside_blogs_active.all(:limit => 6)
 
@@ -22,9 +23,9 @@ class ViewerController < ApplicationController
     #@page = Page.find_by_name(params[:name])
      @page = Page.find_by_name('Forside')
   
-    @pagetitle = @page.title rescue 'Indhold følger snarest'
-    @content = @page.body rescue 'Indhold følger snarest'
-    @headline = @page.headline rescue 'Indhold følger snarest'
+    @pagetitle = @page.title rescue 'Indhold kommer snarest'
+    @content = @page.body rescue 'Indhold kommer snarest'
+    @headline = @page.headline rescue 'Indhold kommer snarest'
     @posts = Post.forside_blogs_active.all(:limit => 10)
     
     # if test_web_browser == "Firefox3"

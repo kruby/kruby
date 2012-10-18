@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Newsarchive < ActiveRecord::Base
   scope :author, :conditions => {:author => 'TKS'}
   scope :active, :conditions => {:active => '1'}, :order => 'updated_at DESC'

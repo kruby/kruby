@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Methods added to this helper will be available to all templates in the application.
 # Du kan ikke få adgang til metoder her fra din controller, kun fra dine views
 module ApplicationHelper

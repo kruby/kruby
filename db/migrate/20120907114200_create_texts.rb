@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateTexts < ActiveRecord::Migration
   def self.up
     create_table :texts do |t|

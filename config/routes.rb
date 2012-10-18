@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Kruby::Application.routes.draw do
   
   resources :texts

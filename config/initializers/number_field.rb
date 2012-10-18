@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ActionView::Helpers::FormBuilder.class_eval do
 
   def number_field(field, options = {})

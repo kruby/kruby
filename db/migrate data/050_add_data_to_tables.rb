@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddDataToTables < ActiveRecord::Migration
 def self.up
 Menu.create( :name => 'Menus', :title => 'Menus', :body => '

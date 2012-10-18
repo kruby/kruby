@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateVouchers < ActiveRecord::Migration
   def self.up
     create_table :vouchers do |t|

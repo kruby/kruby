@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateNewsarchives < ActiveRecord::Migration
   def self.up
     create_table :newsarchives do |t|

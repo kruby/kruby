@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveFieldInHour < ActiveRecord::Migration
   def self.up
     remove_column :hours, :user

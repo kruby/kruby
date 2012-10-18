@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Product < ActiveRecord::Base
   belongs_to :category
   scope :active, :conditions => {:active => '1'}

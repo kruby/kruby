@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # if RAILS_ENV == "development"
 #   Paperclip.options[:image_magick_path] = "/opt/local/bin/"
 # else

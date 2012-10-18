@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class HoursController < ApplicationController
   
   #before_filter :login_required, :admin_required

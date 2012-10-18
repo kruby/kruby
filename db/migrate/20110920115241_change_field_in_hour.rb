@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeFieldInHour < ActiveRecord::Migration
   def self.up
     change_column :hours, :number, :decimal, :precision => 10, :scale => 2

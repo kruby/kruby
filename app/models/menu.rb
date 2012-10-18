@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Menu < ActiveRecord::Base
   
   has_one :content, :as => :resource, :dependent => :destroy
