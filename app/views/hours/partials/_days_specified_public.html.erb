@@ -1,0 +1,30 @@
+
+	
+	<% @month_hours = Hour.customer(hour.relation_id).month_hours(hour.date) %>
+	<%# @month_hours = Hour.customer_hours(hour.relation_id, hour.date) %>
+
+	<tr>
+	    <th width='245' colspan=3 class='hour_header'>Beskrivelse</th>
+	    <th class='pos'>Ant.</th>
+	    <th class='pos'>Dato</th>
+	</tr>
+	
+	<% for hour in @month_hours %>
+
+		<% if session[:hour_id] == hour.id.to_s %>
+
+			<% @hour = hour %>
+			<%= render :partial => "hours/partials/hour_edit" %>
+
+		<% else %>	
+
+			<tr>
+				<td width=375px colspan=3 class='hour_description'><%= hour.description %></td>
+				<td class='pos'><%= number_with_delimiter(hour.number, :locale => :da) %></td>
+				<td class='dato'><%= nice_date(hour.date) rescue nil %></td>
+			</tr>
+
+		<% end %>
+<% end %>
+
+

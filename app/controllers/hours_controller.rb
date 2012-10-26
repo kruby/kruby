@@ -80,40 +80,43 @@ class HoursController < ApplicationController
     if params[:relation_id]
       session[:year] = params[:year]
     end
-    @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
-      render(:action => 'timeliste')
+    @relation = Relation.find(session[:relation_id])
+    @q = @relation.hours.search(params[:q])
+    @hours = @q.result.order('date DESC').all
+    render(:action => 'timeliste')
   end
   
   def hide_months_public
     session[:year] = nil
-    @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
-      render(:action => 'timeliste')
+    session[:month] = nil
+    @relation = Relation.find(session[:relation_id])
+    @q = @relation.hours.search(params[:q])
+    @hours = @q.result.order('date DESC').all
+    render(:action => 'timeliste')
   end
   
   def show_days_public
     if params[:month]
       session[:month] = params[:month]
     end
-    @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
+    @relation = Relation.find(session[:relation_id])
+    @q = @relation.hours.search(params[:q])
+    @hours = @q.result.order('date DESC').all
     render(:action => 'timeliste')
   end
   
   def hide_days_public
     session[:month] = nil
-    @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
+    @relation = Relation.find(session[:relation_id])
+    @q = @relation.hours.search(params[:q])
+    @hours = @q.result.order('date DESC').all
     render(:action => 'timeliste')
   end
   
   def timeliste
-    #@q = Hour.search(params[:q])
-    #@hours = @q.result.order('relation_id DESC, date DESC').all 
     @relation = Relation.find(session[:relation_id])
-    #@hours @relation.hours
-    @hours = Hour.timeliste(session[:relation_id]).order('date desc')
+    @q = @relation.hours.search(params[:q])
+    @hours = @q.result.order('date DESC').all 
   end
 
   # GET /hours/1

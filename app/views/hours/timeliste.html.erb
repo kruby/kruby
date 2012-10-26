@@ -1,4 +1,5 @@
 <%= render :partial => "layouts/menu" %>
+
 <div id="admin_liste">
 	
 <h1>Timeliste for <%= @relation.company %></h1>
@@ -16,7 +17,7 @@
 		<% end %>
 	</span>
 </div>
-<table>
+<table id="timeliste">
 
 	<%#= render :partial => "hours/partials/years_specified_public" %>
 
@@ -27,7 +28,6 @@
 	<!-- l betyder at vi bruger I18 på hour.date og formatet :year under :date delen i da.yml filen -->
 
 	<% if @year != @year_previous %>
-	<%= @year %>
 
 		<% @year_previous = @year %>
 
