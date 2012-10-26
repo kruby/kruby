@@ -77,10 +77,10 @@ class HoursController < ApplicationController
   end
   
   def timeliste
-    @q = Hour.search(params[:q])
+    @relation = Relation.find(session[:relation_id])
+    @q = @relation.hours.search(params[:q])
     @hours = @q.result.order('relation_id DESC, date DESC').all 
     #@hours = Hour.timeliste(current_user.relation_id).order('date desc')
-    @relation = Relation.find(session[:relation_id])  
   end
 
   # GET /hours/1

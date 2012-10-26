@@ -18,7 +18,7 @@
 </div>
 <table>
   <tr>
-    <th class='pos'><%= sort_link @q, :date, 'Dato', :default_order => :desc  %></th>
+    <th class='pos'><%= sort_link @q, :date, 'Dato', :default_order => :desc, :relation_id => @relation.id  %></th>
     <th width=375px>Beskrivelse</th>
     <th class='pos'>Ant.</th>
   </tr>
