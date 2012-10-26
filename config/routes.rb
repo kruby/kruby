@@ -122,6 +122,13 @@ Kruby::Application.routes.draw do
    match 'hours/months_hide/:relation_id' => 'hours#hide_months', :as => :hide_months
    match 'hours/months/days_hide/:relation_id' => 'hours#hide_days', :as => :hide_days
    
+   # PUBLIC
+   match 'hours/months_show_public/:relation_id/:year' => 'hours#show_months_public', :as => :show_months_public
+   match 'hours/months/days_show_public/:relation_id/:month' => 'hours#show_days_public', :as => :show_days_public
+
+   match 'hours/months_hide_public/:relation_id' => 'hours#hide_months_public', :as => :hide_months_public
+   match 'hours/months/days_hide_public/:relation_id' => 'hours#hide_days_public', :as => :hide_days_public
+   
    #view_recipe ':name', :controller => 'recipes', :action => 'show'
    match ':name' => 'recipes#show', :as => :view_recipe
    

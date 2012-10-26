@@ -1,0 +1,30 @@
+<% @month_name = l hour.date, :format => :month %>
+<% @month_number = hour.date.month %>
+<!-- l betyder at vi bruger I18 på hour.date og formatet :month under :date delen i da.yml filen -->
+
+<% if @month_number != @month_previous %>
+
+<% @month_previous = @month_number %>
+
+<% if session[:month] == @month_number.to_s %>
+
+<tr>
+<td colspan=5><span class='month'><%= @month_name.capitalize %> - <%= number_with_delimiter(@relation.hours.month_hours(hour.date).sum(:number), :locale => :da) rescue nil %></span></td>
+<td class='pos'><%= link_to '[Skjul]', hide_days_public_path(:relation_id => session[:relation_id], :q => params[:q]) %></td>
+</tr>
+
+
+<%= render :partial => "hours/partials/days_specified_public", :locals => {:hour => hour} %>
+
+
+<% else %>
+<tr>
+<td colspan=5><span class='month'><%= @month_name.capitalize %> - <%= number_with_delimiter(@relation.hours.month_hours(hour.date).sum(:number), :locale => :da) rescue nil %></span></td>
+<td class='pos'><%= link_to '[Vis]', show_days_public_path(:relation_id => session[:relation_id], :month => @month_number, :q => params[:q]) %></td>
+</tr>
+<% end %>
+
+<% end %>
+
+
+

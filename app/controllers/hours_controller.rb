@@ -3,8 +3,8 @@ class HoursController < ApplicationController
   #before_filter :login_required, :admin_required
   before_filter :current_controller #Findes i application_controller.rb
   before_filter :logged_in_as_user? #Findes i application_controller.rb
-  before_filter :logged_in_as_admin?, :except => ['timeliste']
-  
+  before_filter :logged_in_as_admin?, :except => ['timeliste', 'show_months_public', 'hide_months_public', 'show_days_public', 'hide_days_public']
+    
   # GET /hours
   # GET /hours.xml
   def index
@@ -74,6 +74,44 @@ class HoursController < ApplicationController
     @q = Hour.search(params[:q])
     @hours = @q.result.order('relation_id DESC, date DESC').all
     render(:action => 'index')
+  end
+  
+  def show_months_public
+    session[:month] = nil
+    if params[:relation_id]
+      session[:year] = params[:year]
+    end
+    @relation = Relation.find(session[:relation_id])
+    @q = @relation.hours.search(params[:q])
+    @hours = @q.result.order('date DESC').all
+    render(:action => 'timeliste')
+  end
+  
+  def hide_months_public
+    session[:year] = nil
+    session[:month] = nil
+    @relation = Relation.find(session[:relation_id])
+    @q = @relation.hours.search(params[:q])
+    @hours = @q.result.order('date DESC').all
+    render(:action => 'timeliste')
+  end
+  
+  def show_days_public
+    if params[:month]
+      session[:month] = params[:month]
+    end
+    @relation = Relation.find(session[:relation_id])
+    @q = @relation.hours.search(params[:q])
+    @hours = @q.result.order('date DESC').all
+    render(:action => 'timeliste')
+  end
+  
+  def hide_days_public
+    session[:month] = nil
+    @relation = Relation.find(session[:relation_id])
+    @q = @relation.hours.search(params[:q])
+    @hours = @q.result.order('date DESC').all
+    render(:action => 'timeliste')
   end
   
   def timeliste
