@@ -16,25 +16,30 @@
 	</p>
 <% end %>
 
-<table>
+<div class="timer">
+	<b>Købte timer:</b><br>
+	1. halvår <%= (Time.now - 1.year).year %> - <%= Voucher.last_year_first_6_months(Time.now - 1.year).sum(:number) %><br>
+	2. halvår <%= (Time.now - 1.year).year %> - <%= Voucher.last_year_last_6_months(Time.now - 1.year).sum(:number) %><br>
+	1. halvår <%= (Time.now).year %> - <%= Voucher.this_year_first_6_months(Time.now.to_date).sum(:number) %><br>
+	2. halvår <%= (Time.now).year %> - <%= Voucher.this_year_last_6_months(Time.now.to_date).sum(:number) %>	
+</div>
+<div class="timer">
+	<b>Brugte timer:</b><br>
+	1. halvår <%= (Time.now - 1.year).year %> - <%= Hour.last_year_first_6_months(Time.now - 1.year).sum(:number) %><br>
+	2. halvår <%= (Time.now - 1.year).year %> - <%= Hour.last_year_last_6_months(Time.now - 1.year).sum(:number) %><br>
+	1. halvår <%= (Time.now).year %> - <%= Hour.this_year_first_6_months(Time.now.to_date).sum(:number) %><br>
+	2. halvår <%= (Time.now).year %> - <%= Hour.this_year_last_6_months(Time.now.to_date).sum(:number) %>	
+</div>
+
+
+<br><br><br>
+
+<table class="tabel_timer">
   <tr>
 	<!-- <th>ID</th> -->
     <th colspan=5 class='hours_headline' >Kunde og status</th>
 	<th class='pos'>Handling</th>
   </tr>
-Købte timer:<br>
-1. halvår <%= (Time.now - 1.year).year %> - <%= Voucher.last_year_first_6_months(Time.now - 1.year).sum(:number) %><br>
-2. halvår <%= (Time.now - 1.year).year %> - <%= Voucher.last_year_last_6_months(Time.now - 1.year).sum(:number) %><br>
-1. halvår <%= (Time.now).year %> - <%= Voucher.this_year_first_6_months(Time.now.to_date).sum(:number) %><br>
-2. halvår <%= (Time.now).year %> - <%= Voucher.this_year_last_6_months(Time.now.to_date).sum(:number) %><br><br>
-
-Brugte timer:<br>
-1. halvår <%= (Time.now - 1.year).year %> - <%= Hour.last_year_first_6_months(Time.now - 1.year).sum(:number) %><br>
-2. halvår <%= (Time.now - 1.year).year %> - <%= Hour.last_year_last_6_months(Time.now - 1.year).sum(:number) %><br>
-1. halvår <%= (Time.now).year %> - <%= Hour.this_year_first_6_months(Time.now.to_date).sum(:number) %><br>
-2. halvår <%= (Time.now).year %> - <%= Hour.this_year_last_6_months(Time.now.to_date).sum(:number) %><br><br>
-
-
 
 <% for hour in @hours %>
 

@@ -3,6 +3,8 @@ class Hour < ActiveRecord::Base
   belongs_to :relation
   belongs_to :user
   
+  default_scope order('relation_id DESC, date DESC')  
+    
   #scope :today, lambda { WHERE("created_at BETWEEN '#{DateTime.now.beginning_of_day}' AND '#{DateTime.now.end_of_day}'") }
     
   scope :timeliste, lambda { |relation_id| where(:relation_id => relation_id) }

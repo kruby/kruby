@@ -27,6 +27,21 @@ table {
 	background-color: #999;*/
 }
 
+div#admin_liste div.timer {
+	position: relative;
+	width: 200px;
+	float: left;
+	background-color: #FFF;
+	padding: 10px;
+	margin: 0px 5px 10px 0;
+	border: 1px solid #999;
+	font-size: 12px;
+}
+
+div#admin_liste table.tabel_timer {
+	float: left;
+}
+
 .nutrition_table {
 	width: 330px;
 }

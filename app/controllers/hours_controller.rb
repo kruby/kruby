@@ -9,7 +9,7 @@ class HoursController < ApplicationController
   # GET /hours.xml
   def index
     @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
+    @hours = @q.result.all
     #@search = Hour.search(params[:search])
     #@hours = @search.order('relation_id DESC, date DESC').all
       #DET ER VIGTIGT AT PLACERE ORDER HER, DA MAN SÅ OGSÅ HAR MULIGHED FOR AT SORTERE I SIT VIEW EFTERFØLGENDE
@@ -29,7 +29,7 @@ class HoursController < ApplicationController
       session[:month] = nil
     end
     @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
+    @hours = @q.result.all
     render(:action => 'index')
   end
 
@@ -38,7 +38,7 @@ class HoursController < ApplicationController
     session[:year] = nil
     session[:month] = nil
     @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
+    @hours = @q.result.all
     render(:action => 'index')
   end
   
@@ -48,7 +48,7 @@ class HoursController < ApplicationController
       session[:year] = params[:year]
     end
     @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
+    @hours = @q.result.all
     render(:action => 'index')
   end
   
@@ -56,7 +56,7 @@ class HoursController < ApplicationController
     #session[:relation_id] = nil
     session[:year] = nil
     @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
+    @hours = @q.result.all
     render(:action => 'index')
   end
   
@@ -65,14 +65,14 @@ class HoursController < ApplicationController
       session[:month] = params[:month]
     end
     @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
+    @hours = @q.result.all
     render(:action => 'index')
   end
   
   def hide_days
     session[:month] = nil
     @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
+    @hours = @q.result.all
     render(:action => 'index')
   end
   
