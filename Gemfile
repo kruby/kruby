@@ -5,7 +5,7 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #gem 'mysql2', '~> 0.2.6'
-gem 'mysql'
+gem 'mysql', "~> 2.9.0"
 gem "RedCloth"
 gem "will_paginate", "~> 3.0.pre4"
 gem "newrelic_rpm"
