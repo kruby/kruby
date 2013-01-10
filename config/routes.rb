@@ -30,7 +30,9 @@ Kruby::Application.routes.draw do
    resources :attachments
   end
   
-  resources :relations
+  resources :relations do
+    resources :hours
+  end
   
   resources :contents
   

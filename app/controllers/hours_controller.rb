@@ -8,8 +8,16 @@ class HoursController < ApplicationController
   # GET /hours
   # GET /hours.xml
   def index
-    @q = Hour.search(params[:q])
-    @hours = @q.result.all
+    if params[:relation_id]
+      @relation = Relation.find(params[:relation_id])
+      @q = @relation.hours.search(params[:q])
+      #@q = Hours.search(params[:relation_id])
+      #@hours = Hour.find_by_relation_id(params[:relation_id])
+      @hours = @q.result.all
+    else  
+      @q = Hour.search(params[:q])
+      @hours = @q.result.all
+    end
     #@search = Hour.search(params[:search])
     #@hours = @search.order('relation_id DESC, date DESC').all
       #DET ER VIGTIGT AT PLACERE ORDER HER, DA MAN SÅ OGSÅ HAR MULIGHED FOR AT SORTERE I SIT VIEW EFTERFØLGENDE
@@ -22,7 +30,7 @@ class HoursController < ApplicationController
     end
   end
 
-  def show_years
+  def show_hours
     if params[:relation_id]
       session[:relation_id] = params[:relation_id]
       session[:year] = nil
@@ -31,6 +39,20 @@ class HoursController < ApplicationController
     @q = Hour.search(params[:q])
     @hours = @q.result.all
     render(:action => 'index')
+  end
+  
+  def show_years
+    if params[:relation_id]
+      session[:relation_id] = params[:relation_id]
+      session[:year] = nil
+      session[:month] = nil
+      @relation = Relation.find(params[:relation_id])
+      @q = @relation.hours.search(params[:q])
+    else
+      @q = Hour.search(params[:q])
+    end
+      @hours = @q.result.all
+      render(:action => 'index')
   end
 
   def hide_years
@@ -46,8 +68,11 @@ class HoursController < ApplicationController
     if params[:relation_id]
       #session[:relation_id] = params[:relation_id]
       session[:year] = params[:year]
+      @relation = Relation.find(params[:relation_id])
+      @q = @relation.hours.search(params[:q])
+    else
+      @q = Hour.search(params[:q])
     end
-    @q = Hour.search(params[:q])
     @hours = @q.result.all
     render(:action => 'index')
   end
@@ -55,7 +80,12 @@ class HoursController < ApplicationController
   def hide_months
     #session[:relation_id] = nil
     session[:year] = nil
-    @q = Hour.search(params[:q])
+    if params[:relation_id]
+      @relation = Relation.find(params[:relation_id])
+      @q = @relation.hours.search(params[:q])
+    else
+      @q = Hour.search(params[:q])
+    end
     @hours = @q.result.all
     render(:action => 'index')
   end
@@ -64,14 +94,24 @@ class HoursController < ApplicationController
     if params[:month]
       session[:month] = params[:month]
     end
-    @q = Hour.search(params[:q])
+    if params[:relation_id]
+      @relation = Relation.find(params[:relation_id])
+      @q = @relation.hours.search(params[:q])    
+    else
+      @q = Hour.search(params[:q])
+    end  
     @hours = @q.result.all
     render(:action => 'index')
   end
   
   def hide_days
     session[:month] = nil
-    @q = Hour.search(params[:q])
+    if params[:relation_id]
+      @relation = Relation.find(params[:relation_id])
+      @q = @relation.hours.search(params[:q])    
+    else
+      @q = Hour.search(params[:q])
+    end  
     @hours = @q.result.all
     render(:action => 'index')
   end

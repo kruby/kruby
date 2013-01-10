@@ -52,7 +52,8 @@
 					<!-- <tr class='background-row'><td colspan=6></td></tr> -->
 					<tr><td colspan=5><b>
 						<div id="voucher_status">
-							<%= @relation.company rescue nil %> – 
+							<%= link_to @relation.company, relation_hours_path(:relation_id => @relation_id, :q => params[:q]), :class => 'name'%> – 
+							<%#= @relation.company rescue nil %>
 							<span id="voucher_headline">Klippekort status: </span>
 							<span id="voucher_text">
 								(<%= @relation.vouchers.sum(:number) rescue nil %> 
