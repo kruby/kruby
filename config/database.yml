@@ -35,4 +35,4 @@ production:
   username: krsgrd
   password: Ee9Gohchai4i
   database: krsgrd_kruby_production
-  encoding: utf8
+  encoding: UTF8
