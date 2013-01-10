@@ -30,7 +30,7 @@ test:
   socket: /opt/local/var/run/mysql5/mysqld.sock
 
 production:
-  adapter: mysql2
+  adapter: mysql
   host: db01.mysql.vm.brightbox.net
   username: krsgrd
   password: Ee9Gohchai4i
