@@ -35,4 +35,4 @@ production:
   host: db01.mysql.vm.brightbox.net
   username: krsgrd
   password: Ee9Gohchai4i
-  database: krsgrd_kruby_production
+  database: krsgrd_kruby_production_utf8
