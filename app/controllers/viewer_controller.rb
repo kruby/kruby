@@ -9,7 +9,7 @@ class ViewerController < ApplicationController
       @page = Page.find(params[:id]) || Page.find_by_name('Forside')
     end
     
-    @pagetitle = @page.title rescue 'Indhold følger snarest'
+    @pagetitle = 'Kruby - ' + @page.title rescue 'Indhold følger snarest'
     @content = @page.body rescue 'Indhold følger snarest'
     @headline = @page.headline rescue 'Indhold følger snarest'
 

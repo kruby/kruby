@@ -31,28 +31,14 @@ class PagesController < ApplicationController
   def show
     @page = Page.find(params[:id])
      
-      #@mangler = 'Indhold følger snarest'
-       @pagetitle = @page.title rescue 'Indhold følger snarest'
-        @content = @page.body rescue 'Indhold følger snarest'
-        @headline = @page.headline rescue 'Indhold følger snarest'
-        # if @page.image.length > 0 
-        #            @image = @page.image
-        #          else
-        #            @image = 'forside.gif'
-        #          end
-        # 
-        #          if @page.image_class.length > 0
-        #            @image_class = @page.image_class
-        #          else
-        #            @image_class = 'foto_lille'
-        #          end
-      
-     
+      @pagetitle = 'Kruby - ' + @page.title rescue 'Indhold følger snarest'
+      @content = @page.body rescue 'Indhold følger snarest'
+      @headline = @page.headline rescue 'Indhold følger snarest'
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @page }
-    end
+        @posts = Post.forside_blogs_active.all(:limit => 6)
+
+    render :layout => 'viewer'
+
   end
 
   # GET /pages/new

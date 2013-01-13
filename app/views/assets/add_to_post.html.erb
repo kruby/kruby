@@ -2,7 +2,11 @@
 <div id="admin_liste">
 
 <%= form_tag edit_multiple_assets_path do %>
-<h1>Tilføj fotos til artikel nr. <%= params[:id] %> <%= '"' + Post.find(params[:id]).title + '"' %> <%= submit_tag "[Tilføj fotos]", :class => 'button' %> <%= link_to '[Tilbage]', edit_post_path(params[:id]) %></h1>
+<h1>
+	Tilføj fotos til artikel nr. <%= params[:id] %> <%= '"' + Post.find(params[:id]).title + '"' %>
+	<br>
+	<%= submit_tag "[Tilføj fotos]", :class => 'button' %> <%= link_to '[Tilbage]', edit_post_path(params[:id]) %>
+</h1>
 
 
 <%= hidden_field_tag :post_id, h(params[:id]) %>
@@ -18,13 +22,16 @@
 		<th class='pos'>Mb</th> -->
 	<th class='pos'>Tekst</th>
 	<th class='pos'>Foto</th>
+	<th class='pos'>ID</th>
 	
   </tr>
 <%#= @array_of_ids %>
 <% for asset in @assets %>
 <% @image =  asset.photo.url(:thumb) %>
-<% @image_original = asset.photo.url(:original) %>
-<% @description = Asset.find(asset.id).description %>
+<% @image_show = asset.photo.url(:original) %>
+<%# @description = Asset.find(asset.id).description %>
+<% @title = asset.description + ' (ID - ' + asset.id.to_s + ')' %>
+
 
 
   <tr>
@@ -38,9 +45,9 @@
 	</td>
 	
 	<td class='thumb' id='images'>
-	<%= link_to image_tag(@image, :alt => @description), Asset.find(asset.id) %>
-		
-	<%#= link_to image_tag(@thumb), asset, :toptions => @topoptions %>
+
+		<%#= link_to image_tag(@image, :alt => @description), Asset.find(asset.id) %>
+		<%= link_to image_tag(@image), @image_show, {:class => "fancybox-button", :rel => "fancybox-button", :title => @title }%>
 	</td>	
 	<td><%= asset.description %></td>
 	<!-- <td><%#= User.find(asset.user_id).blogname %></td>
@@ -49,17 +56,34 @@
 		<td><%#= number_with_precision(asset.photo_file_size / 1000000.0, 2) rescue nil %></td> -->
 	<td><%= nice_date(asset.updated_at) rescue nil %></td>
 	<td><%= nice_date(asset.photo_updated_at) rescue nil %></td>
+	<td><%= asset.id %></td>
 	
     <!-- <td><%#= link_to 'Show', asset %><%#= link_to '[Ret]', edit_asset_path(asset) %><%#= link_to '[Slet]', asset, :confirm => 'Er du sikker?', :method => :delete %></td> -->
   </tr>
 <% end %>
 </table>
+
 <% end %>
 <br />
 
 
 
 </div>
-<!-- TEST I FORBINDELSE MED TOPUP -->
-<!-- <a href="/uploads/assets/3/original/SeedJuice.jpg" toptions="layout = 'quicklook', shaded = 0, overlayClose = 1, resizable = 0"><img src="/uploads/assets/3/thumb/SeedJuice.jpg" alt="Seedjuice" />
-</a> -->
+
+<% content_for :javascript do %>
+
+	<script>
+        $(document).ready(function() {
+			$(".fancybox-button").fancybox({
+				prevEffect		: 'none',
+				nextEffect		: 'none',
+				closeBtn		: false,
+				helpers		: {
+					title	: { type : 'inside' },
+					buttons	: {}
+				}
+			});
+		});
+    </script>
+
+<% end %>

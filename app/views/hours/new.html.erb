@@ -1,6 +1,6 @@
 <%= render :partial => "layouts/menu" %>
 <div id="admin_liste">
-<h1>Registrering af timer</h1>
+<h1>Registrering af timer <%= link_to '[Tilbage]', hours_path %></h1>
 
 <table>
   <tr>
@@ -24,9 +24,7 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to '[Ny registrering]', new_hour_path %>
+<%#= link_to '[Ny registrering]', new_hour_path %>
 
 
 </div>
