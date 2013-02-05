@@ -36,6 +36,8 @@
 <%= stylesheet_link_tag 'kruby_viewer', 'kruby_forside_blog', 'kruby_blog' %>
 <%= javascript_include_tag :application %>
 <%= javascript_include_tag :defaults %>
+<%= javascript_include_tag params[:controller] %>
+
 <%#= javascript_include_tag 'drop_down' %>
 <%= google_analytics_js.html_safe %>
 <%= csrf_meta_tag %>

@@ -1,0 +1,5 @@
+$('*[id=activity_<%= @activity.id %>]').replaceWith("<%= escape_javascript(render(:partial => 'hours/partials/years_specified')) %>");
+
+$('*[href^=\\/hours\\/years_show\\/]').click(function(){
+$.get($(this).attr('href'), $(this), null, "script");
+return false; });

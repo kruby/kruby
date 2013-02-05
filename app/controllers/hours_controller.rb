@@ -11,8 +11,6 @@ class HoursController < ApplicationController
     if params[:relation_id]
       @relation = Relation.find(params[:relation_id])
       @q = @relation.hours.search(params[:q])
-      #@q = Hours.search(params[:relation_id])
-      #@hours = Hour.find_by_relation_id(params[:relation_id])
       @hours = @q.result.all
     else  
       @q = Hour.search(params[:q])
@@ -52,7 +50,10 @@ class HoursController < ApplicationController
       @q = Hour.search(params[:q])
     end
       @hours = @q.result.all
-      render(:action => 'index')
+      respond_to do |format|
+        format.html { render(:action => 'index') }
+        format.js 
+      end
   end
 
   def hide_years

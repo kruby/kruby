@@ -27,6 +27,10 @@ group :assets do
   gem 'uglifier', ">= 1.0.3"
 end
 
+group :development do
+  gem 'meta_request', '0.2.1' 
+end
+
 gem 'jquery-rails'
 # gem 'fancybox-rails', :git => 'https://github.com/sverigemeny/fancybox-rails'
 
