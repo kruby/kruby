@@ -8,16 +8,20 @@
 			
 	<% if session[:relation_id] == hour.relation_id.to_s and session[:year] == @year.to_s %>
 
+		<tr>
 			<td colspan=5><span class='year'><%= @year %> - <%= number_with_delimiter(@relation.hours.year_hours(hour.date).sum(:number), :locale => :da) rescue nil %></span></td>
 				<td class='pos'>
 						<%= link_to '[Skjul]', hide_months_path(:relation_id => session[:relation_id], :q => params[:q]) %>
 				</td>
+		</tr>
 		
 	<% else %>
+		<tr>
 			<td colspan=5><span class='year'><%= @year %> - <%= number_with_delimiter(@relation.hours.year_hours(hour.date).sum(:number), :locale => :da) rescue nil %></span></td>
 			<td class='pos'>
 					<%= link_to '[Vis]', show_months_path(:relation_id => session[:relation_id], :year => @year, :q => params[:q]) %>
 			</td>
+		</tr>
 	<% end %>
 
 <% end %>

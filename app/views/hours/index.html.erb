@@ -91,11 +91,11 @@
 					<% end %>
 		<% end %>
 
-		<tr id="relation_show_<%= @relation.id %>">
+		<!-- <tr id="relation_show_<%#= @relation.id %>"> -->
 			<% if session[:relation_id] == hour.relation_id.to_s %>
 				<%= render :partial => "hours/partials/years_specified", :locals => {:hour => hour} %>
 			<% end %>
-		</tr>
+		<!-- </tr> -->
 		
 <% end %>
 
