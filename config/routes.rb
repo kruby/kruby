@@ -66,6 +66,7 @@ Kruby::Application.routes.draw do
   match '/attachments/destroy_from_post/:id/:post_id' => 'attachments#destroy_from_post', :as => :destroy_from_post
   
   match '/timeliste' => 'hours#timeliste', :as => :timeliste
+  match '/monthly' => 'hours#monthly', :as => :monthly
   
   #access_denied_admin '/ingen_adgang', :controller => 'users', :action => 'no_access_admin'
   match '/ingen_adgang' => 'users#no_access_admin', :as => :access_denied_admin
@@ -115,7 +116,7 @@ Kruby::Application.routes.draw do
    
    #view_product ':name', :controller => 'products', :action => 'show'
    match ':name' => 'products#show', :as => :view_product
-   
+
    match 'hours/years_show/:relation_id' => 'hours#show_years', :as => :show_years
    match 'hours/months_show/:relation_id/:year' => 'hours#show_months', :as => :show_months
    match 'hours/months/days_show/:relation_id/:month' => 'hours#show_days', :as => :show_days

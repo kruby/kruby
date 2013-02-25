@@ -1,0 +1,46 @@
+<%= render :partial => "layouts/menu" %>
+
+<div id="admin_liste">
+	<h1>Timeforbrug pr. måned</h1>
+
+	<table class="tabel_timer">
+		<!-- <tr>
+			<th colspan="2" class="monthly_head">Timer pr. måned</th>
+		</tr> -->
+
+		<% for hour in @hours %>
+		
+			<% @year = l hour.date, :format => :year %>
+			<%# @year_number = hour.date.month %>
+			<!-- l betyder at vi bruger I18 på hour.date og formatet :year under :date delen i da.yml filen -->
+			<% @month_name = l hour.date, :format => :month %>
+			<% @month_number = hour.date.month %>
+			<!-- l betyder at vi bruger I18 på hour.date og formatet :month under :date delen i da.yml filen -->
+			
+
+			<% if @year != @year_previous %>
+				<% @year_previous = @year %>
+
+
+				<tr>
+					<td colspan=2 class="year"><%= @year %></td>
+				</tr>
+				<tr>
+					<td class='year'>Måned</td>
+					<td class='year'>Antal</td>
+				</tr>
+			<% else %>
+				<% if @month_number != @month_previous %>
+					<% @month_previous = @month_number %>
+					<tr>
+						<td class="monthly"><%= @month_name.capitalize %></td>
+						<td class='pos'><%= number_with_precision(Hour.month_hours(hour.date).sum(:number), :locale => :da) rescue nil %></td>
+					</tr>
+				<% end %>
+			<% end %>
+
+		<% end %>
+
+	</table>
+
+</div>
