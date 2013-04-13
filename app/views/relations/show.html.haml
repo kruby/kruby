@@ -1,0 +1,37 @@
+= render :partial => "layouts/menu" 
+#admin_formular
+
+	%p
+		%b Company:
+		= @relation.company 
+
+	%p
+		%b Address:
+		= @relation.address 
+
+	%p
+		%b Postno:
+		= @relation.postno 
+
+	%p
+		%b City:
+		= @relation.city 
+
+	%p
+		%b Telefon:
+		= @relation.phone 
+
+	%p
+		%b Log:
+		= @relation.log 
+
+	%p
+		%b Category:
+		= @relation.category 
+
+	%p
+		%b Responsible:
+		= @relation.responsible 
+
+	= link_to '[Ret]', edit_relation_path(@relation)
+	= link_to '[Tilbage]', relations_path

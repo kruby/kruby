@@ -1,0 +1,40 @@
+<div id='wrapper_background'>
+	<div id='wrapper_main'>
+		
+		<%= render :partial => "layouts/partials/top_foto" %>
+
+		<div id="menu"><%= render :partial => "layouts/menu_forside" %></div><br>
+
+		<div id='forside_wrapper'>
+			<%= render :partial => "layouts/show" %>
+		</div>		
+
+		<div id='forside_blog_wrapper'>
+
+			<h1 class="blog_headline">Seneste indlæg fra bloggen</h1>
+
+			<div id='forside_blog_border'>
+				<%= render :partial => "posts/partials/forside_blog_foto_1" %>	
+			</div>
+
+		</div>
+
+		<div id="forside_foto">
+	
+			<div id="kontakt_tekst">
+			Kruby<br/>
+			8600 Silkeborg<br/>
+			Tlf. +45 40 19 68 81</div>
+	
+		</div>
+		
+		<img src="<%= qr_code(100, 'www.kruby.dk') %>" />
+			
+	</div>
+	<div id="bund_baggrund"><%= image_tag "baggrundsbund.jpg" %></div>
+
+</div>	
+
+
+
+

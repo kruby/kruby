@@ -1,0 +1,58 @@
+= render :partial => "layouts/menu" 
+#admin_formular
+	
+	= form_for(@relation) do |f| 
+		= f.hidden_field :lock_version 
+		
+		%h1 
+			Redigering af relation
+			= f.submit :class => 'button'
+			= link_to '[Tilbage]', relations_path 
+
+		= error_messages_for :relation 
+		.dropdowns
+			%p.drop_down_1
+				%b Kategori
+				%br
+				= f.select (:category, [['Samarbejdspartner', 'Samarbejdspartner'],['Kunde', 'Kunde'], ['Emne', 'Emne'],['Kontakt', 'Kontakt'],['Leverandør', 'Leverandør'],['X-kunde', 'X-kunde']], { :include_blank => true})
+
+			%br
+			%p.drop_down_2
+				%b Ansvarlig
+				%br
+				= f.select (:responsible, [['ALLE', 'ALLE'],['TKS', 'TKS']], { :include_blank => true} ) 
+
+		.label= f.label :Tilknyt_en_bruger
+		.input= f.collection_select(:user_id, User.all, :id, :name, :prompt => 'Vælg en bruger', :include_blank => true )
+
+		.date_and_time
+			%p.date
+				%b Næste kontakt
+				%br
+				= f.datetime_select :next_action, :include_blank => true, :order => [:day, :month, :year ], :start_year => 2011
+		.text_fields
+			%p
+				%b Firma
+				%br
+				= f.text_field :company 
+
+			%p
+				%b Adresse
+				%br
+				= f.text_field :address 
+
+			%p
+				%b Postnr./By
+				%br
+				= f.text_field :postno, :size => 5
+				= f.text_field :city, :size => 21 
+
+			%p
+				%b Kontakt information
+				%br
+				= f.text_area :phone, :size => ('60x8') 
+
+			%p
+				%b Log
+				%br
+				= f.text_area :log, :size => ('60x8') 

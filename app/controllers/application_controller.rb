@@ -12,12 +12,10 @@ class ApplicationController < ActionController::Base
   
   #include AuthenticatedSystem
   
-  before_filter :set_user_language
+
   before_filter :get_content_for_menu
-    
-  def set_user_language  
-    I18n.locale = 'da'  
-  end
+
+  before_filter :set_user_language
   
   def get_content_for_menu
     
@@ -238,6 +236,12 @@ class ApplicationController < ActionController::Base
         end
         return true
       end
+    end
+
+    private
+
+    def set_user_language  
+      I18n.locale = 'da'  
     end
   
 end

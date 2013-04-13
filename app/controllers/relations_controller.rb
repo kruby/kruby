@@ -32,9 +32,9 @@ class RelationsController < ApplicationController
   # GET /relations/1
   # GET /relations/1.xml
   def show
-    #@relation = Relation.find(params[:id])
+    @relation = Relation.find(params[:id])
     
-    redirect_to(:action => 'index', :page => session[:page])
+    #redirect_to(:action => 'index', :page => session[:page])
     
     # respond_to do |format|
     #       format.html # show.html.erb

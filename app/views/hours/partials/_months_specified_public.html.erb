@@ -10,7 +10,7 @@
 
 <tr>
 <td colspan=5><span class='month'><%= @month_name.capitalize %> - <%= number_with_delimiter(@relation.hours.month_hours(hour.date).sum(:number), :locale => :da) rescue nil %></span></td>
-<td class='pos'><%= link_to '[Skjul]', hide_days_public_path(:relation_id => session[:relation_id], :q => params[:q]) %></td>
+<td class='pos'><%= link_to '[Skjul]', hide_days_public_path(:relation_id => session[:relation_id], :q => params[:q]), :class => 'hide'%></td>
 </tr>
 
 

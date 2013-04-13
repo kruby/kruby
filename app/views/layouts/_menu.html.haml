@@ -1,0 +1,10 @@
+.top_foto
+	= image_tag "top_adm.jpg"
+#menu_top
+	- if flash[:notice] 
+		%span.flash_menu
+			= '[' + flash[:notice] + ']'
+	- else
+		.rub_top Administrationsområde
+		
+= render :partial => "menusystem/menu_level_0"

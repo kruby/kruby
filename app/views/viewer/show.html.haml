@@ -1,0 +1,27 @@
+#wrapper_background
+	#wrapper_main
+		= render :partial => "layouts/partials/top_foto"
+		
+		#menu
+			= render :partial => "layouts/menu_forside"
+		
+		#forside_wrapper
+			= render :partial => "layouts/show"
+
+		#forside_blog_wrapper
+		
+			%h1.blog_headline Seneste indlæg fra bloggen
+			
+			#forside_blog_border
+				= render :partial => "posts/partials/forside_blog_foto_1"
+				
+		#forside_foto
+			
+			#kontakt_tekst
+				Kruby
+				%br 8600 Silkeborg
+				%br Tlf. +45 40 19 68 81
+					
+		%img{:src => "#{qr_code(100, 'www.kruby.dk')}"}
+					
+	#bund_baggrund= image_tag "baggrundsbund.jpg"
