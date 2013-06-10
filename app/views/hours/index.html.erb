@@ -56,13 +56,13 @@
 							<%#= @relation.company rescue nil %>
 							<span id="voucher_headline">Klippekort status: </span>
 							<span id="voucher_text">
-								(<%= @relation.vouchers.sum(:number) rescue nil %> 
-								- <%= @relation.hours.sum(:number) rescue nil %>
+								(<%= delimiter(@relation.vouchers.sum(:number)) rescue nil %> 
+								- <%= delimiter(@relation.hours.sum(:number)) rescue nil %>
 								= <% @result = @relation.vouchers.sum(:number) - @relation.hours.sum(:number) rescue nil %>
 								<% if @result < 0 %>
-									<span id='voucher_red'> <%= @result %> klip mangler</span>) 
+									<span id='voucher_red'> <%= delimiter(@result) %> klip mangler</span>) 
 								<% else %>
-									<span id='voucher_green'> <%= @result %> klip resterer)</span> 
+									<span id='voucher_green'> <%= delimiter(@result) %> klip resterer)</span> 
 								<% end %>
 							
 							</span>

@@ -94,5 +94,9 @@ module ApplicationHelper
     Time.convert_this_time_to_week.strftime('%W')
   end
   
+  def delimiter number
+    number_with_delimiter(number.to_d, :locale => :da)
+  end
+  
    
 end

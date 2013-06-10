@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120907114200) do
+ActiveRecord::Schema.define(:version => 20130610103423) do
 
   create_table "assets", :force => true do |t|
     t.string   "description"
@@ -174,7 +174,7 @@ ActiveRecord::Schema.define(:version => 20120907114200) do
 
   create_table "vouchers", :force => true do |t|
     t.string   "description"
-    t.integer  "number"
+    t.decimal  "number",      :precision => 10, :scale => 2
     t.integer  "relation_id"
     t.date     "date"
     t.integer  "user_id"
