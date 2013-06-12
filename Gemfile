@@ -19,7 +19,7 @@ gem "i18n"
 gem "ransack"
 #gem "meta_search"
 gem "acts_as_tree", "~> 0.2.0"
-gem "brightbox"
+gem "brightbox", "~> 2.4.0.pre1"
 gem 'rqrcode-rails3'
 gem 'mini_magick'
 gem 'rake', '~> 0.9.2.2'

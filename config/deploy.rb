@@ -73,7 +73,7 @@ set :branch, "master"
 #
 # The shared area is prepared with 'deploy:setup' and all the shared
 # items are symlinked in when the code is updated.
-set :global_shared_dirs, %w(public/uploads public/assets)
+set :global_shared_dirs, %w(public/uploads)
 # set :global_shared_files, %w(config/database.yml)
 
 load 'deploy/assets'
