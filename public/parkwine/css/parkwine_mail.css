@@ -51,13 +51,13 @@ body {
 	height: 924px;
 	width: 800px;
 	border-bottom: 1px solid #000;
-	background-image: url("http://www.kruby.dk/uploads/assets/12/original/pw-midt-foto-html-mail.png?1372333283");
+	background-image: url("http://www.kruby.dk/parkwine/images/pw-midt-foto-html-mail.png");
 }
 
 #outer_wrapper #inside_wrapper_bottom {
 	height: 80px;
 	width: 800px;
-	background-image: url("http://www.kruby.dk/uploads/assets/13/original/pw-bund-foto-html-mail.png?1372333299");
+	background-image: url("http://www.kruby.dk/parkwine/images/pw-bund-foto-html-mail.png");
 }
 
 #outer_wrapper #inside_wrapper_left {
