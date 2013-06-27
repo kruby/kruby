@@ -1,0 +1,151 @@
+* {
+	font-family:Helvetica, Verdana, Arial, sans-serif;
+}
+
+body {
+	margin: 0px;
+}
+
+#outer_wrapper {
+	height: 1206px;
+	width: 800px;
+	background-color: #FFF;
+	border: 1px solid #000;
+	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#outer_wrapper div {
+	position: relative;
+	float: left;
+}
+
+#outer_wrapper #inside_wrapper_top {
+	height: 200px;
+	width: 800px;
+	border-bottom: 1px solid #000;
+	/*background-image: url("http://www.kruby.dk/uploads/assets/10/original/pw-top-foto-html-mail.png?1372333230");*/
+}
+
+#outer_wrapper #inside_wrapper_top p.text_1_top {
+	color: #FFF;
+	font-size: 90px;
+	text-align: center;
+	font-weight: normal;
+	margin: 0px 60px 0px 60px;
+	letter-spacing: 20px;
+	border-bottom: 1px solid #999;
+}
+
+#outer_wrapper #inside_wrapper_top p.text_2_top {
+	color: #FFF;
+	font-size: 30px;
+	text-align: center;
+	font-weight: normal;
+	margin: 0px 80px 0px 80px;
+	letter-spacing: 9px;
+}
+
+#outer_wrapper #inside_wrapper_middle {
+	height: 924px;
+	width: 800px;
+	border-bottom: 1px solid #000;
+	background-image: url("http://www.kruby.dk/uploads/assets/12/original/pw-midt-foto-html-mail.png?1372333283");
+}
+
+#outer_wrapper #inside_wrapper_bottom {
+	height: 80px;
+	width: 800px;
+	background-image: url("http://www.kruby.dk/uploads/assets/13/original/pw-bund-foto-html-mail.png?1372333299");
+}
+
+#outer_wrapper #inside_wrapper_left {
+	height: 900px;
+	width: 400px;
+}
+
+#outer_wrapper #inside_wrapper_right {
+	height: 900px;
+	width: 400px;
+}
+
+#outer_wrapper #inside_product_left {
+	height: 280px;
+	width: 360px;
+	border: 3px solid #FFF;
+	margin: 16px 8px 0px 20px;
+}
+
+#outer_wrapper #inside_product_right {
+	height: 280px;
+	width: 360px;
+	border: 3px solid #FFF;
+	margin: 16px 20px 0px 8px;
+}
+
+#outer_wrapper #product_image {
+	height: 240px;
+	width: 180px;
+}
+
+#outer_wrapper #product_text {
+	height: 240px;
+	width: 179px;
+	background-color: #463d35;
+	color: #FFF;
+	text-align: center;
+	border-left: 1px solid #FFF;
+}
+
+#outer_wrapper #product_text p.year {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 16px 0px 5px 0px;
+}
+
+#outer_wrapper #product_text p.name {
+	font-size: 16px;
+	font-weight: normal;
+	margin: 8px 0px 8px 0px;
+}
+
+#outer_wrapper #product_text p.text {
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 18px;
+	margin: 15px 0px 8px 0px;
+}
+
+#outer_wrapper #product_text p.normal_price {
+	font-size: 12px;
+	font-weight: normal;
+	margin: 0px;
+	margin: 16px 0px 8px 0px;
+}
+
+
+#outer_wrapper #product_price_bottom {
+	height: 40px;
+	width: 360px;
+	background-color: #dfbc14;
+	color: #FFF;
+	text-align: center;
+	border-top: 1px solid #FFF;
+}
+
+#outer_wrapper #product_price_bottom p.price {
+	font-size: 18px;
+	font-weight: bold;
+	color: #221e1a;
+	margin: 0px;
+	padding-top: 9px;
+}
+
+#outer_wrapper #inside_wrapper_bottom p.text_bottom {
+	font-size: 12px;
+	color: #000;
+	text-align: center;
+	margin: 15px 0px 0px 0px;
+	line-height: 18px;
+}
