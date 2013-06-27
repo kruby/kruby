@@ -87,6 +87,7 @@ body {
 #outer_wrapper #product_image {
 	height: 240px;
 	width: 180px;
+	background-image: url("images/produkt_baggrund.png");
 }
 
 #outer_wrapper #product_text {
@@ -96,6 +97,7 @@ body {
 	color: #FFF;
 	text-align: center;
 	border-left: 1px solid #FFF;
+	background-image: url("images/tekst_baggrund.png");
 }
 
 #outer_wrapper #product_text p.year {
