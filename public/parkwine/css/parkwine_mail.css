@@ -24,8 +24,6 @@ body {
 #outer_wrapper #inside_wrapper_top {
 	height: 200px;
 	width: 800px;
-	border-bottom: 1px solid #000;
-	/*background-image: url("http://www.kruby.dk/uploads/assets/10/original/pw-top-foto-html-mail.png?1372333230");*/
 }
 
 #outer_wrapper #inside_wrapper_top p.text_1_top {
@@ -51,6 +49,7 @@ body {
 	height: 924px;
 	width: 800px;
 	border-bottom: 1px solid #000;
+	border-top: 1px solid #000;
 	background-image: url("http://www.kruby.dk/parkwine/images/pw-midt-foto-html-mail.png");
 }
 
@@ -70,27 +69,27 @@ body {
 	width: 400px;
 }
 
-#outer_wrapper #inside_product_left {
+#outer_wrapper .inside_product_left {
 	height: 280px;
 	width: 360px;
 	border: 3px solid #FFF;
 	margin: 16px 8px 0px 20px;
 }
 
-#outer_wrapper #inside_product_right {
+#outer_wrapper .inside_product_right {
 	height: 280px;
 	width: 360px;
 	border: 3px solid #FFF;
 	margin: 16px 20px 0px 8px;
 }
 
-#outer_wrapper #product_image {
+#outer_wrapper .product_image {
 	height: 240px;
 	width: 180px;
 	background-image: url("http://www.kruby.dk/parkwine/images/produkt_baggrund.png");
 }
 
-#outer_wrapper #product_text {
+#outer_wrapper .product_text {
 	height: 240px;
 	width: 179px;
 	background-color: #463d35;
@@ -100,26 +99,26 @@ body {
 	background-image: url("http://www.kruby.dk/parkwine/images/tekst_baggrund.png");
 }
 
-#outer_wrapper #product_text p.year {
+#outer_wrapper .product_text p.year {
 	font-size: 20px;
 	font-weight: bold;
 	margin: 16px 0px 5px 0px;
 }
 
-#outer_wrapper #product_text p.name {
+#outer_wrapper .product_text p.name {
 	font-size: 16px;
 	font-weight: normal;
 	margin: 8px 0px 8px 0px;
 }
 
-#outer_wrapper #product_text p.text {
+#outer_wrapper .product_text p.text {
 	font-size: 12px;
 	font-weight: normal;
 	line-height: 18px;
 	margin: 15px 0px 8px 0px;
 }
 
-#outer_wrapper #product_text p.normal_price {
+#outer_wrapper .product_text p.normal_price {
 	font-size: 12px;
 	font-weight: normal;
 	margin: 0px;
@@ -127,7 +126,7 @@ body {
 }
 
 
-#outer_wrapper #product_price_bottom {
+#outer_wrapper .product_price_bottom {
 	height: 40px;
 	width: 360px;
 	background-color: #dfbc14;
@@ -136,7 +135,7 @@ body {
 	border-top: 1px solid #FFF;
 }
 
-#outer_wrapper #product_price_bottom p.price {
+#outer_wrapper .product_price_bottom p.price {
 	font-size: 18px;
 	font-weight: bold;
 	color: #221e1a;
