@@ -5,16 +5,30 @@ class HoursController < ApplicationController
   before_filter :logged_in_as_user? #Findes i application_controller.rb
   before_filter :logged_in_as_admin?, :except => ['timeliste', 'show_months_public', 'hide_months_public', 'show_days_public', 'hide_days_public']
     
+    
+  def find_all
+    session[:relation_id] = nil
+    session[:show_years] = nil
+    session[:year] = nil
+    session[:month] = nil
+    redirect_to :action => 'index'
+  end
   # GET /hours
   # GET /hours.xml
   def index
-    if params[:relation_id]
-      @relation = Relation.find(params[:relation_id])
+    unless params[:relation_id]
+      session[:relation_id] = nil
+      session[:show_years] = nil
+      session[:year] = nil
+      session[:month] = nil
+    end
+    if session[:relation_id]
+      @relation = Relation.find(session[:relation_id])
       @q = @relation.hours.search(params[:q])
       #@q = Hours.search(params[:relation_id])
       #@hours = Hour.find_by_relation_id(params[:relation_id])
       @hours = @q.result.all
-    else  
+    else
       @q = Hour.search(params[:q])
       @hours = @q.result.order('relation_id DESC, date DESC').all
     end
@@ -33,21 +47,11 @@ class HoursController < ApplicationController
   def monthly
     @hours = Hour.reorder('date DESC').all
   end
-
-  def show_hours
-    if params[:relation_id]
-      session[:relation_id] = params[:relation_id]
-      session[:year] = nil
-      session[:month] = nil
-    end
-    @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
-    render(:action => 'index')
-  end
   
   def show_years
     if params[:relation_id]
       session[:relation_id] = params[:relation_id]
+      session[:show_years] = true
       session[:year] = nil
       session[:month] = nil
       @relation = Relation.find(params[:relation_id])
@@ -60,18 +64,24 @@ class HoursController < ApplicationController
   end
 
   def hide_years
-    session[:relation_id] = nil
-    session[:year] = nil
-    session[:month] = nil
-    @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
-    render(:action => 'index')
+    if params[:relation_id]
+      session[:show_years] = nil
+      session[:year] = nil
+      session[:month] = nil
+      @relation = Relation.find(params[:relation_id])
+      @q = @relation.hours.search(params[:q])
+    else
+      @q = Hour.search(params[:q])
+    end
+      @hours = @q.result.order('relation_id DESC, date DESC').all
+      render(:action => 'index')
   end
   
   def show_months
     if params[:relation_id]
       #session[:relation_id] = params[:relation_id]
       session[:year] = params[:year]
+      session[:month] = nil
       @relation = Relation.find(params[:relation_id])
       @q = @relation.hours.search(params[:q])
     else
@@ -192,10 +202,25 @@ class HoursController < ApplicationController
   def edit
     #@hour = Hour.find(params[:id])
     session[:hour_id] = params[:id]
-    @q = Hour.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all
-    render(:action => 'index')
+    if params[:relation_id]
+      @relation = Relation.find(params[:relation_id])
+      @q = @relation.hours.search(params[:q])    
+    else
+      @q = Hour.search(params[:q])
+    end  
+     @hours = @q.result.order('relation_id DESC, date DESC').all
+     render :action => 'index'
   end
+  
+
+  # # GET /hours/1/edit
+  # def edit
+  #   #@hour = Hour.find(params[:id])
+  #   session[:hour_id] = params[:id]
+  #   @q = Hour.search(params[:q])
+  #   @hours = @q.result.order('relation_id DESC, date DESC').all
+  #   render :action => 'index'
+  # end
 
   # POST /hours
   # POST /hours.xml
@@ -224,7 +249,7 @@ class HoursController < ApplicationController
       if @hour.update_attributes(params[:hour])
         flash[:notice] = 'Timeregistreringen blev opdateret.'
         session[:hour_id] = nil
-        format.html { redirect_to(:action => 'index') }
+        format.html { redirect_to(:action => 'index', :relation_id => params[:hour][:relation_id]) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -240,7 +265,7 @@ class HoursController < ApplicationController
     @hour.destroy
 
     respond_to do |format|
-      format.html { redirect_to(hours_url) }
+      format.html { redirect_to(:action => 'index', :relation_id => session[:relation_id]) }
       format.xml  { head :ok }
     end
   end

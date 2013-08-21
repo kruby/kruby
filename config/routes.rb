@@ -120,6 +120,10 @@ Kruby::Application.routes.draw do
    match 'hours/years_show/:relation_id' => 'hours#show_years', :as => :show_years
    match 'hours/months_show/:relation_id/:year' => 'hours#show_months', :as => :show_months
    match 'hours/months/days_show/:relation_id/:month' => 'hours#show_days', :as => :show_days
+
+   match 'hours/relations/:relation_id/edit/:id' => 'hours#edit', :as => :edit_hour
+
+   match 'hours/find_all/:id' => 'hours#find_all', :as => :find_alle
    
    match 'hours/years_hide/:relation_id' => 'hours#hide_years', :as => :hide_years
    match 'hours/months_hide/:relation_id' => 'hours#hide_months', :as => :hide_months

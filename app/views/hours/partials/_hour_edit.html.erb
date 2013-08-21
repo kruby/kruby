@@ -9,6 +9,9 @@
     <td><%= f.text_field :description, :size => '30', :class => 'felter' %></td>
     <td><%= f.number_field :number, :size => '3', :class => 'center'%></td>
     <td><%= f.date_select :date, :order => [:day, :month, :year ], :include_blank => true %></td>
-    <td><%= f.submit "[Opdater]", :class => 'button_white' %><%= link_to '[Tilbage]', hours_path, session[:hour_id] = nil %></td>
+    <td><%= hidden_field(@hours, :relation_id, :value => session[:relation_id]) %><%= f.submit "[Opdater]", :class => 'button_white' %>
+		<%#= link_to '[Tilbage]', hours_path, session[:hour_id] = nil %>
+		<%= link_to '[Tilbage]', show_days_path(:relation_id => session[:relation_id], :month => @month_number, :q => params[:q]), session[:hour_id] = nil %>
+	</td>
 	<% end %>  
 </tr>
