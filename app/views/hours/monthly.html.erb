@@ -3,33 +3,63 @@
 <div id="admin_liste">
 	<h1>Timeforbrug pr. måned</h1>
 	<% @counter = 0 %>
+	<% @month_counter = 0 %>
 		<% for hour in @hours %>
-		<% @counter = @counter + 1 %>
+			<% @counter = @counter + 1 %>
 			<% @year = l hour.date, :format => :year %>
 			<%# l betyder at vi bruger I18 på hour.date og formatet :year under :date delen i da.yml filen %>
 			<% @month_name = l hour.date, :format => :month %>
 			<% @month_number = hour.date.month %>
 			<% if @year != @year_previous %>
+				<% @month_number_max = @month_counter %>
+				<% @month_counter = 0 %>
 				<% @year_previous = @year %>
 				<% if @counter > 1 %>
+						<tr>
+							<td class="monthly">Ialt</td>
+							<td class='right bold'><%= number_with_precision(Hour.year_hours(hour.date-1.year).sum(:number), :locale => :da) rescue nil %></td>
+						</tr>
+						<tr>
+							<td class="monthly">Mdr.</td>
+							<td class='right bold'><%= @month_number_max %></td>
+						</tr>
+						<tr>
+							<td class="monthly">Gennemsnit</td>
+							<td class='right bold'><%= number_with_precision(Hour.year_hours(hour.date-1.year).sum(:number)/@month_number_max, :locale => :da) rescue nil %></td>
+						</tr>
 					</table>
 				<% end %>
 				<table class="tabel_timer">
 					<tr>
-						<td colspan=2 class="year"><%= @year %></td>
+						<td colspan=2 class="size_14 bold center"><%= @year %></td>
 					</tr>
 					<tr>
 						<td class='year'>Måned</td>
-						<td class='year'>Antal</td>
+						<td class='number bold'>Antal</td>
 					</tr>
 			<% else %>
 				<% if @month_number != @month_previous %>
+					<% @month_counter = @month_counter + 1 %>
 					<% @month_previous = @month_number %>
 					<tr>
 						<td class="monthly"><%= @month_name.capitalize %></td>
-						<td class='pos'><%= number_with_precision(Hour.month_hours(hour.date).sum(:number), :locale => :da) rescue nil %></td>
+						<td class='number'><%= number_with_precision(Hour.month_hours(hour.date).sum(:number), :locale => :da) rescue nil %></td>
 					</tr>
 				<% end %>
 			<% end %>
 		<% end %>
+					<% @month_number_max = @month_counter %>
+					<tr>
+						<td class="monthly bold">Ialt</td>
+						<td class='right bold'><%= number_with_precision(Hour.year_hours(hour.date).sum(:number), :locale => :da) rescue nil %></td>
+					</tr>
+					<tr>
+						<td class="monthly">Mdr.</td>
+						<td class='right bold'><%= @month_number_max %></td>
+					</tr>
+					<tr>
+						<td class="monthly">Gennemsnit</td>
+							<td class='right bold'><%= number_with_precision(Hour.year_hours(hour.date).sum(:number)/@month_number_max, :locale => :da) rescue nil %></td>
+					</tr>
+				</table>
 </div>
