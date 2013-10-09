@@ -1,3 +1,5 @@
+<% @level_2_main = level_1.children %>
+
 <% unless @level_2_main.nil? %>
 
 	<% @level_2_main.each do |level_2| -%>
@@ -26,9 +28,7 @@
 			
 				<% end %>
 		
-			<% @level_3_main = level_2.children %>
-		
-			<%= render :partial => "menusystem/menu_main_level_3" %>
+			<%= render :partial => "menusystem/menu_main_level_3", :locals => {:level_2 => level_2} %>
 		
 		</ul>
 

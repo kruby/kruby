@@ -1,4 +1,5 @@
-<% @tabs.each do |level_1| -%> <!-- @tabs kommer fra application.rb -->
+<!-- @tabs kommer fra application.rb -->
+<% @tabs.each do |level_1| -%> 
 
 		<li class="admin_navlabel">
 		
@@ -10,13 +11,11 @@
 		
 				<%= link_to level_1.navlabel, :controller => level_1.controller_name, :product_id => nil %>
 					<!-- PRODUCT_ID => NIL ER FOR AT SIKRE AT MAN KAN KOMME DIREKTE TIL TEXTLINES NÅR MAN HAR REDIGERET I PRODUCTS. -->
-					<!-- DET GØR IKKE NOGET FOR DE ANDRE LINKS, AT DEN BRUGES DER OGSÅ -->
-	
-				<% @level_2 = level_1.children %>
-		
-				<%= render :partial => "menusystem/menu_level_2" %>
-			
+					<!-- DET GØR IKKE NOGET FOR DE ANDRE LINKS, AT DEN BRUGES DER OGSÅ -->			
 			<% end %>
+	
+			<%= render :partial => "menusystem/menu_level_2", :locals => {:level_1 => level_1} %>
+			
 		
 <% end -%>
 

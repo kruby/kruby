@@ -20,10 +20,9 @@
 				<% end %>
 			
 			<% end %>
+			
+		<%= render :partial => "menusystem/menu_main_level_2", :locals => {:level_1 => level_1} %>
 		
-		<% @level_2_main = level_1.children %>
-		
-		<%= render :partial => "menusystem/menu_main_level_2" %>
 		
 <% end -%>
 
