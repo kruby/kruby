@@ -45,7 +45,9 @@ class HoursController < ApplicationController
   end
   
   def monthly
-    @hours = Hour.reorder('date DESC').all
+    # @hours = Hour.reorder('date ASC').all
+    @hours = Hour.last_3_years(Time.now).reorder('date ASC')
+
   end
   
   def show_years

@@ -2,33 +2,26 @@
 
 <div id="admin_liste">
 	<h1>Timeforbrug pr. måned</h1>
-
-	<table class="tabel_timer">
-		<!-- <tr>
-			<th colspan="2" class="monthly_head">Timer pr. måned</th>
-		</tr> -->
-
+	<% @counter = 0 %>
 		<% for hour in @hours %>
-		
+		<% @counter = @counter + 1 %>
 			<% @year = l hour.date, :format => :year %>
-			<%# @year_number = hour.date.month %>
-			<!-- l betyder at vi bruger I18 på hour.date og formatet :year under :date delen i da.yml filen -->
+			<%# l betyder at vi bruger I18 på hour.date og formatet :year under :date delen i da.yml filen %>
 			<% @month_name = l hour.date, :format => :month %>
 			<% @month_number = hour.date.month %>
-			<!-- l betyder at vi bruger I18 på hour.date og formatet :month under :date delen i da.yml filen -->
-			
-
 			<% if @year != @year_previous %>
 				<% @year_previous = @year %>
-
-
-				<tr>
-					<td colspan=2 class="year"><%= @year %></td>
-				</tr>
-				<tr>
-					<td class='year'>Måned</td>
-					<td class='year'>Antal</td>
-				</tr>
+				<% if @counter > 1 %>
+					</table>
+				<% end %>
+				<table class="tabel_timer">
+					<tr>
+						<td colspan=2 class="year"><%= @year %></td>
+					</tr>
+					<tr>
+						<td class='year'>Måned</td>
+						<td class='year'>Antal</td>
+					</tr>
 			<% else %>
 				<% if @month_number != @month_previous %>
 					<% @month_previous = @month_number %>
@@ -38,9 +31,5 @@
 					</tr>
 				<% end %>
 			<% end %>
-
 		<% end %>
-
-	</table>
-
 </div>
