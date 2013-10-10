@@ -21,25 +21,24 @@
 	<% @v_last_year_2 = Voucher.last_year_last_6_months(Time.now - 1.year).sum(:number) %>
 	<% @v_this_year_1 = Voucher.this_year_first_6_months(Time.now.to_date).sum(:number) %>
 	<% @v_this_year_2 = Voucher.this_year_last_6_months(Time.now.to_date).sum(:number) %>
-	<b>Købte timer ialt: <%= Voucher.sum(:number) %></b><br>
-	<b>2 år tilbage ialt: <%= @v_last_year_1 + @v_last_year_2 + @v_this_year_1 + @v_this_year_2 %></b><br><br>
-	1. halvår <%= (Time.now - 1.year).year %> - <%= @v_last_year_1 %><br>
-	2. halvår <%= (Time.now - 1.year).year %> - <%= @v_last_year_2 %><br>
-	1. halvår <%= (Time.now).year %> - <%= @v_this_year_1 %><br>
-	2. halvår <%= (Time.now).year %> - <%= @v_this_year_2 %><br>
+	<b>Købte timer ialt: <%= delimiter(Voucher.sum(:number)) %></b><br>
+	<b>2 år tilbage ialt: <%= delimiter(@v_last_year_1 + @v_last_year_2 + @v_this_year_1 + @v_this_year_2) %></b><br><br>
+	1. halvår <%= (Time.now - 1.year).year %> - <%= delimiter(@v_last_year_1) %><br>
+	2. halvår <%= (Time.now - 1.year).year %> - <%= delimiter(@v_last_year_2) %><br>
+	1. halvår <%= (Time.now).year %> - <%= delimiter(@v_this_year_1) %><br>
+	2. halvår <%= (Time.now).year %> - <%= delimiter(@v_this_year_2) %><br>
 </div>
 <% @h_last_year_1 = Hour.last_year_first_6_months(Time.now - 1.year).sum(:number) %>
 <% @h_last_year_2 = Hour.last_year_last_6_months(Time.now - 1.year).sum(:number) %>
 <% @h_this_year_1 = Hour.this_year_first_6_months(Time.now.to_date).sum(:number) %>
 <% @h_this_year_2 = Hour.this_year_last_6_months(Time.now.to_date).sum(:number) %>
 <div class="timer">
-	<b>Brugte timer ialt: <%= Hour.sum(:number) %></b><br>
-	<b>2 år tilbage ialt: <%= @h_last_year_1 + @h_last_year_2 + @h_this_year_1 + @h_this_year_2 %></b><br><br>
-	1. halvår <%= (Time.now - 1.year).year %> - <%= @h_last_year_1%><br>
-	2. halvår <%= (Time.now - 1.year).year %> - <%= @h_last_year_2 %><br>
-	1. halvår <%= (Time.now).year %> - <%= @h_this_year_1 %><br>
-	2. halvår <%= (Time.now).year %> - <%= @h_this_year_2 %><br>
-
+	<b>Brugte timer ialt: <%= delimiter(Hour.sum(:number)) %></b><br>
+	<b>2 år tilbage ialt: <%= delimiter(@h_last_year_1 + @h_last_year_2 + @h_this_year_1 + @h_this_year_2) %></b><br><br>
+	1. halvår <%= (Time.now - 1.year).year %> - <%= delimiter(@h_last_year_1)%><br>
+	2. halvår <%= (Time.now - 1.year).year %> - <%= delimiter(@h_last_year_2) %><br>
+	1. halvår <%= (Time.now).year %> - <%= delimiter(@h_this_year_1) %><br>
+	2. halvår <%= (Time.now).year %> - <%= delimiter(@h_this_year_2) %><br>
 </div>
 
 
@@ -48,8 +47,10 @@
 <table class="tabel_timer">
   <tr>
 	<!-- <th>ID</th> -->
-    <th colspan=5 class='hours_headline' >Kunde og status</th>
-	<th class='pos'>Handling</th>
+	<th colspan=3 class='hours_headline' >Kunde</th>
+	<th colspan=1 class='hours_calc' >Købt/Brugt</th>
+	<th colspan=1 class='hours_status' >Status</th>
+	<th class='pos'></th>
   </tr>
 
 <% for hour in @hours %>
@@ -61,28 +62,36 @@
 
 			<% @relation_id_previous = @relation_id %>
 					<!-- <tr class='background-row'><td colspan=6></td></tr> -->
-					<tr><td colspan=5><b>
-						<div id="voucher_status">
-							<%= link_to @relation.company, show_years_path(:relation_id => @relation_id, :q => params[:q]), :class => 'name'%> – 
-							<%#= @relation.company rescue nil %>
-							<span id="voucher_headline">Klippekort status: </span>
-							<span id="voucher_text">
-								(<%= delimiter(@relation.vouchers.sum(:number)) rescue nil %> 
-								- <%= delimiter(@relation.hours.sum(:number)) rescue nil %>
-								= <% @result = @relation.vouchers.sum(:number) - @relation.hours.sum(:number) rescue nil %>
-								<% if @result < 0 %>
-									<span id='voucher_red'> <%= delimiter(@result) %> klip mangler</span>) 
-								<% else %>
-									<span id='voucher_green'> <%= delimiter(@result) %> klip resterer)</span> 
-								<% end %>
-							
-							</span>
-						</div>
-					</b></td>
+					<tr>
+						<td colspan=3>
+							<div id="voucher_customer">
+								<%= link_to @relation.company, show_years_path(:relation_id => @relation_id, :q => params[:q]), :class => 'name'%>
+							</div>
+						</td>
+						<td colspan=1>
+							<div id="voucher_calc">
+								<span id="voucher_text">
+									(<%= delimiter(@relation.vouchers.sum(:number)) rescue nil %> 
+									- <%= delimiter(@relation.hours.sum(:number)) rescue nil %>)
+								</span>
+							</div>
+						</td>
+						<td colspan=1>
+							<div id="voucher_status">
+								<span id="voucher_text">
+									<% @result = @relation.vouchers.sum(:number) - @relation.hours.sum(:number) rescue nil %>
+									<% if @result < 0 %>
+										<span id='voucher_red'> <%= delimiter(@result) %></span> 
+									<% else %>
+										<span id='voucher_green'> <%= delimiter(@result) %></span> 
+									<% end %>
+								</span>
+							</div>
+						</td>
 					<% if session[:show_years] == true %>
 						
 							<td class='pos'>
-								<div id="voucher_status">
+								<div id="voucher_action">
 									<%= link_to '[Skjul]', hide_years_path(:relation_id => session[:relation_id], :q => params[:q]) %>
 								</div>
 							</td>
@@ -93,7 +102,7 @@
 					<% else %>
 					
 						<td class='pos'>
-							<div id="voucher_status">
+							<div id="voucher_action">
 								<%= link_to '[Vis]', show_years_path(:relation_id => @relation_id, :q => params[:q]) %>
 							</div>
 						</td>

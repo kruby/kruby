@@ -43,10 +43,23 @@ width: 500px;
 }
 
 #admin_liste th.hours_headline{
-	padding-left: 8px;
+	padding: 8px;
 	font-size: 14px;
 }
 
+#admin_liste th.hours_calc{
+	margin: 5px 0px 5px 0px;
+	padding: 8px;
+	font-size: 14px;
+	text-align: center;
+}
+
+#admin_liste th.hours_status{
+	margin: 5px 0px 5px 0px;
+	padding: 8px;
+	font-size: 14px;
+	text-align: center;
+}
 
 #admin_liste {
 	z-index:100;
@@ -232,13 +245,37 @@ width: 500px;
 }
 
 
+#admin_liste #voucher_calc {
+	margin: 5px 0px 5px 0px;
+	font-size: 12px;
+	color: #000;
+	text-align:center;
+}
+
 #admin_liste #voucher_status {
+	margin: 5px 0px 5px 0px;
+	font-size: 12px;
+	color: #679FBA;
+	text-align:center;
+}
+
+#admin_liste #voucher_action {
 	margin: 5px 0px 5px 3px;
 	font-size: 12px;
 	color: #679FBA;
+	text-align:center;
+	min-width: 60px;
 }
 
-#admin_liste #voucher_status a.name {
+#admin_liste #voucher_customer {
+	margin: 5px 0px 5px 3px;
+	font-size: 12px;
+	color: #679FBA;
+	text-align:left;
+	min-width: 300px;
+}
+
+#admin_liste #voucher_customer a.name {
 	margin: 5px 0px 5px 3px;
 	font-size: 12px;
 	color: #679FBA;
