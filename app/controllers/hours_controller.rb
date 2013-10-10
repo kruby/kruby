@@ -30,7 +30,9 @@ class HoursController < ApplicationController
       @hours = @q.result.all
     else
       @q = Hour.search(params[:q])
-      @hours = @q.result.order('relation_id DESC, date DESC').all
+      # @hours = @q.result.reorder('relation_id ASC, date DESC').all
+      @hours = @q.result.joins(:relation).reorder('company ASC').all
+      # Project.joins(:customer).order('customers.name')
     end
     #@search = Hour.search(params[:search])
     #@hours = @search.order('relation_id DESC, date DESC').all
@@ -61,7 +63,7 @@ class HoursController < ApplicationController
     else
       @q = Hour.search(params[:q])
     end
-      @hours = @q.result.order('relation_id DESC, date DESC').all
+      @hours = @q.result.reorder('relation_id DESC, date DESC').all
       render(:action => 'index')
   end
 
@@ -75,7 +77,7 @@ class HoursController < ApplicationController
     else
       @q = Hour.search(params[:q])
     end
-      @hours = @q.result.order('relation_id DESC, date DESC').all
+      @hours = @q.result.reorder('relation_id DESC, date DESC').all
       render(:action => 'index')
   end
   
@@ -89,7 +91,7 @@ class HoursController < ApplicationController
     else
       @q = Hour.search(params[:q])
     end
-    @hours = @q.result.order('relation_id DESC, date DESC').all
+    @hours = @q.result.reorder('relation_id DESC, date DESC').all
     render(:action => 'index')
   end
   
@@ -102,7 +104,7 @@ class HoursController < ApplicationController
     else
       @q = Hour.search(params[:q])
     end
-    @hours = @q.result.order('relation_id DESC, date DESC').all
+    @hours = @q.result.reorder('relation_id DESC, date DESC').all
     render(:action => 'index')
   end
   
@@ -128,7 +130,7 @@ class HoursController < ApplicationController
     else
       @q = Hour.search(params[:q])
     end  
-    @hours = @q.result.order('relation_id DESC, date DESC').all
+    @hours = @q.result.reorder('relation_id DESC, date DESC').all
     render(:action => 'index')
   end
   
@@ -139,7 +141,7 @@ class HoursController < ApplicationController
     end
     @relation = Relation.find(session[:relation_id])
     @q = @relation.hours.search(params[:q])
-    @hours = @q.result.order('date DESC').all
+    @hours = @q.result.reorder('date DESC').all
     render(:action => 'timeliste')
   end
   
@@ -148,7 +150,7 @@ class HoursController < ApplicationController
     session[:month] = nil
     @relation = Relation.find(session[:relation_id])
     @q = @relation.hours.search(params[:q])
-    @hours = @q.result.order('date DESC').all
+    @hours = @q.result.reorder('date DESC').all
     render(:action => 'timeliste')
   end
   
@@ -158,7 +160,7 @@ class HoursController < ApplicationController
     end
     @relation = Relation.find(session[:relation_id])
     @q = @relation.hours.search(params[:q])
-    @hours = @q.result.order('date DESC').all
+    @hours = @q.result.reorder('date DESC').all
     render(:action => 'timeliste')
   end
   
@@ -166,14 +168,14 @@ class HoursController < ApplicationController
     session[:month] = nil
     @relation = Relation.find(session[:relation_id])
     @q = @relation.hours.search(params[:q])
-    @hours = @q.result.order('date DESC').all
+    @hours = @q.result.reorder('date DESC').all
     render(:action => 'timeliste')
   end
   
   def timeliste
     @relation = Relation.find(session[:relation_id])
     @q = @relation.hours.search(params[:q])
-    @hours = @q.result.order('relation_id DESC, date DESC').all 
+    @hours = @q.result.reorder('relation_id DESC, date DESC').all 
     #@hours = Hour.timeliste(current_user.relation_id).order('date desc')
   end
 
