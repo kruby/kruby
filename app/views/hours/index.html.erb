@@ -21,7 +21,8 @@
 	<% @v_last_year_2 = Voucher.last_year_last_6_months(Time.now - 1.year).sum(:number) %>
 	<% @v_this_year_1 = Voucher.this_year_first_6_months(Time.now.to_date).sum(:number) %>
 	<% @v_this_year_2 = Voucher.this_year_last_6_months(Time.now.to_date).sum(:number) %>
-	<b>Købte timer ialt: <%= @v_last_year_1 + @v_last_year_2 + @v_this_year_1 + @v_this_year_2 %></b><br>
+	<b>Købte timer ialt: <%= Voucher.sum(:number) %></b><br>
+	<b>2 år tilbage ialt: <%= @v_last_year_1 + @v_last_year_2 + @v_this_year_1 + @v_this_year_2 %></b><br><br>
 	1. halvår <%= (Time.now - 1.year).year %> - <%= @v_last_year_1 %><br>
 	2. halvår <%= (Time.now - 1.year).year %> - <%= @v_last_year_2 %><br>
 	1. halvår <%= (Time.now).year %> - <%= @v_this_year_1 %><br>
@@ -32,11 +33,12 @@
 <% @h_this_year_1 = Hour.this_year_first_6_months(Time.now.to_date).sum(:number) %>
 <% @h_this_year_2 = Hour.this_year_last_6_months(Time.now.to_date).sum(:number) %>
 <div class="timer">
-	<b>Brugte timer ialt: <%= @h_last_year_1 + @h_last_year_2 + @h_this_year_1 + @h_this_year_2 %></b><br>
+	<b>Brugte timer ialt: <%= Hour.sum(:number) %></b><br>
+	<b>2 år tilbage ialt: <%= @h_last_year_1 + @h_last_year_2 + @h_this_year_1 + @h_this_year_2 %></b><br><br>
 	1. halvår <%= (Time.now - 1.year).year %> - <%= @h_last_year_1%><br>
 	2. halvår <%= (Time.now - 1.year).year %> - <%= @h_last_year_2 %><br>
 	1. halvår <%= (Time.now).year %> - <%= @h_this_year_1 %><br>
-	2. halvår <%= (Time.now).year %> - <%= @h_this_year_1 %><br>
+	2. halvår <%= (Time.now).year %> - <%= @h_this_year_2 %><br>
 
 </div>
 
