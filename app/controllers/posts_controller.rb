@@ -236,7 +236,7 @@ class PostsController < ApplicationController
     else
       session[:sorter] = 11
     end
-    redirect_to (:action => 'mini_blog')
+    redirect_to(:action => 'mini_blog')
   end
   
   def sorter_forfatter
@@ -245,7 +245,7 @@ class PostsController < ApplicationController
     else
       session[:sorter] = 21
     end
-    redirect_to (:action => 'mini_blog')
+    redirect_to(:action => 'mini_blog')
   end
   
   def sorter_kommentar
@@ -254,7 +254,7 @@ class PostsController < ApplicationController
     else
       session[:sorter] = 31
     end
-    redirect_to (:action => 'mini_blog')
+    redirect_to(:action => 'mini_blog')
   end
   
 end
