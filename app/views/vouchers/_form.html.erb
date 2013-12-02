@@ -20,6 +20,9 @@
   <div class="label"><%= f.label :Antal %></div>
   <div class="input"><%= f.text_field :number %></div>
 
+  <div class="label"><%= f.label :Pris %></div>
+  <div class="input"><%= f.text_field :hourly_rate %></div>
+
   <div class="label"><%= f.label :Relation %></div>
   <div class='input'><%= f.collection_select(:relation_id, Relation.all, :id, :company, :prompt => 'Vælg en Relation', :include_blank => true ) %></div>  
 

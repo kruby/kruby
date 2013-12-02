@@ -3,13 +3,21 @@
 
 <h1>
 	Klippekort 
-	<%= link_to '[Nyt klippekort]', new_voucher_path %>
+	<%= link_to '[Nyt klippekort]', new_voucher_path %><br>
 </h1>
+
+<% @turnover = Voucher.sum{ |v| v.hourly_rate * v.number } %>
+<% @total_hours = Voucher.sum('number') %>
+<p>
+	Gennemsnitlig timepris uden vægtning: <%= number_with_precision(Voucher.average('hourly_rate'), :locale => :da )%><br>
+	Gennemsnitlig timepris med vægtning: <%= number_with_precision(@turnover / @total_hours, :locale => :da )%>
+</p>
 
 <table>
   <tr>
     <th>Beskrivelse</th>
     <th>Antal</th>
+	<th>Pris</th>
     <!-- <th>Relation</th> -->
 	<th><%= sort_link @q, :relation_id, 'Kunde', :default_order => :desc  %></th>
     <th>Gyldig fra</th>
@@ -28,6 +36,7 @@
   <tr>
     <td><%= voucher.description %></td>
     <td class='pos'><%= voucher.number %></td>
+	<td class='pos'><%= voucher.hourly_rate %></td>
     <td><%= Relation.find(voucher.relation_id).company rescue nil %></td>
     <td><%= voucher.date %></td>
 	<td class='pos'><%= voucher.date + 1.year - Time.now.to_date %></td>
