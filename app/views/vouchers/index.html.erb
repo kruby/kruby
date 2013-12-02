@@ -6,11 +6,11 @@
 	<%= link_to '[Nyt klippekort]', new_voucher_path %><br>
 </h1>
 
-<% @turnover = Voucher.sum{ |v| v.hourly_rate * v.number } %>
-<% @total_hours = Voucher.sum('number') %>
+<% @turnover = Voucher.sum{ |v| v.hourly_rate * v.number } rescue nil %>
+<% @total_hours = Voucher.sum('number') rescue nil %>
 <p>
-	Gennemsnitlig timepris uden vægtning: <%= number_with_precision(Voucher.average('hourly_rate'), :locale => :da )%><br>
-	Gennemsnitlig timepris med vægtning: <%= number_with_precision(@turnover / @total_hours, :locale => :da )%>
+	Gennemsnitlig timepris uden vægtning: <%= number_with_precision(Voucher.average('hourly_rate'), :locale => :da ) rescue nil %><br>
+	Gennemsnitlig timepris med vægtning: <%= number_with_precision(@turnover / @total_hours, :locale => :da ) rescue nil %>
 </p>
 
 <table>
