@@ -27,6 +27,10 @@
 							<td class="monthly">Gennemsnit</td>
 							<td class='right bold'><%= number_with_precision(Hour.year_hours(hour.date-1.year).sum(:number)/@month_number_max, :locale => :da) rescue nil %></td>
 						</tr>
+						<tr>
+							<td class="monthly">Oms. pr. md.</td>
+							<td class='right bold'><%= number_with_precision(Hour.year_hours(hour.date-1.year).sum(:number)/@month_number_max * Voucher.average_hourly_rate, :locale => :da, :precision => 0) rescue nil %></td>
+						</tr>
 					</table>
 				<% end %>
 				<table class="tabel_timer">
@@ -60,6 +64,10 @@
 					<tr>
 						<td class="monthly">Gennemsnit</td>
 							<td class='right bold'><%= number_with_precision(Hour.year_hours(hour.date).sum(:number)/@month_number_max, :locale => :da) rescue nil %></td>
+					</tr>
+					<tr>
+						<td class="monthly">Oms. pr. md.</td>
+						<td class='right bold'><%= number_with_precision(Hour.year_hours(hour.date).sum(:number)/@month_number_max * Voucher.average_hourly_rate, :locale => :da, :precision => 0) rescue nil %></td>
 					</tr>
 				</table>
 </div>

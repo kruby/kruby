@@ -17,5 +17,19 @@ class Voucher < ActiveRecord::Base
   #        Voucher.these_first_6_months(this_date)
   #     end
   #   end
+	
+	def self.turnover_total
+		self.sum{|v| v.number.to_f * v.hourly_rate.to_f}
+		#self.sum('hourly_rate') rescue nil
+	end
+	
+	def self.hours_total
+		self.sum('number') rescue nil
+	end
+	
+	def self.average_hourly_rate
+		turnover_total / hours_total
+	end
+	
   
 end
