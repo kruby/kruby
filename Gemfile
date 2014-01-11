@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-#ruby '1.8.7'
-ruby '2.0.0'
+ruby '1.8.7'
+#ruby '2.0.0'
 
 
 gem 'rails', '3.2.15'
@@ -11,6 +11,7 @@ gem 'rails', '3.2.15'
 #gem 'mysql2', '~> 0.2.6'
 #gem 'mysql', "~> 2.8.1"
 gem "mysql2"
+# gem "activerecord-mysql2-adapter"
 gem "RedCloth"
 gem "will_paginate", "~> 3.0.pre4"
 gem "newrelic_rpm"

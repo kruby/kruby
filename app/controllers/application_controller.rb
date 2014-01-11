@@ -35,34 +35,6 @@ class ApplicationController < ActionController::Base
   
   end
   
-  
-  # def get_content_for_menu
-  #   #Menupunkter i forhold til user.category skal hentes. Er man editor, får man kun aktuelle menupunkter at se.
-  #   if logged_in_as_user?
-  #     if current_user.category == 'Admin' 
-  #       @tabs ||= Content.admin_pages # parent_pages kommer fra content.rb (modellen) derfor starter den også med Content. det har ikke noget med tabellen contents at gøre.
-  #     elsif current_user.category == 'Editor'
-  #       @tabs ||= Content.editor_pages
-  #     elsif current_user.category == 'User'
-  #       @tabs ||= Content.user_pages
-  #     end
-  #     
-  #   else
-  #     @tabs ||= Content.public_pages # public_pages kommer fra content.rb (modellen)
-  #   end
-  #   
-  #   @main_menu ||= Content.pages.active.not_admin # main_menu kommer fra content.rb
-  #   
-  #   
-  #   @mangler = 'Indhold følger snarest'
-  #   
-  #   #Newsarchive.active kommer fra models > newsarchive.rb via scope
-  #   @archives = Newsarchive.active
-  #   @products = Product.active
-  #   
-  # end
-
-
   def active
    active_controller = params[:controller].classify.constantize
    @active_controller = active_controller.find(params[:id])

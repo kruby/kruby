@@ -20,7 +20,7 @@ class ViewerController < ApplicationController
   def forside
 
     #@page = Page.find_by_name(params[:name])
-     @page = Page.find_by_name('Forside')
+    @page = Page.find_by_name('Forside')
   
     @pagetitle = @page.title rescue 'Indhold følger snarest'
     @content = @page.body rescue 'Indhold følger snarest'
