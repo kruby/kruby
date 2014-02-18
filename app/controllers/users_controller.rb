@@ -101,23 +101,4 @@ class UsersController < ApplicationController
       end
    end
   
-  # def create
-  #   cookies.delete :auth_token
-  #   # protects against session fixation attacks, wreaks havoc with 
-  #   # request forgery protection.
-  #   # uncomment at your own risk
-  #   # reset_session
-  #   @user = User.new(params[:user])
-  #   @user.save
-  #   if @user.errors.empty?
-  #     session[:fejl] = nil
-  #     self.current_user = @user
-  #     #redirect_back_or_default('/')
-  #     redirect_to(:action => 'index')
-  #     flash[:notice] = "Tak fordi du skrev dig ind!"
-  #   else
-  #     render :action => 'new'
-  #   end
-  # end
-
 end

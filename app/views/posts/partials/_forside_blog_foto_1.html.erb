@@ -1,7 +1,4 @@
 <% for post in @posts %>
-
-
-
 <div class="forside_blog_wrapper">
 		
 <div class="blogpost">
@@ -11,10 +8,6 @@
 	<%= link_to post.title, post_path(post.id) %></span>
 	</div> <!-- topline -->
 	<div class="date_time"><%= post.created_at.strftime("%d.%m.%y - %H:%M") %> - <span class="author"><%= User.find(post.user_id).blogname rescue 'Kruby' %></span></div>
-	
-	
-	
-	
 		<!-- <div class="body">
 			<td class='tekst_foto_1'><%#= textilize(post.body) %></td>
 			<td class='foto_1'> </td>
